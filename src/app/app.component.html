@@ -1,21 +1,26 @@
 <ion-app>
   <ion-router-outlet></ion-router-outlet>
   <ion-tabs>
-    <ion-tab-bar  slot="bottom,end">
-      <ion-tab-button tab="home">
-        <ion-icon src="../assets/icon/home.svg"></ion-icon>
+    <ion-tab-bar slot="bottom,end">
+      <ion-tab-button color="warning" tab="home">
+        <ion-icon name="home-outline"></ion-icon>
+        <ion-label>Inicio</ion-label>
       </ion-tab-button>
       <ion-tab-button tab="entrepreneurship">
-        <ion-icon src="../assets/icon/entrepreneur.svg"></ion-icon>
+        <ion-icon name="megaphone-outline"></ion-icon>
+        <ion-label>Negocios</ion-label>
       </ion-tab-button>
       <ion-tab-button tab="categories">
-        <ion-icon src="../assets/icon/categories.svg"></ion-icon>
+        <ion-icon name="qr-code-outline"></ion-icon>
+        <ion-label>Categorías</ion-label>
       </ion-tab-button>
       <ion-tab-button tab="deals">
-        <ion-icon src="../assets/icon/deals.svg"></ion-icon>
+        <ion-icon name="pricetags-outline"></ion-icon>
+        <ion-label>Promos</ion-label>
       </ion-tab-button>
       <ion-tab-button tab="favorites">
-        <ion-icon src="../assets/icon/estrella.svg"></ion-icon>
+        <ion-icon name="heart-outline"></ion-icon>
+        <ion-label>Favoritos</ion-label>
       </ion-tab-button>
     </ion-tab-bar>
   </ion-tabs>

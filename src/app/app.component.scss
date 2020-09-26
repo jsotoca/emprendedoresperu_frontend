@@ -1,1 +1,11 @@
 @import '../theme/fonts/poppins.scss';
+
+ion-tab-bar {
+    --background:  #E13449;
+    --color: white;
+    font-family: "Poppins Regular" !important;
+}
+
+ion-tab-button {
+    --color-selected: yellow;
+}
