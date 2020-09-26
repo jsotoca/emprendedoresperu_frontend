@@ -7,6 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePage implements OnInit {
 
+  slidesOptions = {
+    initialSlide: 0,
+    direction: 'horizontal',
+    speed: 300,
+    slidesPerView: 3.7,
+    spaceBetween: 5,
+    freeMode: true,
+    loop: false
+  };
+
   constructor() { }
 
   ngOnInit() {

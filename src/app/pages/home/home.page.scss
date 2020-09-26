@@ -1,4 +1,19 @@
-ion-content{
-    // --ion-background-color: #F7F7F9;
-    --ion-background-color: #EAEEEF;
+.sc-ion-searchbar-md-h {
+    --icon-color: #FF2D55;
+}
+
+.categoria-principal {
+    font-family: "Poppins Regular" !important;
+}
+
+.your-img {
+    width: 95%;
+    height: auto;
+    border-radius: 10px !important;
+    overflow: hidden;
+}
+
+ion-slides {
+    --bullet-background: white;
+    --bullet-background-active: white;
 }
