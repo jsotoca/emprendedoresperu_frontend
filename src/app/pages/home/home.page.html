@@ -1,7 +1,6 @@
 <app-header></app-header>
 
 <ion-content>
-    <ion-searchbar placeholder="¿Qué estas buscando?" animated></ion-searchbar>
     <ion-slides [options]="slidesOptions">
         <ion-slide>
             <ion-card>
@@ -161,6 +160,28 @@
             <ion-slide>
                 <ion-card class="caja-promocion">
                     <img src="../../../assets/emprendimientos/best-peruvian-foods.jpg" alt="">
+                    <ion-item lines="none">
+                        <ion-avatar slot="start" style="width: 50px;height: 50px;">
+                            <img src="../../../assets/emprendimientos/logo2.jpg" />
+                        </ion-avatar>
+                        <ion-label>
+                            <p class="titulo-promocion">Cevichera Don Juan</p>
+                            <p class="ubicacion-categoria-promocion"> Chiclayo - Cevicherias</p>
+                            <p class="slogan">Del mar a tu paladar 🐟.</p>
+                        </ion-label>
+                    </ion-item>
+                    <ion-badge style="margin-right: 6px; --background: #F44336;">
+                        <ion-icon name="bicycle-outline"></ion-icon>
+                        Delivery Gratis
+                    </ion-badge>
+                    <ion-badge style="margin-right: 6px; --background: #FF9800;">
+                        <ion-icon name="flash-outline"></ion-icon>
+                        Tenemos Local
+                    </ion-badge>
+                    <ion-badge style="margin-right: 6px; --background: #2196F3;">
+                        <ion-icon name="calendar-outline"></ion-icon>
+                        Atención Domingos
+                    </ion-badge>
                 </ion-card>
             </ion-slide>
         </ion-slides>

@@ -1,9 +1,147 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>entrepreneurship</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header></app-header>
 
 <ion-content>
-
+    <ion-grid fixed>
+        <ion-row>
+            <ion-col size="12">
+                <ion-slides [options]="slidesOptions">
+                    <ion-slide>
+                        <ion-card>
+                         <ion-tab-button class="categoria-principal">
+                             <ion-icon style="font-size: 64px;" src="../../../assets/icon/comida-rapida.svg"></ion-icon>
+                             <ion-label class="ion-wrap">Cenas</ion-label>
+                         </ion-tab-button> 
+                        </ion-card>
+                    </ion-slide>
+                    <ion-slide>
+                       <ion-card>
+                        <ion-tab-button class="categoria-principal">
+                            <ion-icon style="font-size: 64px;" src="../../../assets/icon/pizza.svg"></ion-icon>
+                            <ion-label class="ion-wrap">Pizzerias</ion-label>
+                        </ion-tab-button> 
+                       </ion-card>
+                    </ion-slide>
+                    
+                    <ion-slide>
+                       <ion-card>
+                        <ion-tab-button class="categoria-principal">
+                            <ion-icon style="font-size: 64px;" src="../../../assets/icon/magdalena.svg"></ion-icon>
+                            <ion-label class="ion-wrap">Postres</ion-label>
+                        </ion-tab-button> 
+                       </ion-card>
+                    </ion-slide>
+                    <ion-slide>
+                       <ion-card>
+                        <ion-tab-button class="categoria-principal">
+                            <ion-icon style="font-size: 64px;" src="../../../assets/icon/regalos.svg"></ion-icon>
+                            <ion-label class="ion-wrap">Regalos</ion-label>
+                        </ion-tab-button> 
+                       </ion-card>
+                    </ion-slide>
+                    <ion-slide>
+                       <ion-card>
+                        <ion-tab-button class="categoria-principal">
+                            <ion-icon style="font-size: 64px;" src="../../../assets/icon/comida-rapida.svg"></ion-icon>
+                            <ion-label class="ion-wrap">Hamburguesas</ion-label>
+                        </ion-tab-button> 
+                       </ion-card>
+                    </ion-slide>
+                    <ion-slide>
+                       <ion-card>
+                        <ion-tab-button class="categoria-principal">
+                            <ion-icon style="font-size: 64px;" src="../../../assets/icon/comida-rapida.svg"></ion-icon>
+                            <ion-label class="ion-wrap">Hamburguesas</ion-label>
+                        </ion-tab-button> 
+                       </ion-card>
+                    </ion-slide>
+                    <ion-slide>
+                       <ion-card>
+                        <ion-tab-button class="categoria-principal">
+                            <ion-icon style="font-size: 64px;" src="../../../assets/icon/comida-rapida.svg"></ion-icon>
+                            <ion-label class="ion-wrap">Hamburguesas</ion-label>
+                        </ion-tab-button> 
+                       </ion-card>
+                    </ion-slide>
+                    <ion-slide>
+                       <ion-card>
+                        <ion-tab-button class="categoria-principal">
+                            <ion-icon style="font-size: 64px;" src="../../../assets/icon/comida-rapida.svg"></ion-icon>
+                            <ion-label class="ion-wrap">Hamburguesas</ion-label>
+                        </ion-tab-button> 
+                       </ion-card>
+                    </ion-slide>
+                    <ion-slide>
+                       <ion-card>
+                        <ion-tab-button class="categoria-principal">
+                            <ion-icon style="font-size: 64px;" src="../../../assets/icon/comida-rapida.svg"></ion-icon>
+                            <ion-label class="ion-wrap">Hamburguesas</ion-label>
+                        </ion-tab-button> 
+                       </ion-card>
+                    </ion-slide>
+                    <ion-slide>
+                       <ion-card>
+                        <ion-tab-button class="categoria-principal">
+                            <ion-icon style="font-size: 64px;" src="../../../assets/icon/comida-rapida.svg"></ion-icon>
+                            <ion-label class="ion-wrap">Hamburguesas</ion-label>
+                        </ion-tab-button> 
+                       </ion-card>
+                    </ion-slide>
+                </ion-slides>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="12">
+                <ion-card class="caja-promocion">
+                    <img src="../../../assets/emprendimientos/1.jpg" alt="">
+                    <ion-item lines="none">
+                        <ion-avatar slot="start" style="width: 50px;height: 50px;">
+                            <img src="../../../assets/emprendimientos/logo1.png" />
+                        </ion-avatar>
+                        <ion-label>
+                            <p class="titulo-promocion">Dulzura a colores</p>
+                            <p class="ubicacion-categoria-promocion"> Chiclayo - Postres</p>
+                            <p class="slogan">Endulza tus días a colores 🍰.</p>
+                        </ion-label>
+                    </ion-item>
+                    <ion-badge style="margin-left: 4px; margin-right: 6px; --background: #F44336;">
+                        <ion-icon name="bicycle-outline"></ion-icon>
+                        Delivery Gratis
+                    </ion-badge>
+                    <ion-badge style="margin-right: 6px; --background: #009688;">
+                        <ion-icon name="pricetags-outline"></ion-icon>
+                        Promociones
+                    </ion-badge>
+                    <ion-badge style="--background: #2196F3;">
+                        <ion-icon name="calendar-outline"></ion-icon>
+                        Atención Domingos
+                    </ion-badge>
+                </ion-card>
+                <ion-card class="caja-promocion">
+                    <img src="../../../assets/emprendimientos/best-peruvian-foods.jpg" alt="">
+                    <ion-item lines="none">
+                        <ion-avatar slot="start" style="width: 50px;height: 50px;">
+                            <img src="../../../assets/emprendimientos/logo2.jpg" />
+                        </ion-avatar>
+                        <ion-label>
+                            <p class="titulo-promocion">Cevicheria Don Juan</p>
+                            <p class="ubicacion-categoria-promocion"> Chiclayo - Cevicherias</p>
+                            <p class="slogan">Del mar a tu paladar 🐟.</p>
+                        </ion-label>
+                    </ion-item>
+                    <ion-badge style="margin-left: 4px; margin-right: 6px; --background: #F44336;">
+                        <ion-icon name="bicycle-outline"></ion-icon>
+                        Delivery Gratis
+                    </ion-badge>
+                    <ion-badge style="margin-right: 6px; --background: #FF9800;">
+                        <ion-icon name="flash-outline"></ion-icon>
+                        Con Local
+                    </ion-badge>
+                    <ion-badge style="--background: #2196F3;">
+                        <ion-icon name="calendar-outline"></ion-icon>
+                        Atención Domingos
+                    </ion-badge>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>

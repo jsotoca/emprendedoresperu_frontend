@@ -1,0 +1,34 @@
+.card-background-page {
+
+
+    ion-card {
+      position: relative;
+      text-align: center;
+      height: 150px;
+    }
+
+    img{
+      filter:brightness(0.7);
+    }
+  
+    .card-title {
+      font-family: "Poppins Regular" !important;
+      text-transform: uppercase;
+      position: absolute;
+      top: 36%;
+      font-size: 2.0em;
+      width: 100%;
+      font-weight: bold;
+      color: #fff;
+    }
+  
+    .card-subtitle {
+        font-family: "Poppins Regular" !important;
+      font-size: 1.0em;
+      position: absolute;
+      top: 62%;
+      width: 100%;
+      color: #fff;
+    }
+  
+}
