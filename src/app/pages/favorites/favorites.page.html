@@ -1,5 +1,28 @@
 <app-header></app-header>
 
 <ion-content>
-
+    <ion-segment class="segmentos" value="entrepreneurship">
+        <ion-segment-button style="--color-checked:#9C27B0" value="entrepreneurship" layout="icon-start">
+            <ion-icon name="megaphone-outline"></ion-icon>
+            <ion-label>Emprendimientos</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="deals" layout="icon-start">
+            <ion-icon name="pricetags-outline"></ion-icon>
+            <ion-label>Promociones</ion-label>
+        </ion-segment-button>
+    </ion-segment>
+    <ion-slides>
+        <ion-slide>
+            <div class="caja">
+                <ion-img style="width: 95%;height: auto;text-align: center;display: block;margin-left: auto;margin-right: auto;" src="../../../assets/favorites/hucha.svg"></ion-img>
+                <ion-label class="mensaje">Ah que caray no tienes un emprendimiento favorito aún!, agrega uno y ayuda a salir adelante colaborando a tu hermano emprendedor peruano, comprale un producto o promocionalo compartiendo su emprendimiento en redes sociales.</ion-label>
+            </div>
+        </ion-slide>
+        <ion-slide>
+            <div class="caja">
+                <ion-img style="width: 95%;height: auto;text-align: center;display: block;margin-left: auto;margin-right: auto;" src="../../../assets/favorites/hucha.svg"></ion-img>
+                <ion-label class="mensaje">Ah que caray no tienes un emprendimiento favorito aún!, agrega uno y ayuda a salir adelante colaborando a tu hermano emprendedor peruano, comprale un producto o promocionalo compartiendo su emprendimiento en redes sociales.</ion-label>
+            </div>
+        </ion-slide>
+    </ion-slides>
 </ion-content>
