@@ -1,0 +1,61 @@
+.titulo {
+    font-family: "Poppins Regular" !important;
+}
+
+.mensaje {
+    font-family: "Poppins Regular" !important;
+    font-size: 13px;
+    line-height: 20px;
+    color:  #E13449;
+}
+
+.segment-ingresar {
+    --color-checked:#3F51B5 !important;
+}
+
+.segment-registrar {
+    --color-checked:#4CAF50 !important;
+}
+
+.mainSlide, .mainSlide ion-slide {
+    width: 100%;
+}
+
+.elemento {
+    border-radius: 5px;
+    border: 1px solid #95a5a6;
+    margin-bottom: 15px;
+    --background: #F7F7F7;
+}
+
+.entrada{
+    font-family: "Poppins Regular";
+    font-size: 13px;
+    line-height: 20px;
+}
+
+.olvide {
+    font-family: "Poppins Regular";
+    font-size: 13px;
+    line-height: 20px;
+    color: #e67e22;
+}
+
+
+.btn-ingresar {
+    font-family: "Poppins Regular";
+    --background: #556EE6;
+    --border-color: #556EE6;
+    text-transform: none !important;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+
+.btn-registrar {
+    font-family: "Poppins Regular";
+    --background: #4CAF50;
+    --border-color: #4CAF50;
+    text-transform: none !important;
+    margin-top: 20px;
+}

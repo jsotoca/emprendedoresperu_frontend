@@ -27,6 +27,10 @@ const routes: Routes = [
     path: 'deals',
     loadChildren: () => import('./pages/deals/deals.module').then( m => m.DealsPageModule)
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
 ];
 
 @NgModule({
