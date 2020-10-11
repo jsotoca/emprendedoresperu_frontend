@@ -7,11 +7,15 @@
     </ion-buttons>
     <ion-searchbar placeholder="¿Qué buscas?" animated></ion-searchbar>
     <ion-buttons class="ion-hide-md-down" slot="end">
-      <ion-button routerLink="/login" routerDirection="root">
-        <ion-label class="titulo">Ingresar</ion-label>
-        <ion-icon color="light" slot="start" name="person-outline"></ion-icon>
+      <ion-button routerLink="/" routerDirection="root">
+        <ion-label class="titulo">Inicio</ion-label>
+        <ion-icon color="light" slot="start" name="home-outline"></ion-icon>
       </ion-button>
       <ion-button routerLink="/login" routerDirection="root">
+        <ion-label class="titulo">Cuenta</ion-label>
+        <ion-icon color="light" slot="start" name="person-outline"></ion-icon>
+      </ion-button>
+      <ion-button routerLink="/categories" routerDirection="root">
         <ion-label class="titulo">Categorías</ion-label>
         <ion-icon color="light" slot="start" name="star-outline"></ion-icon>
       </ion-button>

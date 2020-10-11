@@ -3,18 +3,18 @@
       <ion-label class="titulo-seccion">Emprendimientos Nuevos</ion-label>
       <ion-button class="detalle-titulo-seccion">Ver todos >></ion-button>
   </ion-list-header>
-  <ion-slides mode="ios" [options]="slidesOptions">
-      <ion-slide>
+  <ion-slides *ngIf="entrepreneurships.length"  [options]="slidesOptions">
+      <ion-slide *ngFor="let entrepreneurship of entrepreneurships" >
           <ion-card class="caja-promocion">
-              <img src="../../../assets/emprendimientos/1.jpg" alt="">
+              <img style="height: 150px;width: 100%;" [src]="entrepreneurship.cover" alt="">
               <ion-item lines="none">
                   <ion-avatar slot="start" style="width: 50px;height: 50px;">
-                      <img src="../../../assets/emprendimientos/logo1.png" />
+                      <img [src]="entrepreneurship.logo" />
                   </ion-avatar>
                   <ion-label>
-                      <p class="titulo-promocion">Dulzura a colores</p>
-                      <p class="ubicacion-categoria-promocion"> Chiclayo - Postres</p>
-                      <p class="slogan">Endulza tus días a colores 🍰.</p>
+                      <p class="titulo-promocion">{{entrepreneurship.name}}</p>
+                      <p class="ubicacion-categoria-promocion"> Chiclayo - {{entrepreneurship.subcategory.name}}</p>
+                      <p class="slogan">{{entrepreneurship.description}}</p>
                   </ion-label>
               </ion-item>
               <ion-badge style="margin-right: 6px; --background: #F44336;">
@@ -24,33 +24,6 @@
               <ion-badge style="margin-right: 6px; --background: #009688;">
                   <ion-icon name="pricetags-outline"></ion-icon>
                   Promociones
-              </ion-badge>
-              <ion-badge style="margin-right: 6px; --background: #2196F3;">
-                  <ion-icon name="calendar-outline"></ion-icon>
-                  Atención Domingos
-              </ion-badge>
-          </ion-card>
-      </ion-slide>
-      <ion-slide>
-          <ion-card class="caja-promocion">
-              <img src="../../../assets/emprendimientos/best-peruvian-foods.jpg" alt="">
-              <ion-item lines="none">
-                  <ion-avatar slot="start" style="width: 50px;height: 50px;">
-                      <img src="../../../assets/emprendimientos/logo2.jpg" />
-                  </ion-avatar>
-                  <ion-label>
-                      <p class="titulo-promocion">Cevichera Don Juan</p>
-                      <p class="ubicacion-categoria-promocion"> Chiclayo - Cevicherias</p>
-                      <p class="slogan">Del mar a tu paladar 🐟.</p>
-                  </ion-label>
-              </ion-item>
-              <ion-badge style="margin-right: 6px; --background: #F44336;">
-                  <ion-icon name="bicycle-outline"></ion-icon>
-                  Delivery Gratis
-              </ion-badge>
-              <ion-badge style="margin-right: 6px; --background: #FF9800;">
-                  <ion-icon name="flash-outline"></ion-icon>
-                  Tenemos Local
               </ion-badge>
               <ion-badge style="margin-right: 6px; --background: #2196F3;">
                   <ion-icon name="calendar-outline"></ion-icon>

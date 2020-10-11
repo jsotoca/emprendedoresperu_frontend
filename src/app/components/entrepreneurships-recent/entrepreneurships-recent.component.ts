@@ -1,4 +1,6 @@
+import { EntrepreneurshipsService } from './../../services/entrepreneurships.service';
 import { Component, OnInit } from '@angular/core';
+import { Entrepreneurship } from 'src/app/interfaces/entrepreneurship.interface';
 
 @Component({
   selector: 'app-entrepreneurships-recent',
@@ -7,17 +9,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EntrepreneurshipsRecentComponent implements OnInit {
 
-  slidesOptions = {
-    initialSlide: 0,
-    direction: 'horizontal',
-    speed: 300,
-    slidesPerView: 1.1,
-    freeMode: true,
-    loop: false
-  };
+  entrepreneurships:Entrepreneurship[] = [];
+  slidesOptions = null;
 
-  constructor() { }
+  constructor(
+    private entrepreneurshipsService:EntrepreneurshipsService
+  ) { }
 
-  ngOnInit() {}
+  async ngOnInit() {
+    this.entrepreneurships = await this.entrepreneurshipsService.getEntrepreneurships();
+    console.log(this.entrepreneurships);
+    this.slidesOptions = {
+      initialSlide: 0,
+      direction: 'horizontal',
+      speed: 300,
+      slidesPerView: this.checkScreen(),
+      freeMode: true,
+      loop: false
+    };
+  }
+
+  checkScreen(){
+    if(window.innerWidth>=960){
+        return 2.3;
+    }else{
+        return 1.1;
+    }
+  }
 
 }
