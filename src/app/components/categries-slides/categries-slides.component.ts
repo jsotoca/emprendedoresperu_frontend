@@ -33,7 +33,7 @@ export class CategriesSlidesComponent implements OnInit {
     if(window.innerWidth>=960){
         return 7;
     }else{
-        return 3.7;
+        return 3.3;
     }
   }
 

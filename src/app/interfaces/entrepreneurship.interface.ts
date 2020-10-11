@@ -33,3 +33,9 @@ export interface Subcategory {
   icon: string;
   image: string;
 }
+
+
+export interface IEntrepreneurshipSearchResponse {
+  ok: boolean;
+  entrepreneurship: Entrepreneurship;
+}

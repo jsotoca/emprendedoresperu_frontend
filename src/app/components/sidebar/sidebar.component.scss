@@ -1,10 +1,14 @@
-.cabecera {
-    background: black; 
-    color: whitesmoke;
-    height: 42px;
+.titulo-seccion {
+    font-family: "Poppins Regular" !important;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 23px;
 }
 
-.titulo {
+.detalle-titulo-seccion {
     font-family: "Poppins Regular" !important;
-    margin-top: 5px;
+    text-transform: initial;
+    font-weight: 600;
+    line-height: 20px;
+    --color:  #E13449;
 }

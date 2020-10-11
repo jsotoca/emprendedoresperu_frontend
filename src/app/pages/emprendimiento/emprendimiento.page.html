@@ -1,0 +1,49 @@
+<app-header></app-header>
+
+<ion-content>
+  <ion-grid fixed>
+      <ion-row>
+          <ion-col size="12" size-lg="8">
+              <ion-row class="card-background-page">
+                  <ion-col size="12">
+                          <img style="border-radius: 5px;" [src]="entrepreneurship.cover"/>
+                          <ion-item lines="none">
+                            <ion-avatar slot="start">
+                              <img [src]="entrepreneurship.logo" />
+                            </ion-avatar>
+                            <ion-label class="texto">
+                              <p class="ion-text-wrap">{{entrepreneurship.name}}</p>
+                              <p class="ion-text-wrap">Chiclayo</p>
+                            </ion-label>
+                            <ion-buttons class="ion-text-end" slot="end">
+                              <ion-button>
+                                <ion-label>{{entrepreneurship.phone}}</ion-label>
+                                <ion-icon slot="start" name="call-outline"></ion-icon>
+                              </ion-button>
+                            </ion-buttons>
+                          </ion-item>
+                          <ion-label>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id, labore! Eum maxime quia nisi corporis, exercitationem officiis? Minima aliquid dolor explicabo tempore cum. Eveniet fugit, inventore dolorum quisquam perferendis cupiditate.</ion-label>
+                          <ion-grid fixed>
+                            <ion-row>
+                              <ion-col size="12" size-md="6"></ion-col>
+                              <ion-col size="12" size-md="6">
+                                <ion-list>
+                                  <ion-item>
+                                    <ion-icon slot="start" name="logo-facebook"></ion-icon>
+                                    <ion-label>Awesome Label</ion-label>
+                                  </ion-item>
+                                </ion-list>
+                              </ion-col>
+                            </ion-row>
+                          </ion-grid>
+                  </ion-col>
+              </ion-row>
+          </ion-col>
+          <ion-col size-lg="4">
+              <app-sidebar></app-sidebar>
+          </ion-col>
+      </ion-row>
+  </ion-grid>
+</ion-content>
+
+
