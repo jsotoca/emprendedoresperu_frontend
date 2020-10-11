@@ -1,5 +1,6 @@
+import { Category } from './../../interfaces/category.interface';
 import { Component, OnInit } from '@angular/core';
-
+import { CategoriesService } from './../../services/categories.service';
 @Component({
   selector: 'app-categries-slides',
   templateUrl: './categries-slides.component.html',
@@ -7,11 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategriesSlidesComponent implements OnInit {
 
+  categories:Category[] = [];
   slidesOptions = null;
+  
+  constructor(
+    private categoriesService:CategoriesService
+  ) { }
 
-  constructor() { }
+  async ngOnInit() {
 
-  ngOnInit() {
+    this.categories = await this.categoriesService.getCategories();
+
     this.slidesOptions = {
       initialSlide: 0,
       direction: 'horizontal',
