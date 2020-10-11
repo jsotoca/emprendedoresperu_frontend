@@ -1,5 +1,6 @@
+import { AuthService } from './../../services/auth.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { IonSlides } from '@ionic/angular';
 
 @Component({
@@ -10,11 +11,26 @@ import { IonSlides } from '@ionic/angular';
 export class LoginPage implements OnInit {
 
   @ViewChild('mainSlides',{static:true}) slides:IonSlides;
+  loginForm:FormGroup;
+  registerForm:FormGroup;
 
-  constructor() { }
+  constructor(
+    private formBuilder:FormBuilder,
+    private authService:AuthService
+  ) { }
 
   ngOnInit() {
     this.slides.lockSwipes(true);
+    this.loginForm = this.formBuilder.group({
+      email:['',Validators.required],
+      password:['',Validators.required],
+    });
+    this.registerForm = this.formBuilder.group({
+      fullname:['',Validators.required],
+      phone:['',Validators.required],
+      email:['',Validators.required],
+      password:['',Validators.required],
+    });
   }
 
   mostrarFormulario(event){
@@ -23,8 +39,10 @@ export class LoginPage implements OnInit {
     this.slides.lockSwipes(true);
   }
 
-  login(flogin:NgForm){
-    
+  login(){
+    const {email,password} = this.loginForm.value;
+    this.authService.ingresar(email,password);
+    this.loginForm.reset;
   }
 
 }

@@ -1,87 +1,100 @@
 <app-header></app-header>
 
 <ion-content>
-  <ion-segment value="0" (ionChange)="mostrarFormulario($event)">
-    <ion-segment-button class="segment-ingresar" value="0">
-      <ion-label class="titulo">Ingresar</ion-label>
-    </ion-segment-button>
-    <ion-segment-button class="segment-registrar" value="1">
-      <ion-label class="titulo">Registrarse</ion-label>
-    </ion-segment-button>
-  </ion-segment>
-  <ion-slides class="mainSlide" #mainSlides>
-    <ion-slide>
-      <form style="width: 90%;" (ngSubmit)="login(flogin)" #flogin="ngForm">
-        <ion-grid fixed>
-          <ion-row>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12" size-lg="6">
+        <ion-row>
+          <ion-col size="12">
+            <ion-segment value="0" (ionChange)="mostrarFormulario($event)">
+              <ion-segment-button class="segment-ingresar" value="0">
+                <ion-label class="titulo">Ingresar</ion-label>
+              </ion-segment-button>
+              <ion-segment-button class="segment-registrar" value="1">
+                <ion-label class="titulo">Registrarse</ion-label>
+              </ion-segment-button>
+            </ion-segment>
             <ion-col size="12">
-              <img src="../../../assets//img/ingresar.png"><br><br>
-              <ion-item lines="none" class="elemento">   
-                <ion-icon name="mail-outline" slot="start"></ion-icon>
-                <ion-input class="entrada" placeholder="Ingresar email" required></ion-input>
-              </ion-item>
-              <ion-item lines="none" class="elemento">   
-                <ion-icon name="key-outline" slot="start"></ion-icon>
-                <ion-input class="entrada" placeholder="Ingresar contraseña" required></ion-input>
-                <ion-icon name="eye-outline" slot="end"></ion-icon>
-              </ion-item>
-              <ion-label class="mensaje">Es necesario que completes todos los datos para poder ingresar.</ion-label>
-              <ion-button type="submit" class="btn-ingresar" expand="block">
-                Ingresar a mi cuenta
-              </ion-button>
-              <div style="margin-top: 5px; margin-bottom: 15px; margin-left: 1px;">
-                <ion-label style="margin-left: 1px !important;" class="olvide">
-                  Olvide mi contraseña
-                  <ion-icon name="sad-outline"></ion-icon>
-                </ion-label>
-              </div>
+              <ion-slides class="mainSlide" #mainSlides>
+                <ion-slide>
+                  <form style="width: 100%;" [formGroup]="loginForm" (ngSubmit)="login(flogin)">
+                    <ion-grid fixed>
+                      <ion-row>
+                        <ion-col size="12">
+                          <!-- <img src="../../../assets//img/ingresar.png"><br><br> -->
+                          <ion-item lines="none" class="elemento">   
+                            <ion-icon name="mail-outline" slot="start"></ion-icon>
+                            <ion-input class="entrada" placeholder="Ingresar email" required formControlName="email" type="email"></ion-input>
+                          </ion-item>
+                          <ion-item lines="none" class="elemento">   
+                            <ion-icon name="key-outline" slot="start"></ion-icon>
+                            <ion-input class="entrada" placeholder="Ingresar contraseña" required formControlName="password" type="password"></ion-input>
+                            <ion-icon name="eye-outline" slot="end"></ion-icon>
+                          </ion-item>
+                          <ion-label class="mensaje">Es necesario que completes todos los datos para poder ingresar.</ion-label>
+                          <ion-button type="submit" class="btn-ingresar" expand="block" type="submit" [disabled]="loginForm.invalid">
+                            Ingresar a mi cuenta
+                          </ion-button>
+                          <div style="margin-top: 5px; margin-bottom: 15px; margin-left: 1px;">
+                            <ion-label style="margin-left: 1px !important;" class="olvide">
+                              Olvide mi contraseña
+                              <ion-icon name="sad-outline"></ion-icon>
+                            </ion-label>
+                          </div>
+                        </ion-col>
+                      </ion-row>
+                    </ion-grid>
+                  </form>
+                
+            
+            
+                </ion-slide>
+            
+                <ion-slide>
+                  <form style="width: 100%;" (ngSubmit)="login(flogin)" #flogin="ngForm">
+                    <ion-grid fixed>
+                      <ion-row class="ion-justify-content-center">
+                        <ion-col size="12">
+                          <!-- <img src="../../../assets//img/registrar.png"><br> -->
+                          <ion-item lines="none" class="elemento">   
+                            <ion-icon name="person-outline" slot="start"></ion-icon>
+                            <ion-input class="entrada" placeholder="Ingresar nombres completos" required></ion-input>
+                          </ion-item>
+                          <ion-item lines="none" class="elemento">   
+                            <ion-icon name="call-outline" slot="start"></ion-icon>
+                            <ion-input class="entrada" placeholder="Ingresar Télefono" required></ion-input>
+                          </ion-item>
+                          <ion-item lines="none" class="elemento">   
+                            <ion-icon name="mail-outline" slot="start"></ion-icon>
+                            <ion-input class="entrada" placeholder="Ingresar email" required></ion-input>
+                          </ion-item>
+                          <ion-item lines="none" class="elemento">   
+                            <ion-icon name="key-outline" slot="start"></ion-icon>
+                            <ion-input class="entrada" placeholder="Ingresar contraseña" required></ion-input>
+                            <ion-icon name="eye-outline" slot="end"></ion-icon>
+                          </ion-item>
+                          <ion-item lines="none" class="ion-no-padding">
+                            <ion-checkbox></ion-checkbox>
+                            <ion-label style="margin-left: 5px;" class="mensaje">Aceptar terminos y condiciones</ion-label>
+                          </ion-item>
+                          <ion-button type="submit" class="btn-registrar" expand="block">
+                            Ser un nuevo emprededor
+                            <ion-icon slot="end" name="heart"></ion-icon>
+                          </ion-button>
+                        </ion-col>
+                      </ion-row>
+                    </ion-grid>
+                  </form>
+                </ion-slide>
+              </ion-slides>
             </ion-col>
-          </ion-row>
-        </ion-grid>
-      </form>
-    
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col size-lg="4">
 
-
-    </ion-slide>
-
-    <ion-slide>
-      <form style="width: 90%;" (ngSubmit)="login(flogin)" #flogin="ngForm">
-        <ion-grid fixed>
-          <ion-row class="ion-justify-content-center">
-            <ion-col size="12">
-              <img src="../../../assets//img/registrar.png"><br>
-              <ion-item lines="none" class="elemento">   
-                <ion-icon name="person-outline" slot="start"></ion-icon>
-                <ion-input class="entrada" placeholder="Ingresar nombres completos" required></ion-input>
-              </ion-item>
-              <ion-item lines="none" class="elemento">   
-                <ion-icon name="call-outline" slot="start"></ion-icon>
-                <ion-input class="entrada" placeholder="Ingresar Télefono" required></ion-input>
-              </ion-item>
-              <ion-item lines="none" class="elemento">   
-                <ion-icon name="mail-outline" slot="start"></ion-icon>
-                <ion-input class="entrada" placeholder="Ingresar email" required></ion-input>
-              </ion-item>
-              <ion-item lines="none" class="elemento">   
-                <ion-icon name="key-outline" slot="start"></ion-icon>
-                <ion-input class="entrada" placeholder="Ingresar contraseña" required></ion-input>
-                <ion-icon name="eye-outline" slot="end"></ion-icon>
-              </ion-item>
-              <ion-item lines="none" class="ion-no-padding">
-                <ion-checkbox></ion-checkbox>
-                <ion-label style="margin-left: 5px;" class="mensaje">Aceptar terminos y condiciones</ion-label>
-              </ion-item>
-              <ion-button type="submit" class="btn-registrar" expand="block">
-                Ser un nuevo emprededor
-                <ion-icon slot="end" name="heart"></ion-icon>
-              </ion-button>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </form>
-    </ion-slide>
-
-    
-  </ion-slides>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   
 </ion-content>
