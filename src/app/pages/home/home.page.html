@@ -1,100 +1,17 @@
 <app-header></app-header>
 
 <ion-content>
-    <app-categries-slides></app-categries-slides>
-    <app-ads-home></app-ads-home>
-    <ion-list>
-        <ion-list-header>
-            <ion-label class="titulo-seccion">Promociones recientes</ion-label>
-            <ion-button class="detalle-titulo-seccion">Ver todos >></ion-button>
-        </ion-list-header>
-        <ion-slides mode="ios" [options]="slidesOptions2">
-            <ion-slide>
-                <ion-card class="caja-promocion">
-                    <img src="../../../assets/promociones/3.jpg" alt="">
-                    <ion-label class="titulo-promocion">Lenceria Zurita</ion-label>
-                    <ion-label class="ubicacion-categoria-promocion"> Lambayeque - Moda</ion-label>
-                    <ion-badge style="--background: #28A745; border: 60% !important;">65% descuento</ion-badge>
-                </ion-card>
-            </ion-slide>
-            <ion-slide>
-                <ion-card class="caja-promocion">
-                    <img src="../../../assets/promociones/4.jpg" alt="">
-                    <ion-label class="titulo-promocion">Gym Power</ion-label><br>
-                    <ion-label class="ubicacion-categoria-promocion"> JLO - Deporte</ion-label>
-                    <ion-badge style="--background: #DC3545;">2x1 todo octubre</ion-badge>
-                </ion-card>
-            </ion-slide>
-            <ion-slide>
-                <ion-card class="caja-promocion">
-                    <img src="../../../assets/promociones/6.jpg" alt="">
-                    <ion-label class="titulo-promocion">Elizha Bonita</ion-label><br>
-                    <ion-label class="ubicacion-categoria-promocion"> Chiclayo - Belleza</ion-label>
-                    <ion-badge style="--background: #8e44ad;">-20 soles</ion-badge>
-                </ion-card>
-            </ion-slide>
-        </ion-slides>
-    </ion-list>
-    <ion-list class="slider-box">
-        <ion-list-header>
-            <ion-label class="titulo-seccion">Emprendimientos Nuevos</ion-label>
-            <ion-button class="detalle-titulo-seccion">Ver todos >></ion-button>
-        </ion-list-header>
-        <ion-slides mode="ios" [options]="slidesOptions3">
-            <ion-slide>
-                <ion-card class="caja-promocion">
-                    <img src="../../../assets/emprendimientos/1.jpg" alt="">
-                    <ion-item lines="none">
-                        <ion-avatar slot="start" style="width: 50px;height: 50px;">
-                            <img src="../../../assets/emprendimientos/logo1.png" />
-                        </ion-avatar>
-                        <ion-label>
-                            <p class="titulo-promocion">Dulzura a colores</p>
-                            <p class="ubicacion-categoria-promocion"> Chiclayo - Postres</p>
-                            <p class="slogan">Endulza tus días a colores 🍰.</p>
-                        </ion-label>
-                    </ion-item>
-                    <ion-badge style="margin-right: 6px; --background: #F44336;">
-                        <ion-icon name="bicycle-outline"></ion-icon>
-                        Delivery Gratis
-                    </ion-badge>
-                    <ion-badge style="margin-right: 6px; --background: #009688;">
-                        <ion-icon name="pricetags-outline"></ion-icon>
-                        Promociones
-                    </ion-badge>
-                    <ion-badge style="margin-right: 6px; --background: #2196F3;">
-                        <ion-icon name="calendar-outline"></ion-icon>
-                        Atención Domingos
-                    </ion-badge>
-                </ion-card>
-            </ion-slide>
-            <ion-slide>
-                <ion-card class="caja-promocion">
-                    <img src="../../../assets/emprendimientos/best-peruvian-foods.jpg" alt="">
-                    <ion-item lines="none">
-                        <ion-avatar slot="start" style="width: 50px;height: 50px;">
-                            <img src="../../../assets/emprendimientos/logo2.jpg" />
-                        </ion-avatar>
-                        <ion-label>
-                            <p class="titulo-promocion">Cevichera Don Juan</p>
-                            <p class="ubicacion-categoria-promocion"> Chiclayo - Cevicherias</p>
-                            <p class="slogan">Del mar a tu paladar 🐟.</p>
-                        </ion-label>
-                    </ion-item>
-                    <ion-badge style="margin-right: 6px; --background: #F44336;">
-                        <ion-icon name="bicycle-outline"></ion-icon>
-                        Delivery Gratis
-                    </ion-badge>
-                    <ion-badge style="margin-right: 6px; --background: #FF9800;">
-                        <ion-icon name="flash-outline"></ion-icon>
-                        Tenemos Local
-                    </ion-badge>
-                    <ion-badge style="margin-right: 6px; --background: #2196F3;">
-                        <ion-icon name="calendar-outline"></ion-icon>
-                        Atención Domingos
-                    </ion-badge>
-                </ion-card>
-            </ion-slide>
-        </ion-slides>
-    </ion-list>
+    <ion-grid fixed>
+        <ion-row>
+            <ion-col size="12" size-lg="8">
+                <app-categries-slides></app-categries-slides>
+                <app-ads-home></app-ads-home>
+                <app-deals-recent></app-deals-recent>
+                <app-entrepreneurships-recent></app-entrepreneurships-recent>
+            </ion-col>
+            <ion-col size-lg="4">
+                <app-sidebar></app-sidebar>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>

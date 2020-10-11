@@ -7,18 +7,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategriesSlidesComponent implements OnInit {
 
-  slidesOptions = {
-    initialSlide: 0,
-    direction: 'horizontal',
-    speed: 300,
-    slidesPerView: 3.7,
-    spaceBetween: 5,
-    freeMode: true,
-    loop: false
-  };
+  slidesOptions = null;
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.slidesOptions = {
+      initialSlide: 0,
+      direction: 'horizontal',
+      speed: 300,
+      slidesPerView: this.checkScreen(),
+      freeMode: true,
+      loop: false
+    };
+  }
+
+  checkScreen(){
+    if(window.innerWidth>=960){
+        return 5;
+    }else{
+        return 3.7;
+    }
+  }
 
 }
