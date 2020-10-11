@@ -31,7 +31,7 @@ export class CategriesSlidesComponent implements OnInit {
 
   checkScreen(){
     if(window.innerWidth>=960){
-        return 5.3;
+        return 5;
     }else{
         return 3.7;
     }

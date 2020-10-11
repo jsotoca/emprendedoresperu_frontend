@@ -3,29 +3,14 @@
       <ion-label class="titulo-seccion">Promociones recientes</ion-label>
       <ion-button class="detalle-titulo-seccion">Ver todos >></ion-button>
   </ion-list-header>
-  <ion-slides mode="ios" [options]="slidesOptions">
-      <ion-slide>
+  <ion-slides *ngIf="deals.length" [options]="slidesOptions">
+      <ion-slide *ngFor="let deal of deals" >
           <ion-card class="caja-promocion">
-              <img src="../../../assets/promociones/3.jpg" alt="">
-              <ion-label class="titulo-promocion">Lenceria Zurita</ion-label>
-              <ion-label class="ubicacion-categoria-promocion"> Lambayeque - Moda</ion-label>
-              <ion-badge style="--background: #28A745; border: 60% !important;">65% descuento</ion-badge>
-          </ion-card>
-      </ion-slide>
-      <ion-slide>
-          <ion-card class="caja-promocion">
-              <img src="../../../assets/promociones/4.jpg" alt="">
-              <ion-label class="titulo-promocion">Gym Power</ion-label><br>
-              <ion-label class="ubicacion-categoria-promocion"> JLO - Deporte</ion-label>
-              <ion-badge style="--background: #DC3545;">2x1 todo octubre</ion-badge>
-          </ion-card>
-      </ion-slide>
-      <ion-slide>
-          <ion-card class="caja-promocion">
-              <img src="../../../assets/promociones/6.jpg" alt="">
-              <ion-label class="titulo-promocion">Elizha Bonita</ion-label><br>
-              <ion-label class="ubicacion-categoria-promocion"> Chiclayo - Belleza</ion-label>
-              <ion-badge style="--background: #8e44ad;">-20 soles</ion-badge>
+              <img [src]="deal.image" alt="">
+              <ion-label class="titulo-promocion">{{deal.name}}</ion-label>
+              <!-- <ion-label class="ubicacion-categoria-promocion"> Lambayeque - Moda</ion-label> -->
+              <br><ion-label class="ubicacion-categoria-promocion"> Moda </ion-label>
+              <br><ion-badge style="--background: #28A745; border: 60% !important;margin-top: 5px;">{{deal.description}}</ion-badge>
           </ion-card>
       </ion-slide>
   </ion-slides>
