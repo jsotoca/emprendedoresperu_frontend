@@ -6,9 +6,22 @@
       </ion-button>
     </ion-buttons>
     <ion-searchbar placeholder="¿Qué buscas?" animated></ion-searchbar>
-    <ion-buttons slot="end">
+    <ion-buttons class="ion-hide-md-down" slot="end">
       <ion-button routerLink="/login" routerDirection="root">
-        <ion-icon color="light" slot="icon-only" name="person-outline"></ion-icon>
+        <ion-label class="titulo">Ingresar</ion-label>
+        <ion-icon color="light" slot="start" name="person-outline"></ion-icon>
+      </ion-button>
+      <ion-button routerLink="/login" routerDirection="root">
+        <ion-label class="titulo">Categorías</ion-label>
+        <ion-icon color="light" slot="start" name="star-outline"></ion-icon>
+      </ion-button>
+      <ion-button routerLink="/login" routerDirection="root">
+        <ion-label class="titulo">Favoritos</ion-label>
+        <ion-icon color="light" slot="start" name="heart-outline"></ion-icon>
+      </ion-button>
+      <ion-button routerLink="/login" routerDirection="root">
+        <ion-label class="titulo">Compartir</ion-label>
+        <ion-icon color="light" slot="start" name="share-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>

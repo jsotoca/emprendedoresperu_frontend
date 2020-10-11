@@ -1,36 +1,23 @@
 <app-header></app-header>
 
-<ion-content class="card-background-page">
+<ion-content>
     <ion-grid fixed>
         <ion-row>
-            <ion-col size="12">
-                <ion-card>
-                    <img src="../../../assets/emprendimientos/1.jpg"/>
-                    <div class="fuente card-title">Postres</div>
-                    <div class="fuente card-subtitle">Piononos, dulces, tortas...</div>
-                  </ion-card>
+            <ion-col size="12" size-lg="8">
+                <ion-row class="card-background-page">
+                    <ion-col *ngFor="let category of categories"  size="12" size-lg="6">
+                        <ion-card>
+                            <img [src]="category.image"/>
+                            <div class="fuente card-title">{{category.name}}</div>
+                            <div class="fuente card-subtitle">Piononos, dulces, tortas...</div>
+                        </ion-card>
+                    </ion-col>
+                </ion-row>
             </ion-col>
-            <ion-col size="12">
-                <ion-card>
-                    <img src="../../../assets/emprendimientos/2.jpg"/>
-                    <div class="fuente card-title">Tortas</div>
-                    <div class="fuente card-subtitle">Chocolate, tres leches, manzana...</div>
-                  </ion-card>
-            </ion-col>
-            <ion-col size="12">
-                <ion-card>
-                    <img src="../../../assets/emprendimientos/best-peruvian-foods.jpg"/>
-                    <div class="fuente card-title">Cevicherias</div>
-                    <div class="fuente card-subtitle">mixto, tollo, sirenita...</div>
-                  </ion-card>
-            </ion-col>
-            <ion-col size="12">
-                <ion-card>
-                    <img src="../../../assets/emprendimientos/3.jpg"/>
-                    <div class="fuente card-title">Regalos</div>
-                    <div class="fuente card-subtitle">Para él, ella, la amante...</div>
-                  </ion-card>
+            <ion-col size-lg="4">
+                <app-sidebar></app-sidebar>
             </ion-col>
         </ion-row>
     </ion-grid>
 </ion-content>
+
