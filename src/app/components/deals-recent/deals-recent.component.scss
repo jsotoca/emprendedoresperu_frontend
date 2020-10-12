@@ -44,3 +44,26 @@ ion-badge {
     margin-top: 1px !important;
     font-size: 8px;
 }
+
+.card {
+    box-shadow:none !important
+}
+
+.ribbon-holder {
+    overflow: hidden;
+    position: relative
+  }
+  .ribbon {
+    font-family: "Poppins Regular" !important;
+    size: 11px;
+    font-weight: 500;
+    line-height: 18px;
+    position: absolute;
+    background: #F30240;
+    color: whitesmoke;
+    transform: rotate(45deg);
+    text-align: center;
+    top: 32px;
+    left: 42px;
+    width: 145px;
+  }

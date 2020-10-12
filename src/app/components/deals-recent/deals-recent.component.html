@@ -5,12 +5,16 @@
   </ion-list-header>
   <ion-slides *ngIf="deals.length" [options]="slidesOptions">
       <ion-slide *ngFor="let deal of deals" >
-          <ion-card class="caja-promocion">
-              <img [src]="deal.image" alt="">
+          <ion-card [routerLink]= "['/deal']" [queryParams]="{ id: deal.id}" class="caja-promocion card">
+              <!-- <img [src]="deal.image" alt=""> -->
+              <div class="ribbon-holder">
+                <div class="ribbon ribbon-holder">{{deal.description}}</div>
+                  <img [src]="deal.image" alt="Shower Curtin" />
+              </div>
               <ion-label class="titulo-promocion">{{deal.name}}</ion-label>
-              <ion-label class="ubicacion-categoria-promocion"> Lambayeque - Moda</ion-label>
-              <br><ion-label class="ubicacion-categoria-promocion"> Moda </ion-label>
-              <br><ion-badge style="--background: #28A745; border: 60% !important;margin-top: 5px;">{{deal.description}}</ion-badge>
+              <br><ion-label class="ubicacion-categoria-promocion"> {{deal.end_date}} </ion-label>
+              <!-- <br><ion-label class="ubicacion-categoria-promocion"> Moda </ion-label> -->
+              <!-- <br><ion-badge style="--background: #28A745; border: 60% !important;margin-top: 5px;">{{deal.description}}</ion-badge> -->
           </ion-card>
       </ion-slide>
   </ion-slides>

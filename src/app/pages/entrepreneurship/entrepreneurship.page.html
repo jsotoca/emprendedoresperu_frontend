@@ -123,7 +123,7 @@
                               </ion-label>
                             </ion-card-header>
                             <ion-card-content class="detalle">
-                              <ion-item *ngFor="let deal of entrepreneurship.deals" >
+                              <ion-item *ngFor="let deal of entrepreneurship.deals" [routerLink]= "['/deal']" [queryParams]="{ id: deal.id }" button detail>
                                 <ion-thumbnail slot="start">
                                   <img [src]="deal.image">
                                 </ion-thumbnail>
@@ -131,7 +131,6 @@
                                   <h2 class="ion-text-wrap text">{{deal.name}}</h2>
                                   <p class="ion-text-wrap text">{{deal.description}}</p>
                                 </ion-label>
-                                <ion-button class="text ion-text-capitalize" fill="outline" slot="end">Ver</ion-button>
                               </ion-item>
                             </ion-card-content>
                           </ion-card>

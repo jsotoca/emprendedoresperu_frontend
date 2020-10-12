@@ -46,6 +46,14 @@ const routes: Routes = [
   {
     path: 'entrepreneurships',
     loadChildren: () => import('./pages/entrepreneurships/entrepreneurships.module').then( m => m.EntrepreneurshipsPageModule)
+  },
+  {
+    path: 'deal',
+    loadChildren: () => import('./pages/deal/deal.module').then( m => m.DealPageModule)
+  },
+  {
+    path: 'deal/:id',
+    loadChildren: () => import('./pages/deal/deal.module').then( m => m.DealPageModule)
   }
 ];
 
