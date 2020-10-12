@@ -14,8 +14,9 @@ import { IonicStorageModule } from '@ionic/storage';
 
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { MomentjsPipe } from './pipes/momentjs.pipe';
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, MomentjsPipe],
   entryComponents: [],
   imports: [
     BrowserModule, IonicModule.forRoot(), AppRoutingModule,ComponentsModule,

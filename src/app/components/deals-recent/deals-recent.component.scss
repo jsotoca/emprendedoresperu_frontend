@@ -61,9 +61,25 @@ ion-badge {
     position: absolute;
     background: #F30240;
     color: whitesmoke;
-    transform: rotate(45deg);
+    transform: rotate(42deg);
     text-align: center;
     top: 32px;
     left: 42px;
     width: 145px;
   }
+
+  .titulo {
+    font-family: "Poppins Regular" !important;
+    size: 18px;
+    font-weight: 600;
+    line-height: 20px;
+    color:#E13449;
+}
+
+.limite {
+    font-family: "Poppins Regular" !important;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #242429;
+}

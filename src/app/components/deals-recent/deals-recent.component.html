@@ -11,10 +11,8 @@
                 <div class="ribbon ribbon-holder">{{deal.description}}</div>
                   <img [src]="deal.image" alt="Shower Curtin" />
               </div>
-              <ion-label class="titulo-promocion">{{deal.name}}</ion-label>
-              <br><ion-label class="ubicacion-categoria-promocion"> {{deal.end_date}} </ion-label>
-              <!-- <br><ion-label class="ubicacion-categoria-promocion"> Moda </ion-label> -->
-              <!-- <br><ion-badge style="--background: #28A745; border: 60% !important;margin-top: 5px;">{{deal.description}}</ion-badge> -->
+              <ion-label class="titulo">{{deal.name}}</ion-label>
+              <br><ion-label class="limite"> {{showTime(deal.end_date)}} </ion-label>
           </ion-card>
       </ion-slide>
   </ion-slides>

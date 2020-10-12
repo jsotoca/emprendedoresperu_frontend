@@ -34,5 +34,8 @@ export class FavoritesService {
     }
   }
 
-
+  async getEntrepreneurships(){
+    this.entrepreneurships = await this.storage.get("entrepreneurships");
+    return this.entrepreneurships;
+  }
 }

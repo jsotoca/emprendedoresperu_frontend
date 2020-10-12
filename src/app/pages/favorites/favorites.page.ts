@@ -1,3 +1,5 @@
+import { FavoritesService } from './../../services/favorites.service';
+import { Entrepreneurship } from 'src/app/interfaces/entrepreneurship.interface';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -5,11 +7,16 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './favorites.page.html',
   styleUrls: ['./favorites.page.scss'],
 })
-export class FavoritesPage implements OnInit {
+export class FavoritesPage {
 
-  constructor() { }
+  entrepreneurships:Entrepreneurship[] = [];
 
-  ngOnInit() {
+  constructor(
+    private favoritesService:FavoritesService
+  ) { }
+
+  async ionViewDidEnter(){
+    this.entrepreneurships = await this.favoritesService.getEntrepreneurships();
   }
 
 }

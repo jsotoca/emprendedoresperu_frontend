@@ -1,28 +1,43 @@
 <app-header></app-header>
 
 <ion-content>
-    <ion-segment class="segmentos" value="entrepreneurship">
-        <ion-segment-button style="--color-checked:#9C27B0" value="entrepreneurship" layout="icon-start">
-            <ion-icon name="megaphone-outline"></ion-icon>
-            <ion-label>Emprendimientos</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="deals" layout="icon-start">
-            <ion-icon name="pricetags-outline"></ion-icon>
-            <ion-label>Promociones</ion-label>
-        </ion-segment-button>
-    </ion-segment>
-    <ion-slides>
-        <ion-slide>
-            <div class="caja">
-                <ion-img style="width: 95%;height: auto;text-align: center;display: block;margin-left: auto;margin-right: auto;" src="../../../assets/favorites/hucha.svg"></ion-img>
-                <ion-label class="mensaje">Ah que caray no tienes un emprendimiento favorito aún!, agrega uno y ayuda a salir adelante colaborando a tu hermano emprendedor peruano, comprale un producto o promocionalo compartiendo su emprendimiento en redes sociales.</ion-label>
-            </div>
-        </ion-slide>
-        <ion-slide>
-            <div class="caja">
-                <ion-img style="width: 95%;height: auto;text-align: center;display: block;margin-left: auto;margin-right: auto;" src="../../../assets/favorites/hucha.svg"></ion-img>
-                <ion-label class="mensaje">Ah que caray no tienes un emprendimiento favorito aún!, agrega uno y ayuda a salir adelante colaborando a tu hermano emprendedor peruano, comprale un producto o promocionalo compartiendo su emprendimiento en redes sociales.</ion-label>
-            </div>
-        </ion-slide>
-    </ion-slides>
+    <ion-grid fixed>
+        <ion-row>
+            <ion-col size="12" size-lg="8">
+                <ion-segment class="segmentos" value="entrepreneurship">
+                    <ion-segment-button style="--color-checked:#9C27B0" value="entrepreneurship" layout="icon-start">
+                        <ion-icon name="megaphone-outline"></ion-icon>
+                        <ion-label>Emprendimientos</ion-label>
+                    </ion-segment-button>
+                    <ion-segment-button value="deals" layout="icon-start">
+                        <ion-icon name="pricetags-outline"></ion-icon>
+                        <ion-label>Promociones</ion-label>
+                    </ion-segment-button>
+                </ion-segment>
+                <ion-slides>
+                    <ion-slide>
+                        <ion-row>
+                            <ion-col *ngFor="let entrepreneurship of entrepreneurships" size="12" size-lg="6">
+                                <ion-item [routerLink]= "['/entrepreneurship']" [queryParams]="{ id: entrepreneurship.id }" button detail>
+                                    <ion-avatar slot="start">
+                                      <img [src]="entrepreneurship.logo">
+                                    </ion-avatar>
+                                    <ion-label>
+                                      <h2 class="ion-text-wrap text">{{entrepreneurship.name}}</h2>
+                                      <p class="ion-text-wrap text">{{entrepreneurship.description}}</p>
+                                    </ion-label>
+                                </ion-item>
+                            </ion-col>
+                        </ion-row>
+                    </ion-slide>
+                    <ion-slide>
+                        
+                    </ion-slide>
+                </ion-slides>
+            </ion-col>
+            <ion-col size-lg="4">
+                <app-sidebar></app-sidebar>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>

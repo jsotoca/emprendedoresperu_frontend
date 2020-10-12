@@ -1,6 +1,7 @@
 import { DealsService } from './../../services/deals.service';
 import { Component, OnInit } from '@angular/core';
 import { Deal } from 'src/app/interfaces/deal.interface';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-deals-recent',
@@ -14,7 +15,9 @@ export class DealsRecentComponent implements OnInit {
 
   constructor(
     private dealsService:DealsService
-  ) { }
+  ) { 
+    moment.locale('es');
+  }
 
   async ngOnInit() {
 
@@ -36,6 +39,10 @@ export class DealsRecentComponent implements OnInit {
     }else{
         return 2.1;
     }
+  }
+
+  showTime(time:string){
+    return  "vence: " + moment(time).fromNow();
   }
 
 }

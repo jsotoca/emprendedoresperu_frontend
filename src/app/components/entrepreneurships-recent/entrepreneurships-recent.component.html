@@ -12,15 +12,11 @@
                       <img [src]="entrepreneurship.logo" />
                   </ion-avatar>
                   <ion-label>
-                      <p class="titulo-promocion">{{entrepreneurship.name}}</p>
-                      <p class="ubicacion-categoria-promocion"> Chiclayo - {{entrepreneurship.subcategory.name}}</p>
-                      <p class="slogan">{{entrepreneurship.description}}</p>
+                      <p class="titulo">{{entrepreneurship.name}}</p>
+                      <p class="ubicacion"> {{entrepreneurship.district.district}} - {{entrepreneurship.subcategory.name}}</p>
+                      <p class="slogan ion-text-wrap">{{entrepreneurship.slogan}}</p>
                   </ion-label>
               </ion-item>
-              <!-- <ion-chip color="primary" class="etiqueta ion-text-capitalize" *ngFor="let tag of entrepreneurship.tags" >
-                <ion-icon style="margin-right: 5px;" [src]="tag.icon"></ion-icon>
-                {{tag.description}}
-              </ion-chip> -->
           </ion-card>
       </ion-slide>
   </ion-slides>
