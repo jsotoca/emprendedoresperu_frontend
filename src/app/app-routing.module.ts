@@ -16,6 +16,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/entrepreneurship/entrepreneurship.module').then( m => m.EntrepreneurshipPageModule)
   },
   {
+    path: 'entrepreneurship/:id',
+    loadChildren: () => import('./pages/entrepreneurship/entrepreneurship.module').then( m => m.EntrepreneurshipPageModule)
+  },
+  {
     path: 'categories',
     loadChildren: () => import('./pages/categories/categories.module').then( m => m.CategoriesPageModule)
   },
@@ -39,6 +43,10 @@ const routes: Routes = [
     path: 'emprendimiento/:id',
     loadChildren: () => import('./pages/emprendimiento/emprendimiento.module').then( m => m.EmprendimientoPageModule)
   },
+  {
+    path: 'entrepreneurships',
+    loadChildren: () => import('./pages/entrepreneurships/entrepreneurships.module').then( m => m.EntrepreneurshipsPageModule)
+  }
 ];
 
 @NgModule({

@@ -1,39 +1,79 @@
 .categoria-principal {
     font-family: "Poppins Regular" !important;
-}
-
-.caja-promocion {
-    margin-top: 0px;
-}
-
-.titulo-promocion {
-    font-family: "Poppins Regular" !important;
-    color: #0D0D0D;
-    font-size: 14px;
+    size: 14px;
     font-weight: 600;
-    line-height: 18px;
+    line-height: 20px;
+    color: #242429;
 }
 
-.ubicacion-categoria-promocion {
-    color: #74788d;
+.text {
     font-family: "Poppins Regular" !important;
-    size: 13px;
-    font-weight: 200;
-    line-height: 18px;
 }
 
-ion-badge {
-    border-radius: 5px;
-}
-
-.detalle-promocion {
+.titulo {
     font-family: "Poppins Regular" !important;
-    padding-top: 1px !important;
-    margin-top: 1px !important;
-    font-size: 8px;
+    size: 18px;
+    font-weight: 600;
+    line-height: 20px;
+    color:#E13449;
 }
 
-.slogan {
-    font-family: "Poppins Light" !important;
-    color: #E23744;
+.ubicacion {
+    font-family: "Poppins Regular" !important;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #242429;
+}
+
+
+.detalle {
+    font-family: "Poppins Regular" !important;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #242429;
+}
+
+.facebook {
+    color: #4267B2;
+}
+
+.twitter {
+    color: #1DA1F2;
+}
+
+.youtube {
+    color:#FF0000;
+}
+
+.instagram {
+    color: #833AB4;
+}
+
+.tiktok {
+    color: #69C9D0;
+}
+
+.district {
+    text-transform: capitalize !important;
+}
+
+.etiqueta {
+    font-family: "Poppins Regular" !important;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.btn-opciones {
+    --border-radius:5px;
+    --border-color: #CECECE;
+    --boder-style: 1px solid;
+    --color: #28282D;
+    text-transform: none;
+    font-family: "Poppins Regular" !important;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 17px;
 }

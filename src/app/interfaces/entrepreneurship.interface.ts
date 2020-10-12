@@ -1,8 +1,15 @@
+import { Deal } from './deal.interface';
+
 export interface IEntrepreneurshipResponse {
   total: number;
   page: number;
   limit: number;
   data: Entrepreneurship[];
+}
+
+export interface IEntrepreneurshipSearchResponse {
+  ok: boolean;
+  entrepreneurship: Entrepreneurship;
 }
 
 export interface Entrepreneurship {
@@ -24,7 +31,21 @@ export interface Entrepreneurship {
   actived: boolean;
   created_at: string;
   updated_at: string;
-  subcategory: Subcategory;
+  deals?: Deal[];
+  subcategory?: Subcategory;
+  district?: District;
+  tags?: Tag[];
+}
+
+export interface Tag {
+  id: number;
+  description: string;
+  icon: string;
+}
+
+export interface District {
+  id: number;
+  district: string;
 }
 
 export interface Subcategory {
@@ -35,7 +56,5 @@ export interface Subcategory {
 }
 
 
-export interface IEntrepreneurshipSearchResponse {
-  ok: boolean;
-  entrepreneurship: Entrepreneurship;
-}
+
+
