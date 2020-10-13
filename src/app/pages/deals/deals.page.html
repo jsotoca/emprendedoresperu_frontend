@@ -3,96 +3,30 @@
 <ion-content>
     <ion-grid fixed>
         <ion-row>
-            <ion-col size="6">
-                <ion-card class="caja-promocion">
-                    <img src="../../../assets/promociones/3.jpg" alt="">
-                    <ion-label class="titulo-promocion">Lenceria Zurita</ion-label>
-                    <ion-label class="ubicacion-categoria-promocion"> Lambayeque - Moda</ion-label>
-                    <div class="badge">
-                        <ion-badge style="--background: #28A745">65% descuento</ion-badge>
-                    </div>
-                </ion-card>
+            <ion-col size="12" size-lg="8" offset-lg="2">
+                <ion-row>
+                    <ion-list-header>
+                        <ion-label class="titulo-seccion ion-text-center">🔥 Aprovecha estas promociones! 🔥</ion-label>
+                    </ion-list-header>
+                    <ion-col *ngFor="let deal of deals"  size="6" size-lg="3">
+                        <ion-card [routerLink]= "['/deal']" [queryParams]="{ id: deal.id}" class="caja-promocion card">
+                            <div class="ribbon-holder">
+                              <div class="ribbon ribbon-holder">
+                                  <p style="text-align: center;margin-top: 30%;">2 x 1</p>
+                              </div>
+                                <img [src]="deal.image" alt="Shower Curtin" />
+                            </div>
+                            <ion-card-content>
+                                <ion-label style="justify-content: center;" class="titulo">{{deal.name}}</ion-label>
+                                <br><ion-label class="limite"> {{showTime(deal.end_date)}} </ion-label>
+                            </ion-card-content>
+                        </ion-card>    
+                    </ion-col>
+                </ion-row>
             </ion-col>
-            <ion-col size="6">
-                <ion-card class="caja-promocion">
-                    <img src="../../../assets/promociones/4.jpg" alt="">
-                    <ion-label class="titulo-promocion">Gym Power</ion-label>
-                    <ion-label class="ubicacion-categoria-promocion"> JLO - Deporte</ion-label>
-                    <div class="badge">
-                        <ion-badge style="--background: #DC3545;">2x1 todo octubre</ion-badge>
-                    </div>
-                </ion-card>
-            </ion-col>
-            <ion-col size="6">
-                <ion-card class="caja-promocion">
-                    <img src="../../../assets/promociones/6.jpg" alt="">
-                    <ion-label class="titulo-promocion">Elizha Bonita</ion-label>
-                    <ion-label class="ubicacion-categoria-promocion"> Chiclayo - Belleza</ion-label>
-                    <div class="badge">
-                        <ion-badge style="--background: #8e44ad;">-20 soles</ion-badge>
-                    </div>
-                </ion-card>
-            </ion-col>
-            <ion-col size="6">
-                <ion-card class="caja-promocion">
-                    <img src="../../../assets/promociones/3.jpg" alt="">
-                    <ion-label class="titulo-promocion">Lenceria Zurita</ion-label>
-                    <ion-label class="ubicacion-categoria-promocion"> Lambayeque - Moda</ion-label>
-                    <div class="badge">
-                        <ion-badge style="--background: #28A745">65% descuento</ion-badge>
-                    </div>
-                </ion-card>
-            </ion-col>
-            <ion-col size="6">
-                <ion-card class="caja-promocion">
-                    <img src="../../../assets/promociones/4.jpg" alt="">
-                    <ion-label class="titulo-promocion">Gym Power</ion-label>
-                    <ion-label class="ubicacion-categoria-promocion"> JLO - Deporte</ion-label>
-                    <div class="badge">
-                        <ion-badge style="--background: #DC3545;">2x1 todo octubre</ion-badge>
-                    </div>
-                </ion-card>
-            </ion-col>
-            <ion-col size="6">
-                <ion-card class="caja-promocion">
-                    <img src="../../../assets/promociones/6.jpg" alt="">
-                    <ion-label class="titulo-promocion">Elizha Bonita</ion-label>
-                    <ion-label class="ubicacion-categoria-promocion"> Chiclayo - Belleza</ion-label>
-                    <div class="badge">
-                        <ion-badge style="--background: #8e44ad;">-20 soles</ion-badge>
-                    </div>
-                </ion-card>
-            </ion-col>
-            <ion-col size="6">
-                <ion-card class="caja-promocion">
-                    <img src="../../../assets/promociones/3.jpg" alt="">
-                    <ion-label class="titulo-promocion">Lenceria Zurita</ion-label>
-                    <ion-label class="ubicacion-categoria-promocion"> Lambayeque - Moda</ion-label>
-                    <div class="badge">
-                        <ion-badge style="--background: #28A745">65% descuento</ion-badge>
-                    </div>
-                </ion-card>
-            </ion-col>
-            <ion-col size="6">
-                <ion-card class="caja-promocion">
-                    <img src="../../../assets/promociones/4.jpg" alt="">
-                    <ion-label class="titulo-promocion">Gym Power</ion-label>
-                    <ion-label class="ubicacion-categoria-promocion"> JLO - Deporte</ion-label>
-                    <div class="badge">
-                        <ion-badge style="--background: #DC3545;">2x1 todo octubre</ion-badge>
-                    </div>
-                </ion-card>
-            </ion-col>
-            <ion-col size="6">
-                <ion-card class="caja-promocion">
-                    <img src="../../../assets/promociones/6.jpg" alt="">
-                    <ion-label class="titulo-promocion">Elizha Bonita</ion-label>
-                    <ion-label class="ubicacion-categoria-promocion"> Chiclayo - Belleza</ion-label>
-                    <div class="badge">
-                        <ion-badge style="--background: #8e44ad;">-20 soles</ion-badge>
-                    </div>
-                </ion-card>
-            </ion-col>
+          <!-- <ion-col size-lg="4">
+              <app-sidebar></app-sidebar>
+          </ion-col> -->
         </ion-row>
     </ion-grid>
 </ion-content>

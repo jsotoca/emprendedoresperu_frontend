@@ -28,3 +28,49 @@
     justify-content: center;
     margin-bottom: 5px;
 }
+
+
+
+.ribbon-holder {
+    overflow: hidden;
+    position: relative
+  }
+  .ribbon {
+    font-family: "Poppins Regular" !important;
+    size: 11px;
+    font-weight: 500;
+    line-height: 18px;
+    position: absolute;
+    background: #F30240;
+    color: whitesmoke;
+    border-radius: 50%;
+    // transform: rotate(42deg);
+    text-align: center;
+    top: 5px;
+    right: 12px;
+    width: 55px;
+    height: 55px;
+  }
+
+  .titulo {
+    font-family: "Poppins Regular" !important;
+    size: 18px;
+    font-weight: 600;
+    line-height: 20px;
+    color:#E13449;
+}
+
+.limite {
+    font-family: "Poppins Regular" !important;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #242429;
+}
+
+.titulo-seccion {
+    font-family: "Poppins Regular" !important;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 23px;
+}
