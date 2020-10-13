@@ -3,41 +3,65 @@
 <ion-content>
     <ion-grid fixed>
         <ion-row>
-            <ion-col size="12" size-lg="8">
-                <ion-segment class="segmentos" value="entrepreneurship">
-                    <ion-segment-button style="--color-checked:#9C27B0" value="entrepreneurship" layout="icon-start">
+            <ion-col size="12" size-lg="8" offset-lg="2">
+                <ion-segment class="segmentos" value="0" (ionChange)="mostrarVentana($event)">
+                    <ion-segment-button style="--color-checked:#9C27B0" value="0" layout="icon-start">
                         <ion-icon name="megaphone-outline"></ion-icon>
                         <ion-label>Emprendimientos</ion-label>
                     </ion-segment-button>
-                    <ion-segment-button value="deals" layout="icon-start">
+                    <ion-segment-button value="1" layout="icon-start">
                         <ion-icon name="pricetags-outline"></ion-icon>
                         <ion-label>Promociones</ion-label>
                     </ion-segment-button>
                 </ion-segment>
-                <ion-slides>
+                <ion-slides #mainSlides>
                     <ion-slide>
-                        <ion-row>
-                            <ion-col *ngFor="let entrepreneurship of entrepreneurships" size="12" size-lg="6">
-                                <ion-item [routerLink]= "['/entrepreneurship']" [queryParams]="{ id: entrepreneurship.id }" button detail>
-                                    <ion-avatar slot="start">
+                        <ion-row style="width: 100%;">
+                            <ion-col *ngFor="let entrepreneurship of favoritesService.entrepreneurships" size="12">
+                                <ion-item >
+                                    <ion-avatar slot="start" [routerLink]= "['/entrepreneurship']" [queryParams]="{ id: entrepreneurship.id }">
                                       <img [src]="entrepreneurship.logo">
                                     </ion-avatar>
-                                    <ion-label>
-                                      <h2 class="ion-text-wrap text">{{entrepreneurship.name}}</h2>
-                                      <p class="ion-text-wrap text">{{entrepreneurship.description}}</p>
+                                    <ion-label [routerLink]= "['/entrepreneurship']" [queryParams]="{ id: entrepreneurship.id }">
+                                        <div class="titulo ion-text-wrap">{{entrepreneurship.name}} <ion-icon *ngIf="entrepreneurship.isVerified"  style="font-size: 28px !important;" src="../../../assets/icon/verificado.svg"></ion-icon> </div>
+                                        <p class="ubicacion ion-text-wrap">{{entrepreneurship.slogan}}</p>
+                                        <p class="ubicacion ion-text-wrap">{{entrepreneurship.phone}}</p>
                                     </ion-label>
+                                    <ion-buttons slot="end">
+                                        <ion-button (click)="eliminarEmprendimiento(entrepreneurship.id)">
+                                            <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+                                        </ion-button>
+                                    </ion-buttons>
                                 </ion-item>
                             </ion-col>
                         </ion-row>
                     </ion-slide>
                     <ion-slide>
-                        
+                        <ion-row style="width: 100%;">
+                            <ion-col *ngFor="let deal of favoritesService.deals" size="12">
+                                <ion-item >
+                                    <ion-thumbnail slot="start" [routerLink]= "['/deal']" [queryParams]="{ id: deal.id }">
+                                      <img [src]="deal.image">
+                                    </ion-thumbnail>
+                                    <ion-label [routerLink]= "['/deal']" [queryParams]="{ id: deal.id }">
+                                        <div class="titulo ion-text-wrap">{{deal.name}}</div>
+                                        <p class="ubicacion ion-text-wrap">Tipo: {{deal.description}}</p>
+                                        <p class="ubicacion ion-text-wrap">{{showTime(deal.end_date)}}</p>
+                                    </ion-label>
+                                    <ion-buttons slot="end">
+                                        <ion-button (click)="eliminarDeals(deal.id)">
+                                            <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+                                        </ion-button>
+                                    </ion-buttons>
+                                </ion-item>
+                            </ion-col>
+                        </ion-row>
                     </ion-slide>
                 </ion-slides>
             </ion-col>
-            <ion-col size-lg="4">
+            <!-- <ion-col size-lg="4">
                 <app-sidebar></app-sidebar>
-            </ion-col>
+            </ion-col> -->
         </ion-row>
     </ion-grid>
 </ion-content>

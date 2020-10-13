@@ -8,7 +8,10 @@
           <ion-card [routerLink]= "['/deal']" [queryParams]="{ id: deal.id}" class="caja-promocion card">
               <!-- <img [src]="deal.image" alt=""> -->
               <div class="ribbon-holder">
-                <div class="ribbon ribbon-holder">{{deal.description}}</div>
+                <div class="ribbon ribbon-holder">
+                    <!-- <p style="text-align: center;margin-top: 30%;">{{deal.description}}</p> -->
+                    <p style="text-align: center;margin-top: 30%;">2 x 1</p>
+                </div>
                   <img [src]="deal.image" alt="Shower Curtin" />
               </div>
               <ion-label class="titulo">{{deal.name}}</ion-label>

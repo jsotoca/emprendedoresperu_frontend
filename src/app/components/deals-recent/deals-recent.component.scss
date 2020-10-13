@@ -45,9 +45,9 @@ ion-badge {
     font-size: 8px;
 }
 
-.card {
-    box-shadow:none !important
-}
+// .card {
+//     box-shadow:none !important
+// }
 
 .ribbon-holder {
     overflow: hidden;
@@ -61,11 +61,13 @@ ion-badge {
     position: absolute;
     background: #F30240;
     color: whitesmoke;
-    transform: rotate(42deg);
+    border-radius: 50%;
+    // transform: rotate(42deg);
     text-align: center;
-    top: 32px;
-    left: 42px;
-    width: 145px;
+    top: 5px;
+    right: 12px;
+    width: 55px;
+    height: 55px;
   }
 
   .titulo {

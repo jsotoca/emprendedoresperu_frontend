@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { ComponentsModule } from './../../components/components.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -15,7 +16,8 @@ import { DealPage } from './deal.page';
     FormsModule,
     IonicModule,
     DealPageRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    RouterModule
   ],
   declarations: [DealPage]
 })
