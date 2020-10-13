@@ -1,3 +1,5 @@
+import { PublicGuard } from './guards/public.guard';
+import { AuthGuard } from './guards/auth.guard';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
@@ -33,6 +35,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
+    canActivate:[PublicGuard],
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
@@ -54,6 +57,11 @@ const routes: Routes = [
   {
     path: 'deal/:id',
     loadChildren: () => import('./pages/deal/deal.module').then( m => m.DealPageModule)
+  },
+  {
+    path: 'account',
+    canActivate:[AuthGuard],
+    loadChildren: () => import('./pages/account/account.module').then( m => m.AccountPageModule)
   }
 ];
 

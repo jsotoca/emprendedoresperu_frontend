@@ -31,14 +31,17 @@ export class AuthService {
         this.datosActuales.next({user:data.user,token:data.token});
         this.storage.set('datos',this.datosActuales.value);
         this.router.navigate(['/home']);
-      }else {
-        console.log("error");
-      } 
+      }
     } catch (error) {
+      // agregar ui alert para erorres
+      console.log(error.status);
       throw error;
     }
   }
 
-    
+  async validateUser(){
+    const currentData = await this.storage.get('datos');
+    return (currentData)?true:false;
+  }
 
 }
