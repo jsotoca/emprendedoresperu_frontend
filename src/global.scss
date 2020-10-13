@@ -38,3 +38,7 @@
   -webkit-box-shadow: 0 8px 14px rgba(0, 0, 0, 0.1) !important;
   box-shadow: 0 8px 14px rgba(0, 0, 0, 0.1) !important;
 }
+
+.routerLink:focus {
+  outline: 0;
+}

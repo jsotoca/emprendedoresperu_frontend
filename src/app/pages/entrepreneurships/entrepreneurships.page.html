@@ -1,5 +1,34 @@
 <app-header></app-header>
 
 <ion-content>
-
+    <ion-grid fixed>
+        <ion-row>
+            <ion-col size="12" size-lg="8" offset-lg="2">
+                <ion-row>
+                    <ion-col size="12">
+                        <app-categries-slides></app-categries-slides>
+                    </ion-col>
+                    <ion-col *ngFor="let entrepreneurship of entrepreneurships"  size="12" size-lg="6">
+                        <ion-card [routerLink]= "['/entrepreneurship']" [queryParams]="{ id: entrepreneurship.id}" class="caja-promocion routerLink" button>
+                            <img style="height: 150px;width: 100%;" [src]="entrepreneurship.cover" alt="">
+                            <ion-item lines="none">
+                                <ion-avatar slot="start" style="width: 50px;height: 50px;">
+                                    <img [src]="entrepreneurship.logo" />
+                                </ion-avatar>
+                                <ion-label>
+                                    <p class="titulo">{{entrepreneurship.name}}</p>
+                                    <p class="ubicacion"> {{entrepreneurship.district.district}} - {{entrepreneurship.subcategory.name}}</p>
+                                    <p class="slogan ion-text-wrap">{{entrepreneurship.slogan}}</p>
+                                </ion-label>
+                            </ion-item>
+                        </ion-card>
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+          <!-- <ion-col size-lg="4">
+              <app-sidebar></app-sidebar>
+          </ion-col> -->
+        </ion-row>
+    </ion-grid>
 </ion-content>
+

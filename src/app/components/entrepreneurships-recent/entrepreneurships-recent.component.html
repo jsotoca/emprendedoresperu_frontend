@@ -5,7 +5,7 @@
   </ion-list-header>
   <ion-slides *ngIf="entrepreneurships.length"  [options]="slidesOptions">
       <ion-slide *ngFor="let entrepreneurship of entrepreneurships" >
-          <ion-card [routerLink]= "['/entrepreneurship']" [queryParams]="{ id: entrepreneurship.id}" class="caja-promocion">
+          <ion-card [routerLink]= "['/entrepreneurship']" [queryParams]="{ id: entrepreneurship.id}" class="caja-promocion routerLink">
               <img style="height: 150px;width: 100%;" [src]="entrepreneurship.cover" alt="">
               <ion-item lines="none">
                   <ion-avatar slot="start" style="width: 50px;height: 50px;">

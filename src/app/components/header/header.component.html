@@ -7,30 +7,26 @@
     </ion-buttons>
     <ion-searchbar placeholder="¿Qué buscas?" animated></ion-searchbar>
     <ion-buttons class="ion-hide-md-down" slot="end">
-      <ion-button routerLink="/" routerDirection="root">
+      <ion-button class="routerLink" routerLink="/" routerDirection="root">
         <ion-label class="titulo">Inicio</ion-label>
         <ion-icon color="light" slot="start" name="home-outline"></ion-icon>
       </ion-button>
-      <ion-button routerLink="/entrepreneurships" routerDirection="root">
+      <ion-button class="routerLink" routerLink="/login" routerDirection="root">
+        <ion-label class="titulo">Mi Cuenta</ion-label>
+        <ion-icon color="light" slot="start" name="person-outline"></ion-icon>
+      </ion-button>
+      <ion-button class="routerLink" routerLink="/entrepreneurships" routerDirection="root">
         <ion-label class="titulo">Emprendimientos</ion-label>
         <ion-icon color="light" slot="start" src="../../../assets/icon/storefront-outline.svg"></ion-icon>
       </ion-button>
-      <ion-button routerLink="/deals" routerDirection="root">
+      <ion-button class="routerLink" routerLink="/deals" routerDirection="root">
         <ion-label class="titulo">Promociones</ion-label>
         <ion-icon color="light" slot="start" name="cash-outline"></ion-icon>
       </ion-button>
-      <!-- <ion-button routerLink="/categories" routerDirection="root">
-        <ion-label class="titulo">Categorías</ion-label>
-        <ion-icon color="light" slot="start" name="star-outline"></ion-icon>
-      </ion-button> -->
-      <ion-button routerLink="/favorites" routerDirection="root">
+      <ion-button class="routerLink" routerLink="/favorites" routerDirection="root">
         <ion-label class="titulo">Favoritos</ion-label>
         <ion-icon color="light" slot="start" name="heart-outline"></ion-icon>
       </ion-button>
-      <!-- <ion-button routerLink="/login" routerDirection="root">
-        <ion-label class="titulo">Compartir</ion-label>
-        <ion-icon color="light" slot="start" name="share-outline"></ion-icon>
-      </ion-button> -->
     </ion-buttons>
   </ion-toolbar>
 </ion-header>

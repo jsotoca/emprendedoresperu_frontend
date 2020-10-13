@@ -1,4 +1,6 @@
+import { EntrepreneurshipsService } from './../../services/entrepreneurships.service';
 import { Component, OnInit } from '@angular/core';
+import { Entrepreneurship } from 'src/app/interfaces/entrepreneurship.interface';
 
 @Component({
   selector: 'app-entrepreneurships',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EntrepreneurshipsPage implements OnInit {
 
-  constructor() { }
+  entrepreneurships:Entrepreneurship[] = [];
+
+  constructor(
+    private entrepreneurshipsService:EntrepreneurshipsService
+  ) { }
 
   ngOnInit() {
+  }
+
+  async ionViewDidEnter(){
+    this.entrepreneurships = await this.entrepreneurshipsService.getEntrepreneurships();
   }
 
 }

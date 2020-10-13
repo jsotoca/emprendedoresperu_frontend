@@ -45,4 +45,8 @@ export class LoginPage implements OnInit {
     this.loginForm.reset;
   }
 
+  saludar(){
+    console.log("hola mundo");
+  }
+
 }
