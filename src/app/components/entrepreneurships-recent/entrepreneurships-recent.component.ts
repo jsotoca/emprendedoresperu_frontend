@@ -18,7 +18,6 @@ export class EntrepreneurshipsRecentComponent implements OnInit {
 
   async ngOnInit() {
     this.entrepreneurships = await this.entrepreneurshipsService.getEntrepreneurships();
-    console.log(this.entrepreneurships);
     this.slidesOptions = {
       initialSlide: 0,
       direction: 'horizontal',

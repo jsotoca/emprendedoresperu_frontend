@@ -15,7 +15,7 @@
                   <img [src]="deal.image" alt="Shower Curtin" />
               </div>
               <ion-label class="titulo">{{deal.name}}</ion-label>
-              <br><ion-label class="limite"> {{showTime(deal.end_date)}} </ion-label>
+              <br><ion-label class="limite"> {{deal.end_date | momentjs}} </ion-label>
           </ion-card>
       </ion-slide>
   </ion-slides>

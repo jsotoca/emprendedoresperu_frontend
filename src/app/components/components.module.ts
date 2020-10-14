@@ -8,15 +8,16 @@ import { HeaderComponent } from './header/header.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EntrepreneurshipsRecentComponent } from './entrepreneurships-recent/entrepreneurships-recent.component';
+import { MomentjsPipe } from './momentjs.pipe';
 
 
 
 @NgModule({
   declarations: [HeaderComponent,CategriesSlidesComponent,AdsHomeComponent,
-    DealsRecentComponent,EntrepreneurshipsRecentComponent,SidebarComponent
+    DealsRecentComponent,EntrepreneurshipsRecentComponent,SidebarComponent, MomentjsPipe
   ],
   exports: [HeaderComponent,CategriesSlidesComponent,AdsHomeComponent,
-    DealsRecentComponent,EntrepreneurshipsRecentComponent,SidebarComponent
+    DealsRecentComponent,EntrepreneurshipsRecentComponent,SidebarComponent, MomentjsPipe 
   ],
   imports: [
     CommonModule,

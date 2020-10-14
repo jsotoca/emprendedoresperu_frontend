@@ -15,8 +15,8 @@ export class AuthGuard implements CanActivate {
 
   canActivate(): Promise<boolean> | boolean  {
     return new Promise(async (resolve)=>{
+      await this.authService.loadToken();
       const existe = await this.authService.validateUser();
-      console.log(existe);
       if(!existe) this.router.navigate(['/login']);
       resolve(existe);
     });

@@ -4,19 +4,17 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { IAuthRespuesta } from '../interfaces/auth.interface';
+import { IAuthResponse } from '../interfaces/auth.interface';
 import { Storage } from '@ionic/storage';
 
 const APIURL:string = environment.apiUrl; 
-
-
-
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  public datosActuales = new BehaviorSubject<IDatosActuales>(null);
+  // public datosActuales = new BehaviorSubject<IDatosActuales>(null);
+  public currentToken = new BehaviorSubject<string>(null);
 
   constructor(
     private http:HttpClient,
@@ -26,12 +24,10 @@ export class AuthService {
 
   async ingresar(email:string,password:string){
     try {
-      const data = await this.http.post<IAuthRespuesta>(`${APIURL}/auth/signin`,{email,password}).toPromise();
-      if(data.ok){
-        this.datosActuales.next({user:data.user,token:data.token});
-        this.storage.set('datos',this.datosActuales.value);
-        this.router.navigate(['/home']);
-      }
+      const { token } = await this.http.post<IAuthResponse>(`${APIURL}/auth/signin`,{email,password}).toPromise();
+      this.currentToken.next(token);
+      this.storage.set('currentToken',this.currentToken.value);
+      this.router.navigate(['/account']);
     } catch (error) {
       // agregar ui alert para erorres
       console.log(error.status);
@@ -40,8 +36,17 @@ export class AuthService {
   }
 
   async validateUser(){
-    const currentData = await this.storage.get('datos');
+    const currentData = await this.storage.get('currentToken');
     return (currentData)?true:false;
+  }
+
+  async loadToken(){
+    const token = await this.storage.get('currentToken');
+    if(token) this.currentToken.next(token);
+  }
+
+  getToken(){
+    return this.currentToken.value;
   }
 
 }

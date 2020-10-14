@@ -9,14 +9,14 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
 
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
-import { MomentjsPipe } from './pipes/momentjs.pipe';
+import JwtInterceptor from './interceptors/jwt.interceptor';
 @NgModule({
-  declarations: [AppComponent, MomentjsPipe],
+  declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule, IonicModule.forRoot(), AppRoutingModule,ComponentsModule,
@@ -27,7 +27,8 @@ import { MomentjsPipe } from './pipes/momentjs.pipe';
     SplashScreen,
     CallNumber,
     SocialSharing,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi:true}
   ],
   bootstrap: [AppComponent]
 })

@@ -1,4 +1,4 @@
-export interface IAuthRespuesta {
+export interface IAuthResponse {
     ok: boolean;
     user: IUser;
     token: string;

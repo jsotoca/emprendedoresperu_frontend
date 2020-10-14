@@ -1,3 +1,5 @@
+import { AccountService } from './../../services/account.service';
+import { IDetailResponse } from './../../interfaces/account.interface';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountPage implements OnInit {
 
-  constructor() { }
+  account:IDetailResponse ={
+    user: {
+      id:0,
+      fullname:'',
+      phone:'',
+      email:''
+    },
+    entrepreneurships: [],
+    deals: []
+  };
+
+  constructor(
+    private accountService:AccountService
+  ) { }
 
   ngOnInit() {
+  }
+
+  async ionViewDidEnter(){
+    this.account = await this.accountService.getDetailsAccount();
   }
 
 }
