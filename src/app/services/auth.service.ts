@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { IAuthResponse } from '../interfaces/auth.interface';
 import { Storage } from '@ionic/storage';
+import { UiService } from './ui.service';
 
 const APIURL:string = environment.apiUrl; 
 @Injectable({
@@ -19,7 +20,8 @@ export class AuthService {
   constructor(
     private http:HttpClient,
     private router:Router,
-    private storage:Storage
+    private storage:Storage,
+    private uiService:UiService
   ) { }  
 
   async ingresar(email:string,password:string){
@@ -29,7 +31,21 @@ export class AuthService {
       this.storage.set('currentToken',this.currentToken.value);
       this.router.navigate(['/account']);
     } catch (error) {
-      // agregar ui alert para erorres
+      this.uiService.showMessage("Upps...","Ha ocurrido un error al momento de registrarse, intentalo en un momento o contacta al administrador.")
+      console.log(error.status);
+      throw error;
+    }
+  }
+
+  async register(fullname:string,phone:string,email:string,password:string){
+    try {
+      const { token } = await this.http.post<IAuthResponse>(`${APIURL}/auth/signup`,{fullname,phone,email,password}).toPromise();
+      this.currentToken.next(token);
+      this.storage.set('currentToken',this.currentToken.value);
+      this.uiService.showMessage("Registro exitoso","Te acabas de registrar como nuevo emprendedor 💖")
+      this.router.navigate(['/account']);
+    } catch (error) {
+      this.uiService.showMessage("Upps...","Ha ocurrido un error al momento de registrarse, intentalo en un momento o contacta al administrador.")
       console.log(error.status);
       throw error;
     }
@@ -47,6 +63,12 @@ export class AuthService {
 
   getToken(){
     return this.currentToken.value;
+  }
+
+  async logout(){
+    await this.storage.remove('currentToken');
+    this.currentToken.next(null);
+    this.router.navigate(['/login']);
   }
 
 }

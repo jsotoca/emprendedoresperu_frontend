@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { AccountService } from './../../services/account.service';
 import { IDetailResponse } from './../../interfaces/account.interface';
 import { Component, OnInit } from '@angular/core';
@@ -21,7 +22,8 @@ export class AccountPage implements OnInit {
   };
 
   constructor(
-    private accountService:AccountService
+    private accountService:AccountService,
+    private authService:AuthService
   ) { }
 
   ngOnInit() {
@@ -29,6 +31,10 @@ export class AccountPage implements OnInit {
 
   async ionViewDidEnter(){
     this.account = await this.accountService.getDetailsAccount();
+  }
+
+  async logout(){
+    this.authService.logout();
   }
 
 }
