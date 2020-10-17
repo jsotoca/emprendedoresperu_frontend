@@ -4,8 +4,8 @@
     <ion-grid fixed>
         <ion-row>
             <ion-col size="12" size-lg="8" offset-lg="2">
-              <form style="width: 100%;" [formGroup]="saveForm" (ngSubmit)="save()">
-                <ion-grid fixed>
+              <ion-grid fixed>
+                <form style="width: 100%;" [formGroup]="saveForm" (ngSubmit)="save()">
                   <ion-row class="ion-justify-content-center">
                     <ion-col size="12">
                       <ion-card>
@@ -51,21 +51,20 @@
 
 
                           <ion-row>
-                            <ion-col size="6">
+                            <ion-col size="12" size-lg="6">
                               <div class="separador"></div>
                               <ion-item lines="none" class="elemento">   
                                 <ion-icon name="copy-outline"></ion-icon>
                                 <ion-select class="select-global" style="--placeholder-opacity: 0.5" placeholder="Categoría">
-                                  <ion-select-option value="peperoni">Peperoni</ion-select-option>
-                                  <ion-select-option value="hawaii">Hawaii</ion-select-option>
+                                  <ion-select-option *ngFor="let category of categories"  [value]="category.id">{{category.name}}</ion-select-option>
                                 </ion-select>
                               </ion-item>
                             </ion-col>
-                            <ion-col size="6">
+                            <ion-col size="12" size-lg="6">
                               <div class="separador"></div>
                               <ion-item lines="none" class="elemento">   
                                 <ion-icon name="browsers-outline"></ion-icon>
-                                <ion-select class="select-global" style="--placeholder-opacity: 0.5" value="peperoni" placeholder="Distrito" formControlName="subcategory">
+                                <ion-select class="select-global" style="--placeholder-opacity: 0.5" value="peperoni" placeholder="Subcategoría" formControlName="subcategory">
                                   <ion-select-option value="peperoni">Peperoni</ion-select-option>
                                   <ion-select-option value="hawaii">Hawaii</ion-select-option>
                                 </ion-select>
@@ -81,7 +80,7 @@
                           </ion-row>
 
                           <ion-row>
-                            <ion-col size="6">
+                            <ion-col size="12" size-lg="6">
                               <div class="separador"></div>
                               <ion-item lines="none" class="elemento">   
                                 <ion-icon name="location-outline" slot="start"></ion-icon>
@@ -95,13 +94,12 @@
                                 </ng-container>
                               </div>
                             </ion-col>
-                            <ion-col size="6">
+                            <ion-col size="12" size-lg="6">
                               <div class="separador"></div>
                               <ion-item lines="none" class="elemento">   
                                 <ion-icon name="compass-outline"></ion-icon>
                                 <ion-select class="select-global" style="--placeholder-opacity: 0.5" value="peperoni" placeholder="Distrito" formControlName="district">
-                                  <ion-select-option value="peperoni">Peperoni</ion-select-option>
-                                  <ion-select-option value="hawaii">Hawaii</ion-select-option>
+                                  <ion-select-option *ngFor="let district of districts"  [value]="district.id">{{district.district}}</ion-select-option>
                                 </ion-select>
                               </ion-item>
                               <div class="validation-errors">
@@ -234,15 +232,11 @@
                                   <ion-label class="entrada" >¿Qué tiene tu negocio?</ion-label>
                                 </ion-list-header>
                                 <ion-row>
-                                  <ion-col size="12" size-lg="6">
+                                  <ion-col *ngFor="let tag of tags" size="12" size-lg="6">
                                     <ion-item lines="none">
-                                      <ion-label class="entrada" >Checkbox</ion-label>
-                                      <ion-checkbox slot="start"></ion-checkbox>
-                                    </ion-item>
-                                  </ion-col>
-                                  <ion-col size="12" size-lg="6">
-                                    <ion-item lines="none">
-                                      <ion-label>Checkbox</ion-label>
+                                      <ion-label class="entrada" >
+                                        <p>{{tag.description}}
+                                      </ion-label>
                                       <ion-checkbox slot="start"></ion-checkbox>
                                     </ion-item>
                                   </ion-col>
@@ -261,8 +255,8 @@
                       </ion-card>
                     </ion-col>
                   </ion-row>
+                 </form>
                 </ion-grid>
-              </form>
             </ion-col>
             <!-- <ion-col size-lg="4">
                 <app-sidebar></app-sidebar>

@@ -1,5 +1,11 @@
+import { TagsService } from './../../services/tags.service';
+import { DistrictsService } from './../../services/districts.service';
+import { CategoriesService } from './../../services/categories.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { Category } from 'src/app/interfaces/category.interface';
+import { District } from 'src/app/interfaces/entrepreneurship.interface';
+import { Tag } from 'src/app/interfaces/tag.interface';
 
 @Component({
   selector: 'app-save-entrepreneurship',
@@ -11,6 +17,9 @@ export class SaveEntrepreneurshipPage implements OnInit {
   saveForm:FormGroup;
   imagen:File;
   cover:File;
+  categories:Category[] = [];
+  districts:District[] = [];
+  tags:Tag[] = [];
   validation_messages = {
     'name': [
       { type: 'required', message: 'El nombre de tu negocio es requerido.' },
@@ -66,10 +75,13 @@ export class SaveEntrepreneurshipPage implements OnInit {
   }
 
   constructor(
-    private formBuilder:FormBuilder
+    private formBuilder:FormBuilder,
+    private categoriesService:CategoriesService,
+    private districtsService:DistrictsService,
+    private tagsService:TagsService
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.saveForm = this.formBuilder.group({
       name:['',[Validators.required, Validators.minLength(3),Validators.maxLength(45)]],
       description:['',[Validators.required, Validators.minLength(10),Validators.maxLength(145)]],
@@ -86,6 +98,9 @@ export class SaveEntrepreneurshipPage implements OnInit {
       instagram:['',Validators.required],
       tiktok:['',Validators.required],
     });
+    this.categories = await this.categoriesService.getCategories();
+    this.districts = await this.districtsService.getDistricts();
+    this.tags = await this.tagsService.getTags();
   }
 
   obtenerLogo($event){
