@@ -1,9 +1,272 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>saveEntrepreneurship</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header></app-header>
 
 <ion-content>
+    <ion-grid fixed>
+        <ion-row>
+            <ion-col size="12" size-lg="8" offset-lg="2">
+              <form style="width: 100%;" [formGroup]="saveForm" (ngSubmit)="save()">
+                <ion-grid fixed>
+                  <ion-row class="ion-justify-content-center">
+                    <ion-col size="12">
+                      <ion-card>
+                        <ion-card-content>
+                          <div class="separador"></div>
+                          <ion-item lines="none" class="elemento">   
+                            <ion-icon name="person-outline" slot="start"></ion-icon>
+                            <ion-input class="entrada" placeholder="Nombre" formControlName="name" required></ion-input>
+                          </ion-item>
+                          <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.name">
+                              <div class="error-message" *ngIf="saveForm.get('name').hasError(validation.type) && (saveForm.get('name').dirty || saveForm.get('name').touched)">
+                                {{ validation.message }}
+                              </div>
+                            </ng-container>
+                          </div>
+                          
+                          <div class="separador"></div>
+                          <ion-item lines="none" class="elemento">   
+                            <ion-icon name="document-text-outline" slot="start"></ion-icon>
+                            <ion-input class="entrada" placeholder="Descripción" formControlName="description" required></ion-input>
+                          </ion-item>
+                          <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.description">
+                              <div class="error-message" *ngIf="saveForm.get('description').hasError(validation.type) && (saveForm.get('description').dirty || saveForm.get('description').touched)">
+                                {{ validation.message }}
+                              </div>
+                            </ng-container>
+                          </div>
 
+                          <div class="separador"></div>
+                          <ion-item lines="none" class="elemento">   
+                            <ion-icon name="text-outline" slot="start"></ion-icon>
+                            <ion-input class="entrada" placeholder="Slogan" formControlName="slogan" required></ion-input>
+                          </ion-item>
+                          <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.slogan">
+                              <div class="error-message" *ngIf="saveForm.get('slogan').hasError(validation.type) && (saveForm.get('slogan').dirty || saveForm.get('slogan').touched)">
+                                {{ validation.message }}
+                              </div>
+                            </ng-container>
+                          </div>
+
+
+                          <ion-row>
+                            <ion-col size="6">
+                              <div class="separador"></div>
+                              <ion-item lines="none" class="elemento">   
+                                <ion-icon name="copy-outline"></ion-icon>
+                                <ion-select class="select-global" style="--placeholder-opacity: 0.5" placeholder="Categoría">
+                                  <ion-select-option value="peperoni">Peperoni</ion-select-option>
+                                  <ion-select-option value="hawaii">Hawaii</ion-select-option>
+                                </ion-select>
+                              </ion-item>
+                            </ion-col>
+                            <ion-col size="6">
+                              <div class="separador"></div>
+                              <ion-item lines="none" class="elemento">   
+                                <ion-icon name="browsers-outline"></ion-icon>
+                                <ion-select class="select-global" style="--placeholder-opacity: 0.5" value="peperoni" placeholder="Distrito" formControlName="subcategory">
+                                  <ion-select-option value="peperoni">Peperoni</ion-select-option>
+                                  <ion-select-option value="hawaii">Hawaii</ion-select-option>
+                                </ion-select>
+                              </ion-item>
+                              <div class="validation-errors">
+                                <ng-container *ngFor="let validation of validation_messages.subcategory">
+                                  <div class="error-message" *ngIf="saveForm.get('subcategory').hasError(validation.type) && (saveForm.get('subcategory').dirty || saveForm.get('subcategory').touched)">
+                                    {{ validation.message }}
+                                  </div>
+                                </ng-container>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row>
+                            <ion-col size="6">
+                              <div class="separador"></div>
+                              <ion-item lines="none" class="elemento">   
+                                <ion-icon name="location-outline" slot="start"></ion-icon>
+                                <ion-input class="entrada" placeholder="Dirección" formControlName="address"></ion-input>
+                              </ion-item>
+                              <div class="validation-errors">
+                                <ng-container *ngFor="let validation of validation_messages.address">
+                                  <div class="error-message" *ngIf="saveForm.get('address').hasError(validation.type) && (saveForm.get('address').dirty || saveForm.get('address').touched)">
+                                    {{ validation.message }}
+                                  </div>
+                                </ng-container>
+                              </div>
+                            </ion-col>
+                            <ion-col size="6">
+                              <div class="separador"></div>
+                              <ion-item lines="none" class="elemento">   
+                                <ion-icon name="compass-outline"></ion-icon>
+                                <ion-select class="select-global" style="--placeholder-opacity: 0.5" value="peperoni" placeholder="Distrito" formControlName="district">
+                                  <ion-select-option value="peperoni">Peperoni</ion-select-option>
+                                  <ion-select-option value="hawaii">Hawaii</ion-select-option>
+                                </ion-select>
+                              </ion-item>
+                              <div class="validation-errors">
+                                <ng-container *ngFor="let validation of validation_messages.district">
+                                  <div class="error-message" *ngIf="saveForm.get('district').hasError(validation.type) && (saveForm.get('district').dirty || saveForm.get('district').touched)">
+                                    {{ validation.message }}
+                                  </div>
+                                </ng-container>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <div class="separador"></div>
+                          <ion-item lines="none" class="elemento">   
+                            <ion-icon name="call-outline" slot="start"></ion-icon>
+                            <ion-input class="entrada" placeholder="Teléfono" formControlName="phone" required></ion-input>
+                          </ion-item>  
+                          <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.phone">
+                              <div class="error-message" *ngIf="saveForm.get('phone').hasError(validation.type) && (saveForm.get('phone').dirty || saveForm.get('phone').touched)">
+                                {{ validation.message }}
+                              </div>
+                            </ng-container>
+                          </div>
+                          <ion-row>
+                            <ion-col size="12" size-lg="6">
+                              <div class="separador"></div>
+                              <p class="entrada">Seleccionar logo</p>
+                              <ion-item lines="none" class="elemento">   
+                                <ion-input class="entrada" accept="image/*" (change)="obtenerLogo($event)" required formControlName="logo" type="file" placeholder="Logo"></ion-input>
+                              </ion-item>
+                              <div class="validation-errors">
+                                <ng-container *ngFor="let validation of validation_messages.logo">
+                                  <div class="error-message" *ngIf="saveForm.get('logo').hasError(validation.type) && (saveForm.get('logo').dirty || saveForm.get('logo').touched)">
+                                    {{ validation.message }}
+                                  </div>
+                                </ng-container>
+                              </div>
+                            </ion-col>
+                            <ion-col size="12" size-lg="6">
+                              <div class="separador"></div>
+                              <p class="entrada">Seleccionar cover</p>
+                              <ion-item lines="none" class="elemento"> 
+                                <ion-input class="entrada" style="display: block;" accept="image/*" (change)="obtenerCover($event)" required formControlName="cover" type="file" placeholder="Cover"></ion-input>
+                              </ion-item>
+                              <div class="validation-errors">
+                                <ng-container *ngFor="let validation of validation_messages.cover">
+                                  <div class="error-message" *ngIf="saveForm.get('cover').hasError(validation.type) && (saveForm.get('cover').dirty || saveForm.get('cover').touched)">
+                                    {{ validation.message }}
+                                  </div>
+                                </ng-container>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row>
+                            <ion-col size="12" size-lg="6">
+                              <div class="separador"></div>
+                              <ion-item lines="none" class="elemento">   
+                                <ion-icon name="logo-facebook" slot="start"></ion-icon>
+                                <ion-input class="entrada" placeholder="Facebook" formControlName="facebook" required></ion-input>
+                              </ion-item>
+                              <div class="validation-errors">
+                                <ng-container *ngFor="let validation of validation_messages.facebook">
+                                  <div class="error-message" *ngIf="saveForm.get('facebook').hasError(validation.type) && (saveForm.get('facebook').dirty || saveForm.get('facebook').touched)">
+                                    {{ validation.message }}
+                                  </div>
+                                </ng-container>
+                              </div>  
+                            </ion-col>
+                            <ion-col size="12" size-lg="6">
+                              <div class="separador"></div>
+                              <ion-item lines="none" class="elemento">   
+                                <ion-icon name="logo-twitter" slot="start"></ion-icon>
+                                <ion-input class="entrada" placeholder="Twitter" formControlName="twitter" required></ion-input>
+                              </ion-item>
+                              <div class="validation-errors">
+                                <ng-container *ngFor="let validation of validation_messages.twitter">
+                                  <div class="error-message" *ngIf="saveForm.get('twitter').hasError(validation.type) && (saveForm.get('twitter').dirty || saveForm.get('twitter').touched)">
+                                    {{ validation.message }}
+                                  </div>
+                                </ng-container>
+                              </div>  
+                            </ion-col>
+                            <ion-col size="12" size-lg="6">
+                              <div class="separador"></div>
+                              <ion-item lines="none" class="elemento">   
+                                <ion-icon name="logo-youtube" slot="start"></ion-icon>
+                                <ion-input class="entrada" placeholder="Youtube" formControlName="youtube" required></ion-input>
+                              </ion-item>
+                              <div class="validation-errors">
+                                <ng-container *ngFor="let validation of validation_messages.youtube">
+                                  <div class="error-message" *ngIf="saveForm.get('youtube').hasError(validation.type) && (saveForm.get('youtube').dirty || saveForm.get('youtube').touched)">
+                                    {{ validation.message }}
+                                  </div>
+                                </ng-container>
+                              </div>  
+                            </ion-col>
+                            <ion-col size="12" size-lg="6">
+                              <div class="separador"></div>
+                              <ion-item lines="none" class="elemento">   
+                                <ion-icon name="logo-instagram" slot="start"></ion-icon>
+                                <ion-input class="entrada" placeholder="Instagram" formControlName="instagram" required></ion-input>
+                              </ion-item>
+                              <div class="validation-errors">
+                                <ng-container *ngFor="let validation of validation_messages.instagram">
+                                  <div class="error-message" *ngIf="saveForm.get('instagram').hasError(validation.type) && (saveForm.get('instagram').dirty || saveForm.get('instagram').touched)">
+                                    {{ validation.message }}
+                                  </div>
+                                </ng-container>
+                              </div>  
+                            </ion-col>
+                            <ion-col size="12" size-lg="6">
+                              <div class="separador"></div>
+                              <ion-item lines="none" class="elemento">   
+                                <ion-icon name="logo-tiktok" slot="start"></ion-icon>
+                                <ion-input class="entrada" placeholder="Tiktok" formControlName="tiktok" required></ion-input>
+                              </ion-item>
+                              <div class="validation-errors">
+                                <ng-container *ngFor="let validation of validation_messages.tiktok">
+                                  <div class="error-message" *ngIf="saveForm.get('tiktok').hasError(validation.type) && (saveForm.get('tiktok').dirty || saveForm.get('tiktok').touched)">
+                                    {{ validation.message }}
+                                  </div>
+                                </ng-container>
+                              </div>  
+                            </ion-col>
+                            <ion-col size="12">
+                              <ion-list style="padding-top: 0px !important;">
+                                <ion-list-header>
+                                  <ion-label class="entrada" >¿Qué tiene tu negocio?</ion-label>
+                                </ion-list-header>
+                                <ion-row>
+                                  <ion-col size="12" size-lg="6">
+                                    <ion-item lines="none">
+                                      <ion-label class="entrada" >Checkbox</ion-label>
+                                      <ion-checkbox slot="start"></ion-checkbox>
+                                    </ion-item>
+                                  </ion-col>
+                                  <ion-col size="12" size-lg="6">
+                                    <ion-item lines="none">
+                                      <ion-label>Checkbox</ion-label>
+                                      <ion-checkbox slot="start"></ion-checkbox>
+                                    </ion-item>
+                                  </ion-col>
+                                </ion-row>
+                              </ion-list>
+                            </ion-col>
+                          </ion-row>
+
+                          
+
+                          <ion-button type="submit" class="btn-registrar" expand="block" [disabled]="saveForm.invalid">
+                            Guardar
+                            <ion-icon slot="end" name="save-outline"></ion-icon>
+                          </ion-button>
+                        </ion-card-content>
+                      </ion-card>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </form>
+            </ion-col>
+            <!-- <ion-col size-lg="4">
+                <app-sidebar></app-sidebar>
+            </ion-col> -->
+        </ion-row>
+    </ion-grid>
 </ion-content>

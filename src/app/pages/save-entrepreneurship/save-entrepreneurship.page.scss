@@ -1,0 +1,31 @@
+.elemento {
+    border-radius: 5px;
+    border: 1px solid #95a5a6;
+    --background: #F7F7F7;
+}
+
+.error-message{
+    font-family: "Poppins Regular" !important;
+    font-size: 13px;
+    line-height: 20px;
+    color:  #E13449;
+    margin-bottom: 5px !important;
+}
+
+.separador{
+    margin-bottom: 10px !important;
+}
+
+.entrada{
+    font-family: "Poppins Regular";
+    font-size: 13px;
+    line-height: 20px;
+}
+
+.btn-registrar {
+    font-family: "Poppins Regular";
+    --background: #4CAF50;
+    --border-color: #4CAF50;
+    text-transform: none !important;
+    margin-top: 20px;
+}

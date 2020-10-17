@@ -1,6 +1,7 @@
+import { ComponentsModule } from './../../components/components.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -13,7 +14,9 @@ import { SaveEntrepreneurshipPage } from './save-entrepreneurship.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    SaveEntrepreneurshipPageRoutingModule
+    SaveEntrepreneurshipPageRoutingModule,
+    ComponentsModule,
+    ReactiveFormsModule
   ],
   declarations: [SaveEntrepreneurshipPage]
 })
