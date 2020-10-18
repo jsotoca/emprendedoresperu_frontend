@@ -31,7 +31,7 @@ export class AuthService {
       this.storage.set('currentToken',this.currentToken.value);
       this.router.navigate(['/account']);
     } catch (error) {
-      this.uiService.showMessage("Upps...","Ha ocurrido un error al momento de registrarse, intentalo en un momento o contacta al administrador.")
+      this.uiService.showMessage("Upps...","Ha ocurrido un error al momento de logearte, intentalo en un momento o contacta al administrador.")
       console.log(error.status);
       throw error;
     }
@@ -39,11 +39,11 @@ export class AuthService {
 
   async register(fullname:string,phone:string,email:string,password:string){
     try {
-      const { token } = await this.http.post<IAuthResponse>(`${APIURL}/auth/signup`,{fullname,phone,email,password}).toPromise();
+      const { ok,token } = await this.http.post<IAuthResponse>(`${APIURL}/auth/signup`,{fullname,phone,email,password}).toPromise();
       this.currentToken.next(token);
       this.storage.set('currentToken',this.currentToken.value);
       this.uiService.showMessage("Registro exitoso","Te acabas de registrar como nuevo emprendedor 💖")
-      this.router.navigate(['/account']);
+      return ok;
     } catch (error) {
       this.uiService.showMessage("Upps...","Ha ocurrido un error al momento de registrarse, intentalo en un momento o contacta al administrador.")
       console.log(error.status);

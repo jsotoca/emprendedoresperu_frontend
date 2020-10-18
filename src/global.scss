@@ -43,9 +43,70 @@
   outline: 0;
 }
 
+.text {
+  font-family: "Poppins Regular" !important;
+}
+
 .select-global {
   font-family: "Poppins Regular";
   font-size: 14px;
   line-height: 20px;
   margin-left: 10px !important;
+}
+
+.loading, .select {
+  font-family: "Poppins Regular";
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.alert-confirm-button {
+  font-family: "Poppins Regular" !important;
+  text-transform: capitalize !important;
+}
+
+.elemento {
+  border-radius: 5px;
+  border: 1px solid #95a5a6;
+  --background: #F7F7F7;
+}
+
+.error-message{
+  font-family: "Poppins Regular" !important;
+  font-size: 13px;
+  line-height: 20px;
+  color:  #E13449;
+  margin-bottom: 5px !important;
+}
+
+.separador{
+  margin-bottom: 10px !important;
+}
+
+.entrada{
+  font-family: "Poppins Regular";
+  font-size: 13px;
+  line-height: 20px;
+}
+
+ion-modal.auto-height {
+  --border-radius: 8px!important;
+  &.bottom {
+      align-items: flex-end;
+  }
+
+  --height: auto;
+
+  .ion-page {
+      position: relative;
+      display: block;
+      contain: content;
+      max-width: 80vh;
+
+      .inner-content {
+          max-height: 80vh;
+          overflow: auto;
+          padding: 10px;
+      }
+  }
 }

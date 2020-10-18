@@ -55,7 +55,7 @@
                               <div class="separador"></div>
                               <ion-item lines="none" class="elemento">   
                                 <ion-icon name="copy-outline"></ion-icon>
-                                <ion-select class="select-global" style="--placeholder-opacity: 0.5" placeholder="Categoría" (ionChange)="categoryChange($event)">
+                                <ion-select [value]="category.id" class="select-global" style="--placeholder-opacity: 0.5" placeholder="Categoría" (ionChange)="categoryChange($event,null)">
                                   <ion-select-option *ngFor="let category of categories"  [value]="category.id">{{category.name}}</ion-select-option>
                                 </ion-select>
                               </ion-item>
@@ -64,7 +64,7 @@
                               <div class="separador"></div>
                               <ion-item lines="none" class="elemento">   
                                 <ion-icon name="browsers-outline"></ion-icon>
-                                <ion-select class="select-global" style="--placeholder-opacity: 0.5" placeholder="Subcategoría" formControlName="subcategory" disabled ="{{!haveCategories}}">
+                                <ion-select [value]="subcategory.id" class="select-global" style="--placeholder-opacity: 0.5" placeholder="Subcategoría" formControlName="subcategory" disabled ="{{!haveCategories}}">
                                   <ion-select-option *ngFor="let subcategory of subcategories"  [value]="subcategory.id">{{subcategory.name}}</ion-select-option>
                                 </ion-select>
                               </ion-item>
@@ -97,8 +97,8 @@
                               <div class="separador"></div>
                               <ion-item lines="none" class="elemento">   
                                 <ion-icon name="compass-outline"></ion-icon>
-                                <ion-select class="select-global" style="--placeholder-opacity: 0.5" placeholder="Distrito" formControlName="district">
-                                  <ion-select-option *ngFor="let district of districts"  [value]="district.id">{{district.district}}</ion-select-option>
+                                <ion-select [value]="district.id" class="select-global" [value]="selectedDistrict" style="--placeholder-opacity: 0.5" placeholder="Distrito" formControlName="district">
+                                  <ion-select-option *ngFor="let district of districts"   [value]="district.id">{{district.district}}</ion-select-option>
                                 </ion-select>
                               </ion-item>
                               <div class="validation-errors">
@@ -127,7 +127,10 @@
                             <ion-col size="12" size-lg="6">
                               <div class="separador"></div>
                               <p class="entrada">Seleccionar logo</p>
-                              <ion-item lines="none" class="elemento">   
+                              <ion-item lines="none" class="elemento">  
+                                <ion-thumbnail style="--border-radius: 5px; margin-right: 5px;" *ngIf="logo_preview" >
+                                  <img [src]="logo_preview" />
+                                </ion-thumbnail> 
                                 <ion-input class="entrada" accept="image/*" (change)="obtenerLogo($event)" required formControlName="logo" type="file" placeholder="Logo"></ion-input>
                               </ion-item>
                               <div class="validation-errors">
@@ -142,6 +145,9 @@
                               <div class="separador"></div>
                               <p class="entrada">Seleccionar cover</p>
                               <ion-item lines="none" class="elemento"> 
+                                <ion-thumbnail style="--border-radius: 5px; margin-right: 5px;" *ngIf="entrepreneurship" >
+                                  <img [src]="entrepreneurship.cover" />
+                                </ion-thumbnail>
                                 <ion-input class="entrada" style="display: block;" accept="image/*" (change)="obtenerCover($event)" required formControlName="cover" type="file" placeholder="Cover"></ion-input>
                               </ion-item>
                               <div class="validation-errors">
@@ -234,7 +240,7 @@
                                   <ion-col *ngFor="let tag of tags" size="12" size-lg="6">
                                     <ion-item lines="none">
                                       <ion-label class="entrada" >
-                                        <p>{{tag.description}}</p>
+                                        <p>{{tag.description}}
                                       </ion-label>
                                       <ion-checkbox slot="start" [(ngModel)]="tag.checked" [ngModelOptions]="{standalone: true}"></ion-checkbox>
                                     </ion-item>

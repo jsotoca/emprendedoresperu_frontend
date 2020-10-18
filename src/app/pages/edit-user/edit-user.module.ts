@@ -1,23 +1,21 @@
-import { ComponentsModule } from './../../components/components.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AccountPageRoutingModule } from './account-routing.module';
+import { EditUserPageRoutingModule } from './edit-user-routing.module';
 
-import { AccountPage } from './account.page';
+import { EditUserPage } from './edit-user.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AccountPageRoutingModule,
-    ComponentsModule,
+    EditUserPageRoutingModule,
     ReactiveFormsModule
   ],
-  declarations: [AccountPage]
+  declarations: [EditUserPage]
 })
-export class AccountPageModule {}
+export class EditUserPageModule {}

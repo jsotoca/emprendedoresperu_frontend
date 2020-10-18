@@ -12,48 +12,62 @@
                           <img src="../../../assets/icon/equipo.svg">
                         </ion-avatar>
                         <ion-label>
-                          <p class="ion-text-wrap nombre">Bienvenido {{account.user.fullname}}</p>
+                          <p class="ion-text-wrap nombre">Bienvenid@ {{account.user.fullname}}</p>
                           <p class="ion-text-wrap text"><ion-icon name="call-outline"></ion-icon> {{account.user.phone}}</p>
                           <p class="ion-text-wrap text"><ion-icon name="mail-open-outline"></ion-icon> {{account.user.email}}</p>
                         </ion-label>
                         <ion-buttons slot="end">
-                          <ion-button>
-                            <ion-icon style="color: #4CAF50;" slot="icon-only" name="settings-outline"></ion-icon>
+                          <ion-button (click)="presentModal()" >
+                            <ion-icon slot="icon-only" color="medium" name="options-outline"></ion-icon>
                           </ion-button>
                           <ion-button (click)="logout()">
-                            <ion-icon style="color: #607D8B;" slot="icon-only" name="log-out-outline"></ion-icon>
+                            <ion-icon slot="icon-only" color="medium" name="log-out-outline"></ion-icon>
                           </ion-button>
                         </ion-buttons>
                       </ion-item>
-                    </ion-card>
-                  </ion-col>
-                  <ion-col size="12" size-lg="6">
-                    <ion-card>
-                      <ion-card-header>
-                        <ion-label class="categoria-principal">
-                          <ion-icon style="font-size: 20px;" src="../../../assets/icon/storefront-outline.svg"></ion-icon>
-                          Mis Emprendimientos
-                        </ion-label>
-                      </ion-card-header>
-                      <ion-card-content class="detalle">
+                      <ion-card-content>
+                        <ion-list-header>
+                          <ion-label class="categoria-principal">
+                            <ion-icon style="font-size: 20px;" src="../../../assets/icon/storefront-outline.svg"></ion-icon>
+                            Mis Emprendimientos ({{account.entrepreneurships.length}})
+                          </ion-label>
+                          <ion-button class="routerLink" [routerLink]= "['/save-entrepreneurship']" class="btn-nuevo">
+                            <ion-label class="ion-text-wrap">Registrar nuevo negocio 🚀</ion-label>
+                          </ion-button>
+                        </ion-list-header>
                         <ion-item *ngFor="let entrepreneurship of account.entrepreneurships">
-                          <ion-avatar class="routerLink" slot="start" [routerLink]= "['/entrepreneurship']" [queryParams]="{ id: entrepreneurship.id }">
+                          <ion-thumbnail style="--border-radius: 5px;" class="routerLink" slot="start" [routerLink]= "['/entrepreneurship']" [queryParams]="{ id: entrepreneurship.id }">
                             <img [src]="entrepreneurship.logo">
-                          </ion-avatar>
-                          <ion-label class="routerLink" [routerLink]= "['/entrepreneurship']" [queryParams]="{ id: entrepreneurship.id }">
+                          </ion-thumbnail>
+                          <ion-label class="routerLink">
                             <p class="ion-text-wrap titulo">{{entrepreneurship.name}}</p>
-                            <p class="ion-text-wrap ubicacion"><ion-icon name="call-outline"></ion-icon> {{entrepreneurship.phone}}</p>
+                            <p class="ion-text-wrap ubicacion"><b>Descripción:</b> {{entrepreneurship.description}}</p>
+                            <p class="ion-text-wrap ubicacion"><b>Teléfono:</b> {{entrepreneurship.phone}}</p>
+                            <!-- <p class="ion-text-wrap ubicacion"><ion-icon name="call-outline"></ion-icon> {{entrepreneurship.phone}}</p> -->
                           </ion-label>  
                           <ion-buttons slot="end">
-                            <ion-button>
-                              <ion-icon style="color: #9C27B0;" name="power-outline"></ion-icon>
+                            <ion-button (click)="presentActionSheet(entrepreneurship)">
+                              <ion-icon name="ellipsis-vertical-outline"></ion-icon>
                             </ion-button>
                           </ion-buttons>
                         </ion-item>
                       </ion-card-content>
-                    </ion-card>    
+                    </ion-card>
                   </ion-col>
-                  <ion-col size="12" size-lg="6">
+                  <!-- <ion-col size="12" size-lg="12">
+                    <ion-card>
+                      <ion-card-header>
+                        <ion-label class="categoria-principal">
+                          <ion-icon style="font-size: 20px;" src="../../../assets/icon/storefront-outline.svg"></ion-icon>
+                          Mis Emprendimientos ({{account.entrepreneurships.length}})
+                        </ion-label>
+                      </ion-card-header>
+                      <ion-card-content class="detalle">
+                        
+                      </ion-card-content>
+                    </ion-card>    
+                  </ion-col> -->
+                  <!-- <ion-col size="12" size-lg="6">
                     <ion-card>
                       <ion-card-header>
                         <ion-label class="categoria-principal">
@@ -78,7 +92,7 @@
                         </ion-item>
                       </ion-card-content>
                     </ion-card>
-                  </ion-col>
+                  </ion-col> -->
                 </ion-row>
             </ion-col>
           <!-- <ion-col size-lg="4">

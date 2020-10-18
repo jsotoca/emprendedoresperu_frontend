@@ -1,0 +1,46 @@
+<div class="inner-content">
+  <form style="width: 100%;" [formGroup]="editForm" (ngSubmit)="edit()">
+              <div class="separador"></div>
+              <ion-item lines="none" class="elemento">   
+                  <ion-icon name="person-outline" slot="start"></ion-icon>
+                  <ion-input class="entrada" placeholder="Ingresar nombres completos" formControlName="fullname" required></ion-input>
+                </ion-item>
+                <div class="validation-errors">
+                  <ng-container *ngFor="let validation of validation_messages.fullname">
+                    <div class="error-message" *ngIf="editForm.get('fullname').hasError(validation.type) && (editForm.get('fullname').dirty || editForm.get('fullname').touched)">
+                      {{ validation.message }}
+                    </div>
+                  </ng-container>
+                </div>
+                <div class="separador"></div>
+                <ion-item lines="none" class="elemento">   
+                  <ion-icon name="call-outline" slot="start"></ion-icon>
+                  <ion-input class="entrada" placeholder="Ingresar Télefono" type="phone" formControlName="phone" required></ion-input>
+                </ion-item>
+                <div class="validation-errors">
+                  <ng-container *ngFor="let validation of validation_messages.phone">
+                    <div class="error-message" *ngIf="editForm.get('phone').hasError(validation.type) && (editForm.get('phone').dirty || editForm.get('phone').touched)">
+                      {{ validation.message }}
+                    </div>
+                  </ng-container>
+                </div>
+                <div class="separador"></div>
+                <ion-item lines="none" class="elemento">   
+                  <ion-icon name="key-outline" slot="start"></ion-icon>
+                  <ion-input #registerInput class="entrada" placeholder="Ingresar contraseña" type="password" formControlName="password" required></ion-input>
+                  <ion-icon (click)="showPassword(registerInput)" name="eye-outline" slot="end"></ion-icon>
+                </ion-item>
+                <div class="validation-errors">
+                  <ng-container *ngFor="let validation of validation_messages.password">
+                    <div class="error-message" *ngIf="editForm.get('password').hasError(validation.type) && (editForm.get('password').dirty || editForm.get('password').touched)">
+                      {{ validation.message }}
+                    </div>
+                  </ng-container>
+                </div>
+                <div class="separador"></div>
+                <ion-button type="submit" class="btn-registrar" expand="block" [disabled]="editForm.invalid">
+                  Editar mis datos
+                  <ion-icon slot="end" name="create-outline"></ion-icon>
+                </ion-button>
+   </form>
+</div>

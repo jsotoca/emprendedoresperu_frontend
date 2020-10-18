@@ -1,3 +1,4 @@
+import { Category } from './category.interface';
 import { Deal } from './deal.interface';
 
 export interface IEntrepreneurshipResponse {
@@ -53,6 +54,7 @@ export interface Subcategory {
   name: string;
   icon: string;
   image: string;
+  category?: Category;
 }
 
 

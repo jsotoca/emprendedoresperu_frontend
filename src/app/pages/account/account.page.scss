@@ -19,12 +19,21 @@
 }
 
 
-.titulo {
+.btn-nuevo {
     font-family: "Poppins Regular" !important;
     size: 14px;
     font-weight: 600;
     line-height: 20px;
+    text-transform: none;
+}
+
+.titulo {
+    font-family: "Poppins Regular" !important;
+    size: 15px;
+    font-weight: 600;
+    line-height: 20px;
     color:#E13449;
+    text-transform: capitalize;
 }
 
 .ubicacion {

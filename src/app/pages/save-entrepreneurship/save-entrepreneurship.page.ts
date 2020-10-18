@@ -1,3 +1,4 @@
+import { UiService } from './../../services/ui.service';
 import { EntrepreneurshipsService } from './../../services/entrepreneurships.service';
 import { SubcategoriesService } from './../../services/subcategories.service';
 import { TagsService } from './../../services/tags.service';
@@ -85,7 +86,8 @@ export class SaveEntrepreneurshipPage implements OnInit {
     private categoriesService:CategoriesService,
     private subcategoriesService:SubcategoriesService,
     private districtsService:DistrictsService,
-    private tagsService:TagsService
+    private tagsService:TagsService,
+    private uiService:UiService
   ) { }
 
   async ngOnInit() {
@@ -138,7 +140,10 @@ export class SaveEntrepreneurshipPage implements OnInit {
     data["cover"] = this.cover;
     data["tags"] = tagIds;
     const entrepreneurship = createFormData(data);
+    await this.uiService.showLoading(`guardando los datos de tu negocio 🚀`);
     await this.entrepreneurshipsService.createEntrepeurship(entrepreneurship);
+    await this.uiService.dismissLoading();
+    this.saveForm.reset();
   }
 
 }

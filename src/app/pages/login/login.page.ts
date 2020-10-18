@@ -1,3 +1,4 @@
+import { UiService } from './../../services/ui.service';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
@@ -13,6 +14,13 @@ export class LoginPage implements OnInit {
   @ViewChild('mainSlides',{static:true}) slides:IonSlides;
   loginForm:FormGroup;
   registerForm:FormGroup;
+
+  slidesOptions = {
+    initialSlide: 0,
+    slideShadows: true,
+    spaceBetween: 0,
+    slidesPerView: 1,
+  };
 
   validation_messages = {
       'fullname': [
@@ -38,7 +46,8 @@ export class LoginPage implements OnInit {
 
   constructor(
     private formBuilder:FormBuilder,
-    private authService:AuthService
+    private authService:AuthService,
+    private uiService:UiService
   ) { }
 
   resetForms(){
@@ -77,9 +86,12 @@ export class LoginPage implements OnInit {
     this.loginForm.reset();
   }
 
-  register(){
+  async register(){
     const {fullname,phone,email,password} = this.registerForm.value;
-    this.authService.register(fullname,phone,email,password);
+    await this.uiService.showLoading(`Espera un toque mientras te registramos ${fullname} 😄`);
+    const response = await this.authService.register(fullname,phone,email,password);
+    this.uiService.dismissLoading();
+    if(response) this.uiService.routeTo('/account');
     this.registerForm.reset();
   }
 

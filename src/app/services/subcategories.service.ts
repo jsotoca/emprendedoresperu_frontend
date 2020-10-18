@@ -16,4 +16,8 @@ export class SubcategoriesService {
   async searchSubcategoriesByCategory(id){
     return await this.http.get<Subcategory[]>(`${APIURL}/subcategory/category/${id}`).toPromise();
   }
+
+  async searchSubcategory(id){
+    return await this.http.get<Subcategory>(`${APIURL}/subcategory/search/${id}`).toPromise();
+  }
 }

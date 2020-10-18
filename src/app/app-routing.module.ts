@@ -66,6 +66,14 @@ const routes: Routes = [
   {
     path: 'save-entrepreneurship',
     loadChildren: () => import('./pages/save-entrepreneurship/save-entrepreneurship.module').then( m => m.SaveEntrepreneurshipPageModule)
+  },
+  {
+    path: 'edit-user',
+    loadChildren: () => import('./pages/edit-user/edit-user.module').then( m => m.EditUserPageModule)
+  },
+  {
+    path: 'edit-entrepreneurship',
+    loadChildren: () => import('./pages/edit-entrepreneurship/edit-entrepreneurship.module').then( m => m.EditEntrepreneurshipPageModule)
   }
 ];
 
