@@ -16,6 +16,6 @@ export class TagsService {
 
   async getTags(){
     const { data } = await this.http.get<ITagResponse>(`${APIURL}/tag`).toPromise();
-    return data;
+    return data.map(obj=> ({ ...obj, checked: false }));
   }
 }

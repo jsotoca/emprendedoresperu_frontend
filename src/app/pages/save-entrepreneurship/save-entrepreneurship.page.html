@@ -55,7 +55,7 @@
                               <div class="separador"></div>
                               <ion-item lines="none" class="elemento">   
                                 <ion-icon name="copy-outline"></ion-icon>
-                                <ion-select class="select-global" style="--placeholder-opacity: 0.5" placeholder="Categoría">
+                                <ion-select class="select-global" style="--placeholder-opacity: 0.5" placeholder="Categoría" (ionChange)="categoryChange($event)">
                                   <ion-select-option *ngFor="let category of categories"  [value]="category.id">{{category.name}}</ion-select-option>
                                 </ion-select>
                               </ion-item>
@@ -64,9 +64,8 @@
                               <div class="separador"></div>
                               <ion-item lines="none" class="elemento">   
                                 <ion-icon name="browsers-outline"></ion-icon>
-                                <ion-select class="select-global" style="--placeholder-opacity: 0.5" value="peperoni" placeholder="Subcategoría" formControlName="subcategory">
-                                  <ion-select-option value="peperoni">Peperoni</ion-select-option>
-                                  <ion-select-option value="hawaii">Hawaii</ion-select-option>
+                                <ion-select class="select-global" style="--placeholder-opacity: 0.5" placeholder="Subcategoría" formControlName="subcategory" disabled ="{{!haveCategories}}">
+                                  <ion-select-option *ngFor="let subcategory of subcategories"  [value]="subcategory.id">{{subcategory.name}}</ion-select-option>
                                 </ion-select>
                               </ion-item>
                               <div class="validation-errors">
@@ -98,7 +97,7 @@
                               <div class="separador"></div>
                               <ion-item lines="none" class="elemento">   
                                 <ion-icon name="compass-outline"></ion-icon>
-                                <ion-select class="select-global" style="--placeholder-opacity: 0.5" value="peperoni" placeholder="Distrito" formControlName="district">
+                                <ion-select class="select-global" style="--placeholder-opacity: 0.5" placeholder="Distrito" formControlName="district">
                                   <ion-select-option *ngFor="let district of districts"  [value]="district.id">{{district.district}}</ion-select-option>
                                 </ion-select>
                               </ion-item>
@@ -160,7 +159,7 @@
                               <div class="separador"></div>
                               <ion-item lines="none" class="elemento">   
                                 <ion-icon name="logo-facebook" slot="start"></ion-icon>
-                                <ion-input class="entrada" placeholder="Facebook" formControlName="facebook" required></ion-input>
+                                <ion-input class="entrada" placeholder="Facebook" formControlName="facebook"></ion-input>
                               </ion-item>
                               <div class="validation-errors">
                                 <ng-container *ngFor="let validation of validation_messages.facebook">
@@ -174,7 +173,7 @@
                               <div class="separador"></div>
                               <ion-item lines="none" class="elemento">   
                                 <ion-icon name="logo-twitter" slot="start"></ion-icon>
-                                <ion-input class="entrada" placeholder="Twitter" formControlName="twitter" required></ion-input>
+                                <ion-input class="entrada" placeholder="Twitter" formControlName="twitter"></ion-input>
                               </ion-item>
                               <div class="validation-errors">
                                 <ng-container *ngFor="let validation of validation_messages.twitter">
@@ -188,7 +187,7 @@
                               <div class="separador"></div>
                               <ion-item lines="none" class="elemento">   
                                 <ion-icon name="logo-youtube" slot="start"></ion-icon>
-                                <ion-input class="entrada" placeholder="Youtube" formControlName="youtube" required></ion-input>
+                                <ion-input class="entrada" placeholder="Youtube" formControlName="youtube"></ion-input>
                               </ion-item>
                               <div class="validation-errors">
                                 <ng-container *ngFor="let validation of validation_messages.youtube">
@@ -202,7 +201,7 @@
                               <div class="separador"></div>
                               <ion-item lines="none" class="elemento">   
                                 <ion-icon name="logo-instagram" slot="start"></ion-icon>
-                                <ion-input class="entrada" placeholder="Instagram" formControlName="instagram" required></ion-input>
+                                <ion-input class="entrada" placeholder="Instagram" formControlName="instagram"></ion-input>
                               </ion-item>
                               <div class="validation-errors">
                                 <ng-container *ngFor="let validation of validation_messages.instagram">
@@ -216,7 +215,7 @@
                               <div class="separador"></div>
                               <ion-item lines="none" class="elemento">   
                                 <ion-icon name="logo-tiktok" slot="start"></ion-icon>
-                                <ion-input class="entrada" placeholder="Tiktok" formControlName="tiktok" required></ion-input>
+                                <ion-input class="entrada" placeholder="Tiktok" formControlName="tiktok"></ion-input>
                               </ion-item>
                               <div class="validation-errors">
                                 <ng-container *ngFor="let validation of validation_messages.tiktok">
@@ -237,7 +236,7 @@
                                       <ion-label class="entrada" >
                                         <p>{{tag.description}}
                                       </ion-label>
-                                      <ion-checkbox slot="start"></ion-checkbox>
+                                      <ion-checkbox slot="start" [(ngModel)]="tag.checked" [ngModelOptions]="{standalone: true}"></ion-checkbox>
                                     </ion-item>
                                   </ion-col>
                                 </ion-row>

@@ -9,4 +9,5 @@ export interface Tag {
   id: number;
   description: string;
   icon: string;
+  checked?: boolean;
 }
