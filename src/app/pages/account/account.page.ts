@@ -39,7 +39,7 @@ export class AccountPage implements OnInit {
 
   async presentActionSheet(e) {
     const actionSheet = await this.actionSheetController.create({
-      header: `${e.name} opciones`,
+      header: `Menú de opciones`,
       cssClass: 'text',
       buttons: [{
         text: 'Visitar emprendimiento',
@@ -73,7 +73,9 @@ export class AccountPage implements OnInit {
   }
 
   async ionViewDidEnter(){
+    this.uiService.showLoading('Cargando tu super cuenta 🚀!')
     this.account = await this.accountService.getDetailsAccount();
+    this.uiService.dismissLoading();
   }
 
   async openModal(){

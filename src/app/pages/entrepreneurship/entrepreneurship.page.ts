@@ -58,8 +58,12 @@ export class EntrepreneurshipPage implements OnInit {
   }
   
   async ionViewDidEnter(){
+    this.uiService.showLoading('Cargando emprendimiento 😄');
+    this.id = null;
+    this.entrepreneurship = null;
     this.id = await this.getId();
     if(this.id) this.entrepreneurship = await this.entrepreneurshipsService.searchEntrepreneurship(this.id);
+    this.uiService.dismissLoading();
   }
 
   async ngOnInit() {

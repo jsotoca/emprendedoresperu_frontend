@@ -42,7 +42,7 @@
                           <ion-label class="routerLink">
                             <p class="ion-text-wrap titulo">{{entrepreneurship.name}}</p>
                             <p class="ion-text-wrap ubicacion"><b>Descripción:</b> {{entrepreneurship.description}}</p>
-                            <p class="ion-text-wrap ubicacion"><b>Teléfono:</b> {{entrepreneurship.phone}}</p>
+                            <p class="ion-text-wrap ubicacion"> <b>Estado:</b> {{(entrepreneurship.isVerified)?'Verificado':'Sin verificar'}} - <b>Teléfono:</b> {{entrepreneurship.phone}}</p>
                             <!-- <p class="ion-text-wrap ubicacion"><ion-icon name="call-outline"></ion-icon> {{entrepreneurship.phone}}</p> -->
                           </ion-label>  
                           <ion-buttons slot="end">

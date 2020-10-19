@@ -65,6 +65,7 @@ const routes: Routes = [
   },
   {
     path: 'save-entrepreneurship',
+    canActivate:[AuthGuard],
     loadChildren: () => import('./pages/save-entrepreneurship/save-entrepreneurship.module').then( m => m.SaveEntrepreneurshipPageModule)
   },
   {
@@ -73,6 +74,7 @@ const routes: Routes = [
   },
   {
     path: 'edit-entrepreneurship',
+    canActivate:[AuthGuard],
     loadChildren: () => import('./pages/edit-entrepreneurship/edit-entrepreneurship.module').then( m => m.EditEntrepreneurshipPageModule)
   }
 ];

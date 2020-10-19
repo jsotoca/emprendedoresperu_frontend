@@ -148,10 +148,12 @@ export class EditEntrepreneurshipPage implements OnInit {
   }
 
   async ionViewDidEnter(){
+    this.uiService.showLoading('cargando los datos.');
     this.id = null;
     this.entrepreneurship = null;
     this.id = await this.getId();
     this.entrepreneurship = await  this.entrepreneurshipsService.searchEntrepreneurship(this.id);
+    console.log(this.entrepreneurship);
     this.logo_preview = this.entrepreneurship.logo;
     this.cover_preview = this.entrepreneurship.cover;
     this.selectedDistrict = this.entrepreneurship.district.id;
@@ -177,6 +179,7 @@ export class EditEntrepreneurshipPage implements OnInit {
       instagram:this.entrepreneurship.instagram,
       tiktok:this.entrepreneurship.tiktok,
     });
+    this.uiService.dismissLoading();
   }
 
   obtenerLogo($event){
@@ -205,7 +208,7 @@ export class EditEntrepreneurshipPage implements OnInit {
     }else {
       this.cover = null;
       this.saveForm.controls.cover.setValue(this.entrepreneurship.cover);
-      this.cover_preview = this.entrepreneurship.logo;
+      this.cover_preview = this.entrepreneurship.cover;
     }
   }
 
@@ -253,13 +256,14 @@ export class EditEntrepreneurshipPage implements OnInit {
       data["cover"] = this.entrepreneurship.cover;
     }
     data["tags"] = tagIds;
-    console.log(data);
-    // const entrepreneurship = createFormData(data);
-    // console.log(entrepreneurship);
-    // await this.uiService.showLoading(`guardando los datos de tu negocio 🚀`);
-    // await this.entrepreneurshipsService.createEntrepeurship(entrepreneurship);
-    // await this.uiService.dismissLoading();
-    // this.saveForm.reset();
+    data["id"] = this.entrepreneurship.id;
+    const entrepreneurship = createFormData(data);
+    await this.uiService.showLoading(`guardando los datos de tu negocio 🚀`);
+    await this.entrepreneurshipsService.editEntrepeurship(entrepreneurship);
+    await this.uiService.dismissLoading();
+    this.saveForm.reset();
+    this.uiService.showToast('Se editarón los datos con exito.');
+    this.uiService.routeTo('/account');
   }
 
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController, LoadingController, ModalController } from '@ionic/angular';
+import { AlertController, LoadingController, ModalController, ToastController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,8 @@ export class UiService {
     public alertController: AlertController,
     public loadingController:LoadingController,
     private router:Router,
-    public modalController: ModalController
+    public modalController: ModalController,
+    public toastController: ToastController
   ) { }
 
   routeTo(url){
@@ -61,6 +62,14 @@ export class UiService {
       cssClass: 'my-custom-class'
     });
     return await modal.present();
+  }
+
+  async showToast(message) {
+    const toast = await this.toastController.create({
+      message,
+      duration: 2000
+    });
+    toast.present();
   }
   
 }

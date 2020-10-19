@@ -146,7 +146,7 @@
                               <p class="entrada">Seleccionar cover</p>
                               <ion-item lines="none" class="elemento"> 
                                 <ion-thumbnail style="--border-radius: 5px; margin-right: 5px;" *ngIf="entrepreneurship" >
-                                  <img [src]="entrepreneurship.cover" />
+                                  <img [src]="cover_preview" />
                                 </ion-thumbnail>
                                 <ion-input class="entrada" style="display: block;" accept="image/*" (change)="obtenerCover($event)" required formControlName="cover" type="file" placeholder="Cover"></ion-input>
                               </ion-item>
