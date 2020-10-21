@@ -1,5 +1,27 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-menu side="start" menuId="first" contentId="main">
+    <ion-header>
+      <ion-toolbar class="menu-header">
+        <ion-title>Publilam</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item class="routerLink" routerLink="/" routerDirection="root" detail button class="text">Inicio</ion-item>
+        <ion-item class="routerLink" routerLink="/entrepreneurships" routerDirection="root" detail button class="text">Emprendimientos</ion-item>
+        <ion-item class="routerLink" routerLink="/account" routerDirection="root" detail button class="text">Mi cuenta</ion-item>
+        <ion-item class="routerLink" routerLink="/favorites" routerDirection="root" detail button class="text">Favoritos</ion-item>
+        <ion-item class="routerLink" routerLink="/" routerDirection="root" detail button class="text">Normas</ion-item>
+        <ion-item class="routerLink" routerLink="/" routerDirection="root" detail button class="text">Nosotros</ion-item>
+      </ion-list>
+    </ion-content>
+    <ion-footer>
+      <ion-toolbar>
+        <p class="text ion-text-center">Grupo #06 Soporte - 2020.</p>
+      </ion-toolbar>
+    </ion-footer>
+  </ion-menu>
+  <ion-router-outlet id="main"></ion-router-outlet>
   <ion-tabs>
     <ion-tab-bar class="ion-hide-sm-up" slot="bottom,end">
       <ion-tab-button color="warning" tab="home">
@@ -7,17 +29,18 @@
         <ion-label>Inicio</ion-label>
       </ion-tab-button>
       <ion-tab-button tab="entrepreneurships">
-        <ion-icon name="megaphone-outline"></ion-icon>
+        <ion-icon src="../assets/icon/storefront-outline.svg"></ion-icon>
         <ion-label>Negocios</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="account">
+        <ion-icon name="person-outline"></ion-icon>
+        <ion-label>Cuenta</ion-label>
       </ion-tab-button>
       <!-- <ion-tab-button tab="categories">
         <ion-icon name="qr-code-outline"></ion-icon>
         <ion-label>Categorías</ion-label>
       </ion-tab-button> -->
-      <!-- <ion-tab-button tab="deals">
-        <ion-icon name="pricetags-outline"></ion-icon>
-        <ion-label>Promos</ion-label>
-      </ion-tab-button> -->
+      
       <ion-tab-button tab="favorites">
         <ion-icon name="heart-outline"></ion-icon>
         <ion-label>Favoritos</ion-label>

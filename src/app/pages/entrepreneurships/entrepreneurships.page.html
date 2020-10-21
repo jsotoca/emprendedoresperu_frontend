@@ -48,7 +48,7 @@
                                       <p class="ion-text-wrap ubicacion"><b>Ubicación:</b> {{(entrepreneurship.address)?entrepreneurship.address:'Sin local'}} - {{entrepreneurship.district.district}}</p>
                                     </ion-label>  
                                     <ion-buttons slot="end">
-                                      <ion-button>
+                                      <ion-button (click)="presentActionSheet(entrepreneurship)">
                                         <ion-icon name="ellipsis-vertical-outline"></ion-icon>
                                       </ion-button>
                                     </ion-buttons>

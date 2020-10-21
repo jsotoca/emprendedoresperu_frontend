@@ -1,8 +1,11 @@
+import { FavoritesService } from './../../services/favorites.service';
 import { CategoriesService } from './../../services/categories.service';
 import { EntrepreneurshipsService } from './../../services/entrepreneurships.service';
 import { Component, OnInit } from '@angular/core';
 import { Entrepreneurship, FiltersEntrepreneurships } from 'src/app/interfaces/entrepreneurship.interface';
 import { Category } from 'src/app/interfaces/category.interface';
+import { ActionSheetController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-entrepreneurships',
@@ -25,6 +28,9 @@ export class EntrepreneurshipsPage implements OnInit {
   
   constructor(
     private entrepreneurshipsService:EntrepreneurshipsService,
+    private favoritesService:FavoritesService,
+    public actionSheetController: ActionSheetController,
+    public router: Router,
     private categoriesService:CategoriesService
   ) { }
 
@@ -42,6 +48,34 @@ export class EntrepreneurshipsPage implements OnInit {
     this.filters.category = id;
     this.categoria = name;
     this.entrepreneurships = await this.entrepreneurshipsService.getEntrepreneurships(this.filters);
+  }
+
+  async presentActionSheet(e) {
+    const actionSheet = await this.actionSheetController.create({
+      header: `Menú de opciones`,
+      cssClass: 'text',
+      buttons: [{
+        text: 'Visitar emprendimiento',
+        icon: 'eye-outline',
+        handler: () => {
+          this.router.navigate(['/entrepreneurship'],{queryParams:{id:e.id}});
+        }
+      }, {
+        text: 'Agregar a favoritos',
+        icon: 'heart-outline',
+        handler: () => {
+          this.favoritesService.saveEntrepreneurship(e);
+        }
+      }, {
+        text: 'Cancelar',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    await actionSheet.present();
   }
 
 }
