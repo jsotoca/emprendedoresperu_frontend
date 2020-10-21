@@ -1,5 +1,5 @@
 import { UiService } from './ui.service';
-import { IEntrepreneurshipSearchResponse } from './../interfaces/entrepreneurship.interface';
+import { Entrepreneurship, IEntrepreneurshipSearchResponse } from './../interfaces/entrepreneurship.interface';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from './../../environments/environment';
@@ -44,6 +44,20 @@ export class EntrepreneurshipsService {
       if(ok) this.uiService.showMessage("Registro exitoso","Tu emprendimiento fue registrado con exito.");
     } catch (error) {
       this.uiService.showMessage("Upps...","Ha ocurrido un error al momento de registrar el emprendimiento, intentalo en un momento o contacta al administrador.")
+      throw error;
+    }
+  }
+
+  async unsubscribeEntrepeurship(id){
+    try {
+      const entrepreneurship = await this.http.delete<Entrepreneurship>(`${APIURL}/entrepreneurship/unsubscribe/${id}`).toPromise();
+      if(entrepreneurship){
+        this.uiService.showToast(`Emprendimiento dado de baja sastifactoriamente.`);
+        window.location.reload();
+      } 
+      else this.uiService.showMessage("Upps...","Ha ocurrido un error al momento de dar de baja el emprendimiento, intentalo en un momento o contacta al administrador.");
+    } catch (error) {
+      this.uiService.showMessage("Upps...","Ha ocurrido un error al momento de dar de baja el emprendimiento, intentalo en un momento o contacta al administrador.")
       throw error;
     }
   }

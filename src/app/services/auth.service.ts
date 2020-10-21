@@ -1,6 +1,6 @@
 import { environment } from './../../environments/environment';
 import { IDatosActuales } from './../interfaces/auth.interface';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
@@ -63,6 +63,36 @@ export class AuthService {
 
   getToken(){
     return this.currentToken.value;
+  }
+
+  async editUser(object){
+    try {
+      const ok  = await this.http.patch<boolean>(`${APIURL}/auth`,object).toPromise();
+      if(ok) return ok;
+      else this.uiService.showMessage("Upps...","Ha ocurrido un error al momento de editar tus datos, intentalo en un momento o contacta al administrador.")
+    } catch (error) {
+      this.uiService.showMessage("Upps...","Ha ocurrido un error al momento de editar tus datos, intentalo en un momento o contacta al administrador.")
+      throw error;
+    }
+  }
+
+  async deleteUser(id:number){
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      body: {
+        id,
+      },
+    };
+    try {
+      const ok  = await this.http.delete<boolean>(`${APIURL}/auth`,options).toPromise();
+      if(ok) return ok;
+      else this.uiService.showMessage("Upps...","Ha ocurrido un error al momento de eliminar tus datos, intentalo en un momento o contacta al administrador.")
+    } catch (error) {
+      this.uiService.showMessage("Upps...","Ha ocurrido un error al momento de eliminar tus datos, intentalo en un momento o contacta al administrador.")
+      throw error;
+    }
   }
 
   async logout(){

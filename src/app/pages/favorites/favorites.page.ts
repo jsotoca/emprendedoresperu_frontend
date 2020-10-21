@@ -11,9 +11,9 @@ import * as moment from 'moment';
 })
 export class FavoritesPage {
 
-  @ViewChild('mainSlides',{static:true}) slides:IonSlides;
+  // @ViewChild('mainSlides',{static:true}) slides:IonSlides;
   entrepreneurships:Entrepreneurship[] = [];
-
+  total:number = 0;
   constructor(
     public favoritesService:FavoritesService
   ) { 
@@ -21,18 +21,19 @@ export class FavoritesPage {
   }
 
   async ionViewDidEnter(){
-    this.slides.lockSwipes(true);
-    this.favoritesService.loadEntrepreneurship();
+    // this.slides.lockSwipes(true);
+    await this.favoritesService.loadEntrepreneurship();
+    this.total = this.favoritesService.entrepreneurships.length;
     this.favoritesService.loadDeals();
   }
 
   mostrarVentana(event){
-    this.slides.lockSwipes(false);
-    this.slides.slideTo(event.detail.value);
-    this.slides.lockSwipes(true);
+    // this.slides.lockSwipes(false);
+    // this.slides.slideTo(event.detail.value);
+    // this.slides.lockSwipes(true);
   }
 
-  eliminarEmprendimiento(id:number){
+  deleteEntrepreneurship(id:number){
     this.favoritesService.deleteEntrepreneurship(id);
   }
 

@@ -6,29 +6,58 @@
             <ion-col size="12" size-lg="8" offset-lg="2">
                 <ion-row>
                     <ion-col size="12">
-                        <app-categries-slides></app-categries-slides>
-                    </ion-col>
-                    <ion-col *ngFor="let entrepreneurship of entrepreneurships"  size="12" size-lg="6">
-                        <ion-card [routerLink]= "['/entrepreneurship']" [queryParams]="{ id: entrepreneurship.id}" class="caja-promocion routerLink" button>
-                            <img style="height: 150px;width: 100%;" [src]="entrepreneurship.cover" alt="">
-                            <ion-item lines="none">
-                                <ion-avatar slot="start" style="width: 50px;height: 50px;">
-                                    <img [src]="entrepreneurship.logo" />
-                                </ion-avatar>
-                                <ion-label>
-                                    <p class="titulo">{{entrepreneurship.name}}</p>
-                                    <p class="ubicacion"> {{entrepreneurship.district.district}} - {{entrepreneurship.subcategory.name}}</p>
-                                    <p class="slogan ion-text-wrap">{{entrepreneurship.slogan}}</p>
-                                </ion-label>
-                            </ion-item>
+                        <ion-card>
+                            <ion-card-content>
+                                <ion-col size="12">
+                                    <app-categries-slides></app-categries-slides>
+                                </ion-col>
+                                <ion-list-header>
+                                    <ion-label class="categoria-principal">
+                                      <ion-icon style="font-size: 20px;" src="../../../assets/icon/storefront-outline.svg"></ion-icon>
+                                      Super Emprendimientos 🚀
+                                    </ion-label>
+                                </ion-list-header>
+                                <ion-item *ngFor="let entrepreneurship of entrepreneurships">
+                                    <ion-thumbnail style="--border-radius: 5px;" class="routerLink" slot="start" [routerLink]= "['/entrepreneurship']" [queryParams]="{ id: entrepreneurship.id }">
+                                      <img [src]="entrepreneurship.logo">
+                                    </ion-thumbnail>
+                                    <ion-label class="routerLink">
+                                      <p class="ion-text-wrap titulo">{{entrepreneurship.name}}</p>
+                                      <p class="ion-text-wrap ubicacion"><b>Descripción:</b> {{entrepreneurship.description}}</p>
+                                      <p class="ion-text-wrap ubicacion"><b>Subcategoria:</b> {{entrepreneurship.subcategory.name}} -<b>Teléfono:</b> {{entrepreneurship.phone}}</p>
+                                      <p class="ion-text-wrap ubicacion"><b>Ubicación:</b> {{(entrepreneurship.address)?entrepreneurship.address:'Sin local'}} - {{entrepreneurship.district.district}}</p>
+                                    </ion-label>  
+                                    <ion-buttons slot="end">
+                                      <ion-button>
+                                        <ion-icon name="trash-outline"></ion-icon>
+                                      </ion-button>
+                                    </ion-buttons>
+                                </ion-item>
+                                <!-- <ion-row>
+                                    <ion-col *ngFor="let entrepreneurship of entrepreneurships"  size="12" size-lg="6">
+                                        <ion-card [routerLink]= "['/entrepreneurship']" [queryParams]="{ id: entrepreneurship.id}" class="caja-promocion routerLink" button>
+                                            <img style="height: 150px;width: 100%;" [src]="entrepreneurship.cover" alt="">
+                                            <ion-item lines="none">
+                                                <ion-avatar slot="start" style="width: 50px;height: 50px;">
+                                                    <img [src]="entrepreneurship.logo" />
+                                                </ion-avatar>
+                                                <ion-label>
+                                                    <p class="titulo">{{entrepreneurship.name}}</p>
+                                                    <p class="ubicacion"> {{entrepreneurship.district.district}} - {{entrepreneurship.subcategory.name}}</p>
+                                                    <p class="slogan ion-text-wrap">{{entrepreneurship.slogan}}</p>
+                                                </ion-label>
+                                            </ion-item>
+                                        </ion-card>
+                                    </ion-col>
+                                </ion-row> -->
+                            </ion-card-content>
                         </ion-card>
                     </ion-col>
                 </ion-row>
             </ion-col>
-          <!-- <ion-col size-lg="4">
-              <app-sidebar></app-sidebar>
-          </ion-col> -->
+            <!-- <ion-col size-lg="4">
+                <app-sidebar></app-sidebar>
+            </ion-col> -->
         </ion-row>
     </ion-grid>
 </ion-content>
-
