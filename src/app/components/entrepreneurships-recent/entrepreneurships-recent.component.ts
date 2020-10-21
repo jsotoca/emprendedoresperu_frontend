@@ -1,6 +1,6 @@
 import { EntrepreneurshipsService } from './../../services/entrepreneurships.service';
 import { Component, OnInit } from '@angular/core';
-import { Entrepreneurship } from 'src/app/interfaces/entrepreneurship.interface';
+import { Entrepreneurship, FiltersEntrepreneurships } from 'src/app/interfaces/entrepreneurship.interface';
 
 @Component({
   selector: 'app-entrepreneurships-recent',
@@ -11,13 +11,20 @@ export class EntrepreneurshipsRecentComponent implements OnInit {
 
   entrepreneurships:Entrepreneurship[] = [];
   slidesOptions = null;
+  filters:FiltersEntrepreneurships = {
+    page:null,
+    limit:null,
+    category:null,
+    search:null,
+    subcategory:null
+  };
 
   constructor(
     private entrepreneurshipsService:EntrepreneurshipsService
   ) { }
 
   async ngOnInit() {
-    this.entrepreneurships = await this.entrepreneurshipsService.getEntrepreneurships();
+    this.entrepreneurships = await this.entrepreneurshipsService.getEntrepreneurships(this.filters);
     this.slidesOptions = {
       initialSlide: 0,
       direction: 'horizontal',

@@ -35,7 +35,22 @@ export class EntrepreneurshipPage implements OnInit {
     created_at: '',
     updated_at: '',
     district: {id:0,district:''},
-    subcategory: {id:0,name:'',icon:'',image:''},
+    subcategory: {
+      id:0,name:'',icon:'',image:'',
+      category: {
+        id:0,
+        name:'',
+        icon:'',
+        image:''
+      }
+    },
+    tags: [
+      {
+        id:0,
+        description:'',
+        icon:''
+      }
+    ],
     deals:[]
   };
 
@@ -64,6 +79,7 @@ export class EntrepreneurshipPage implements OnInit {
     this.id = await this.getId();
     if(this.id) this.entrepreneurship = await this.entrepreneurshipsService.searchEntrepreneurship(this.id);
     this.uiService.dismissLoading();
+    console.log(this.entrepreneurship);
   }
 
   async ngOnInit() {
@@ -103,9 +119,13 @@ export class EntrepreneurshipPage implements OnInit {
     this.favoritesService.saveEntrepreneurship(this.entrepreneurship);
   }
 
-  openSocial(social:string){
-    if(social) window.open(social, '_system');
-    else this.uiService.showMessage('No Disponible','Este emprendimiento no cuenta con esta red social 😥.');
+  openSocial(social:string,red){
+    if(red == 1) window.open(`https://www.facebook.com/${social}`, '_system');
+    if(red == 2) window.open(`https://www.twitter.com/${social}`, '_system');
+    if(red == 3) window.open(`https://www.youtube.com/channel/${social}`, '_system');
+    if(red == 4) window.open(`https://www.instagram.com/${social}`, '_system');
+    if(red == 5) window.open(`https://www.tiktok.com/${social}`, '_system');
+    // else this.uiService.showMessage('No Disponible','Este emprendimiento no cuenta con esta red social 😥.');
   }
 
 }

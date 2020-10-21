@@ -1,7 +1,7 @@
 import { UiService } from './ui.service';
-import { Entrepreneurship, IEntrepreneurshipSearchResponse } from './../interfaces/entrepreneurship.interface';
+import { Entrepreneurship, FiltersEntrepreneurships, IEntrepreneurshipSearchResponse } from './../interfaces/entrepreneurship.interface';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from './../../environments/environment';
 import { IEntrepreneurshipResponse } from '../interfaces/entrepreneurship.interface';
 
@@ -18,8 +18,14 @@ export class EntrepreneurshipsService {
     private uiService:UiService
   ) { }
 
-  async getEntrepreneurships(){
-    const { data } = await this.http.get<IEntrepreneurshipResponse>(`${APIURL}/entrepreneurship`).toPromise();
+  async getEntrepreneurships(filtersEntrepreneurships:FiltersEntrepreneurships){
+    var {page,limit,category,subcategory,search} = filtersEntrepreneurships;
+    page = page || 1; limit = limit || 50;
+    let url = `${APIURL}/entrepreneurship/?page=${page}&limit=${limit}`;
+    if(category) url+=`&category=${category}`;
+    if(subcategory) url+=`&subcategory=${subcategory}`;
+    if(search) url+=`&search=${search}`;
+    const { data } = await this.http.get<IEntrepreneurshipResponse>(url).toPromise();
     return data;
   }
 

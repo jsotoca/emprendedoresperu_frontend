@@ -8,14 +8,34 @@
                     <ion-col size="12">
                         <ion-card>
                             <ion-card-content>
-                                <ion-col size="12">
-                                    <app-categries-slides></app-categries-slides>
-                                </ion-col>
+                                <ion-row *ngIf="categories.length">
+                                    <ion-col  *ngFor="let category of categories" size="4" size-lg="2">
+                                        <ion-card class="card">
+                                            <ion-tab-button class="categoria-principal" (click)="filterByCategory(category.id,category.name)">
+                                                <ion-icon style="font-size: 64px;" [src]="category.icon"></ion-icon>
+                                                <ion-label class="ion-text-wrap">{{category.name}}</ion-label>
+                                            </ion-tab-button> 
+                                           </ion-card>
+                                    </ion-col>
+                                    <ion-col size="4" size-lg="2">
+                                        <ion-card class="card">
+                                            <ion-tab-button class="categoria-principal" (click)="filterByCategory(null,'Todos')">
+                                                <ion-icon style="font-size: 64px;" src="../../../assets/icon/happy.svg"></ion-icon>
+                                                <ion-label class="ion-text-wrap">Todos</ion-label>
+                                            </ion-tab-button> 
+                                           </ion-card>
+                                    </ion-col>
+                                </ion-row>
+                                
                                 <ion-list-header>
                                     <ion-label class="categoria-principal">
-                                      <ion-icon style="font-size: 20px;" src="../../../assets/icon/storefront-outline.svg"></ion-icon>
-                                      Super Emprendimientos 🚀
+                                      <ion-icon style="font-size: 20px;" name="copy-outline"></ion-icon>
+                                      Categoría: {{categoria}} - Total: {{entrepreneurships.length}}
                                     </ion-label>
+                                    <ion-button (click)="filterByCategory(null,'Todos')" color="danger" class="text" style="text-transform: none;">
+                                        <ion-icon slot="start" name="reload-outline"></ion-icon>
+                                        Reiniciar Lista
+                                    </ion-button>
                                 </ion-list-header>
                                 <ion-item *ngFor="let entrepreneurship of entrepreneurships">
                                     <ion-thumbnail style="--border-radius: 5px;" class="routerLink" slot="start" [routerLink]= "['/entrepreneurship']" [queryParams]="{ id: entrepreneurship.id }">
@@ -29,7 +49,7 @@
                                     </ion-label>  
                                     <ion-buttons slot="end">
                                       <ion-button>
-                                        <ion-icon name="trash-outline"></ion-icon>
+                                        <ion-icon name="ellipsis-vertical-outline"></ion-icon>
                                       </ion-button>
                                     </ion-buttons>
                                 </ion-item>

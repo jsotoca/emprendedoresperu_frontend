@@ -57,6 +57,13 @@ export interface Subcategory {
   category?: Category;
 }
 
+export interface FiltersEntrepreneurships {
+  page?:number;
+  limit?:number;
+  search?:string;
+  subcategory?:number;
+  category?:number;
+}
 
 
 
