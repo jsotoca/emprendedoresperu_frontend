@@ -31,8 +31,8 @@ export class AuthService {
       this.storage.set('currentToken',this.currentToken.value);
       this.router.navigate(['/account']);
     } catch (error) {
-      this.uiService.showMessage("Upps...","Ha ocurrido un error al momento de logearte, intentalo en un momento o contacta al administrador.")
-      console.log(error.status);
+      if(error.status == 401) this.uiService.showMessage("Datos incorrectos","El email y/o contreseña no son correctos.")
+      else this.uiService.showMessage("Upps...","Ha ocurrido un error al momento de logearte, intentalo en un momento o contacta al administrador.")
       throw error;
     }
   }

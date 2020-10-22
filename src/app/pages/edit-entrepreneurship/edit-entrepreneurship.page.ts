@@ -234,36 +234,48 @@ export class EditEntrepreneurshipPage implements OnInit {
   async save(){
     let data = {};
     let tagIds = [];
+    let flag:boolean = false;
+
     for(let field in this.saveForm.value){
       if(this.saveForm.value[field]) data[field] = this.saveForm.value[field];
     }
     this.tags.forEach(t => {
-      if(t.checked) tagIds.push(t.id)
-      console.log(t.id);
+      if(t.checked){
+        tagIds.push(t.id)
+        flag = true;
+      } 
     });
-    if(this.logo){
-      data["urlLogo"] = this.entrepreneurship.logo;
-      data["logo"] = this.logo;
-    } else{
-      delete data["urlLogo"];
-      data["logo"] = this.entrepreneurship.logo;
-    }
-    if(this.cover){
-      data["urlCover"] = this.entrepreneurship.cover;
-      data["cover"] = this.cover;
+    if(flag){
+      if(this.logo){
+        data["urlLogo"] = this.entrepreneurship.logo;
+        data["logo"] = this.logo;
+      } else{
+        delete data["urlLogo"];
+        data["logo"] = this.entrepreneurship.logo;
+      }
+      if(this.cover){
+        data["urlCover"] = this.entrepreneurship.cover;
+        data["cover"] = this.cover;
+      }else{
+        delete data["urlCover"];
+        data["cover"] = this.entrepreneurship.cover;
+      }
+      data["tags"] = tagIds;
+      data["id"] = this.entrepreneurship.id;
+      const entrepreneurship = createFormData(data);
+      await this.uiService.showLoading(`guardando los datos de tu negocio 🚀`);
+      try {
+        await this.entrepreneurshipsService.editEntrepeurship(entrepreneurship);
+        await this.uiService.dismissLoading();
+        this.uiService.showToast('Se editarón los datos con exito.');
+        this.saveForm.reset();
+        this.uiService.routeTo('/account');
+      } catch (error) {
+        await this.uiService.dismissLoading();
+      }
     }else{
-      delete data["urlCover"];
-      data["cover"] = this.entrepreneurship.cover;
+      this.uiService.showMessage("No seleccionaste etiquetas","Es necesario que selecciones una etiqueta que describa tu emprendimiento.");
     }
-    data["tags"] = tagIds;
-    data["id"] = this.entrepreneurship.id;
-    const entrepreneurship = createFormData(data);
-    await this.uiService.showLoading(`guardando los datos de tu negocio 🚀`);
-    await this.entrepreneurshipsService.editEntrepeurship(entrepreneurship);
-    await this.uiService.dismissLoading();
-    this.saveForm.reset();
-    this.uiService.showToast('Se editarón los datos con exito.');
-    this.uiService.routeTo('/account');
   }
 
 }

@@ -13,10 +13,11 @@
                       </div>
                       <ion-card>
                         <ion-card-content>
+                          <p style="color: #E13449" class="text">** Son datos que deben estar completos.</p>
                           <div class="separador"></div>
                           <ion-item lines="none" class="elemento">   
                             <ion-icon name="person-outline" slot="start"></ion-icon>
-                            <ion-input class="entrada" placeholder="Nombre" formControlName="name" required></ion-input>
+                            <ion-input class="entrada" placeholder="Nombre**" formControlName="name" required></ion-input>
                           </ion-item>
                           <div class="validation-errors">
                             <ng-container *ngFor="let validation of validation_messages.name">
@@ -29,7 +30,7 @@
                           <div class="separador"></div>
                           <ion-item lines="none" class="elemento">   
                             <ion-icon name="document-text-outline" slot="start"></ion-icon>
-                            <ion-input class="entrada" placeholder="Descripción" formControlName="description" required></ion-input>
+                            <ion-input class="entrada" placeholder="Descripción**" formControlName="description" required></ion-input>
                           </ion-item>
                           <div class="validation-errors">
                             <ng-container *ngFor="let validation of validation_messages.description">
@@ -42,7 +43,7 @@
                           <div class="separador"></div>
                           <ion-item lines="none" class="elemento">   
                             <ion-icon name="text-outline" slot="start"></ion-icon>
-                            <ion-input class="entrada" placeholder="Slogan" formControlName="slogan" required></ion-input>
+                            <ion-input class="entrada" placeholder="Slogan**" formControlName="slogan" required></ion-input>
                           </ion-item>
                           <div class="validation-errors">
                             <ng-container *ngFor="let validation of validation_messages.slogan">
@@ -58,7 +59,7 @@
                               <div class="separador"></div>
                               <ion-item lines="none" class="elemento">   
                                 <ion-icon name="copy-outline"></ion-icon>
-                                <ion-select [value]="category.id" class="select-global" style="--placeholder-opacity: 0.5" placeholder="Categoría" (ionChange)="categoryChange($event,null)">
+                                <ion-select [value]="category.id" class="select-global" style="--placeholder-opacity: 0.5" placeholder="Categoría**" (ionChange)="categoryChange($event,null)">
                                   <ion-select-option *ngFor="let category of categories"  [value]="category.id">{{category.name}}</ion-select-option>
                                 </ion-select>
                               </ion-item>
@@ -67,7 +68,7 @@
                               <div class="separador"></div>
                               <ion-item lines="none" class="elemento">   
                                 <ion-icon name="browsers-outline"></ion-icon>
-                                <ion-select [value]="subcategory.id" class="select-global" style="--placeholder-opacity: 0.5" placeholder="Subcategoría" formControlName="subcategory" disabled ="{{!haveCategories}}">
+                                <ion-select [value]="subcategory.id" class="select-global" style="--placeholder-opacity: 0.5" placeholder="Subcategoría**" formControlName="subcategory" disabled ="{{!haveCategories}}">
                                   <ion-select-option *ngFor="let subcategory of subcategories"  [value]="subcategory.id">{{subcategory.name}}</ion-select-option>
                                 </ion-select>
                               </ion-item>
@@ -100,7 +101,7 @@
                               <div class="separador"></div>
                               <ion-item lines="none" class="elemento">   
                                 <ion-icon name="compass-outline"></ion-icon>
-                                <ion-select [value]="district.id" class="select-global" [value]="selectedDistrict" style="--placeholder-opacity: 0.5" placeholder="Distrito" formControlName="district">
+                                <ion-select [value]="district.id" class="select-global" [value]="selectedDistrict" style="--placeholder-opacity: 0.5" placeholder="Distrito**" formControlName="district">
                                   <ion-select-option *ngFor="let district of districts"   [value]="district.id">{{district.district}}</ion-select-option>
                                 </ion-select>
                               </ion-item>
@@ -117,7 +118,7 @@
                           <div class="separador"></div>
                           <ion-item lines="none" class="elemento">   
                             <ion-icon name="call-outline" slot="start"></ion-icon>
-                            <ion-input class="entrada" placeholder="Teléfono" formControlName="phone" required></ion-input>
+                            <ion-input class="entrada" placeholder="Teléfono**" formControlName="phone" required></ion-input>
                           </ion-item>  
                           <div class="validation-errors">
                             <ng-container *ngFor="let validation of validation_messages.phone">
@@ -129,7 +130,7 @@
                           <ion-row>
                             <ion-col size="12" size-lg="6">
                               <div class="separador"></div>
-                              <p class="entrada">Seleccionar logo</p>
+                              <p class="entrada">Seleccionar logo**</p>
                               <ion-item lines="none" class="elemento">  
                                 <ion-thumbnail style="--border-radius: 5px; margin-right: 5px;" *ngIf="logo_preview" >
                                   <img [src]="logo_preview" />
@@ -146,7 +147,7 @@
                             </ion-col>
                             <ion-col size="12" size-lg="6">
                               <div class="separador"></div>
-                              <p class="entrada">Seleccionar cover</p>
+                              <p class="entrada">Seleccionar cover**</p>
                               <ion-item lines="none" class="elemento"> 
                                 <ion-thumbnail style="--border-radius: 5px; margin-right: 5px;" *ngIf="entrepreneurship" >
                                   <img [src]="cover_preview" />
@@ -237,7 +238,7 @@
                             <ion-col size="12">
                               <ion-list style="padding-top: 0px !important;">
                                 <ion-list-header>
-                                  <ion-label class="entrada" >¿Qué tiene tu negocio?</ion-label>
+                                  <ion-label class="entrada" >¿Qué tiene tu negocio? (selecciona al menos uno**)</ion-label>
                                 </ion-list-header>
                                 <ion-row>
                                   <ion-col *ngFor="let tag of tags" size="12" size-lg="6">

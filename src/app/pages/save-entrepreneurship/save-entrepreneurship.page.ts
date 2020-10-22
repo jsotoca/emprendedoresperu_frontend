@@ -130,20 +130,33 @@ export class SaveEntrepreneurshipPage implements OnInit {
   async save(){
     let data = {};
     let tagIds = [];
+    let flag = false;
     for(let field in this.saveForm.value){
       if(this.saveForm.value[field]) data[field] = this.saveForm.value[field];
     }
     this.tags.forEach(t => {
-      if(t.checked) tagIds.push(t.id)
+      if(t.checked){
+        tagIds.push(t.id);
+        flag = true;
+      } 
     });
-    data["logo"] = this.logo;
-    data["cover"] = this.cover;
-    data["tags"] = tagIds;
-    const entrepreneurship = createFormData(data);
-    await this.uiService.showLoading(`guardando los datos de tu negocio 🚀`);
-    await this.entrepreneurshipsService.createEntrepeurship(entrepreneurship);
-    await this.uiService.dismissLoading();
-    this.saveForm.reset();
+    if(flag){
+      data["logo"] = this.logo;
+      data["cover"] = this.cover;
+      data["tags"] = tagIds;
+      const entrepreneurship = createFormData(data);
+      await this.uiService.showLoading(`guardando los datos de tu negocio 🚀`);
+      try {
+        await this.entrepreneurshipsService.createEntrepeurship(entrepreneurship);
+        await this.uiService.dismissLoading();
+        this.saveForm.reset();
+        this.uiService.routeTo('/account');
+      } catch (error) {
+        await this.uiService.dismissLoading();
+      }
+    }else{
+      this.uiService.showMessage("No seleccionaste etiquetas","Es necesario que selecciones una etiqueta que describa tu emprendimiento.");
+    }
   }
 
 }
