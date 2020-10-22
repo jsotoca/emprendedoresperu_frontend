@@ -69,7 +69,7 @@
                       </ion-chip>
                     </div>
                     <div style="margin-top: 15px !important;"></div>
-                    <ion-label class="categoria-principal">
+                    <ion-label class="categoria-principal" *ngIf="entrepreneurship.facebook || entrepreneurship.twitter || entrepreneurship.youtube || entrepreneurship.instagram || entrepreneurship.tiktok "  >
                       Síguenos
                     </ion-label>
                     <ion-item *ngIf="entrepreneurship.facebook"  lines="none" (click)="openSocial(entrepreneurship.facebook,1)" button detail>

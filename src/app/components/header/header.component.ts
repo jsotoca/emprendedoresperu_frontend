@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { SearchService } from './../../services/search.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,8 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  @Input() search:boolean = false;
+
+  constructor(
+    public router:Router,
+    public searchService:SearchService
+  ) { }
 
   ngOnInit() {}
+
+  searchWeb(value){
+    this.searchService.search.next(value);
+    this.router.navigate(['/search']);
+  }
 
 }

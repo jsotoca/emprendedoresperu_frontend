@@ -25,6 +25,7 @@ export class EntrepreneurshipsService {
     if(category) url+=`&category=${category}`;
     if(subcategory) url+=`&subcategory=${subcategory}`;
     if(search) url+=`&search=${search}`;
+    console.log(url);
     const { data } = await this.http.get<IEntrepreneurshipResponse>(url).toPromise();
     return data;
   }

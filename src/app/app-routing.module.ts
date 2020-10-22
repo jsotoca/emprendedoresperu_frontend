@@ -76,6 +76,10 @@ const routes: Routes = [
     path: 'edit-entrepreneurship',
     canActivate:[AuthGuard],
     loadChildren: () => import('./pages/edit-entrepreneurship/edit-entrepreneurship.module').then( m => m.EditEntrepreneurshipPageModule)
+  },
+  {
+    path: 'search',
+    loadChildren: () => import('./pages/search/search.module').then( m => m.SearchPageModule)
   }
 ];
 
