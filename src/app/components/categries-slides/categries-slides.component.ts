@@ -1,5 +1,7 @@
+import { IonSlides } from '@ionic/angular';
+import { Router } from '@angular/router';
 import { Category } from './../../interfaces/category.interface';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CategoriesService } from './../../services/categories.service';
 @Component({
   selector: 'app-categries-slides',
@@ -7,12 +9,13 @@ import { CategoriesService } from './../../services/categories.service';
   styleUrls: ['./categries-slides.component.scss'],
 })
 export class CategriesSlidesComponent implements OnInit {
-
+  @ViewChild('categorySlides',{static:true}) slides:IonSlides;
   categories:Category[] = [];
   slidesOptions = null;
   
   constructor(
-    private categoriesService:CategoriesService
+    private categoriesService:CategoriesService,
+    private router:Router
   ) { }
 
   async ngOnInit() {
@@ -25,16 +28,30 @@ export class CategriesSlidesComponent implements OnInit {
       speed: 300,
       slidesPerView: this.checkScreen(),
       freeMode: true,
-      loop: false
+      loop: false,
+      keyboard: {
+        enabled: true,
+      }
     };
   }
 
   checkScreen(){
     if(window.innerWidth>=960){
-        return 7;
+        return 6;
     }else{
         return 3.3;
     }
+  }
+
+  slidePrev() {
+    this.slides.slidePrev();
+  }
+  slideNext() {
+    this.slides.slideNext();
+  }
+
+  openCategory(c){
+    this.router.navigate(['/categories'],{queryParams:{id:c.id,name:c.name}});
   }
 
 }

@@ -7,6 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdsHomeComponent implements OnInit {
 
+  slideOpts = {
+    initialSlide: 0,
+    slidesPerView: 1,
+    autoplay:true,
+    speed: 700,
+  };
+
   constructor() { }
 
   ngOnInit() {}

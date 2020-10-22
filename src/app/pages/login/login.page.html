@@ -3,7 +3,7 @@
 <ion-content>
     <ion-grid fixed>
         <ion-row>
-            <ion-col size="12" size-lg="8" offset-lg="2">
+            <ion-col size="12" size-lg="8">
               <ion-segment value="0" (ionChange)="mostrarFormulario($event)">
                 <ion-segment-button class="segment-ingresar" value="0">
                   <ion-label class="titulo">Ingresar</ion-label>
@@ -36,7 +36,7 @@
 
                                 <ion-item lines="none" class="elemento">   
                                     <ion-icon name="key-outline" slot="start"></ion-icon>
-                                    <ion-input #loginInput class="entrada" placeholder="Ingresar contraseña" required formControlName="password" type="password"></ion-input>
+                                    <ion-input #loginInput class="entrada" placeholder="Ingresar contraseña" required formControlName="password" type="password" (keyup.enter)="login()"></ion-input>
                                     <ion-icon (click)="showPassword(loginInput)" name="eye-outline" slot="end"></ion-icon>
                                 </ion-item>
                                 <div class="validation-errors">
@@ -133,9 +133,9 @@
                   </ion-slide>
                 </ion-slides>
             </ion-col>
-            <!-- <ion-col size-lg="4">
+            <ion-col size-lg="4">
                 <app-sidebar></app-sidebar>
-            </ion-col> -->
+            </ion-col>
         </ion-row>
     </ion-grid>
 </ion-content>

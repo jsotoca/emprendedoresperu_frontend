@@ -1,6 +1,11 @@
+import { FavoritesService } from './../../services/favorites.service';
+import { EntrepreneurshipsService } from './../../services/entrepreneurships.service';
 import { CategoriesService } from './../../services/categories.service';
 import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/interfaces/category.interface';
+import { ActionSheetController } from '@ionic/angular';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Entrepreneurship, FiltersEntrepreneurships } from 'src/app/interfaces/entrepreneurship.interface';
 
 @Component({
   selector: 'app-categories',
@@ -8,15 +13,70 @@ import { Category } from 'src/app/interfaces/category.interface';
   styleUrls: ['./categories.page.scss'],
 })
 export class CategoriesPage implements OnInit {
-
-  categories:Category[] = [];
+  
+  name:string = '';
+  entrepreneurships:Entrepreneurship[] = [];
+  filters:FiltersEntrepreneurships = {
+    page:null,
+    limit:null,
+    category:null,
+    search:null,
+    subcategory:null
+  };
   
   constructor(
-    private categoriesService:CategoriesService
+    private entrepreneurshipsService:EntrepreneurshipsService,
+    private favoritesService:FavoritesService,
+    public actionSheetController: ActionSheetController,
+    public router: Router,
+    private activatedRoute: ActivatedRoute,
   ) { }
 
-  async ngOnInit() {
-    this.categories = await this.categoriesService.getCategories();
+  getCategory(){
+    return new Promise<{category:string,name:string}>((resolve)=>{
+      this.activatedRoute.queryParams.subscribe(params => {
+        const data = {category:params['id'] as string,name:params['name']as string};
+        resolve(data); 
+      });
+    });
+  }
+
+  async ngOnInit() {}
+
+  async ionViewDidEnter(){
+    this.entrepreneurships = [];
+    const { category, name} = await this.getCategory();
+    this.name = name;
+    this.filters.category = parseInt(category);
+    this.entrepreneurships = await this.entrepreneurshipsService.getEntrepreneurships(this.filters);
+  }
+
+  async presentActionSheet(e) {
+    const actionSheet = await this.actionSheetController.create({
+      header: `Menú de opciones`,
+      cssClass: 'text',
+      buttons: [{
+        text: 'Visitar emprendimiento',
+        icon: 'eye-outline',
+        handler: () => {
+          this.router.navigate(['/entrepreneurship'],{queryParams:{id:e.id}});
+        }
+      }, {
+        text: 'Agregar a favoritos',
+        icon: 'heart-outline',
+        handler: () => {
+          this.favoritesService.saveEntrepreneurship(e);
+        }
+      }, {
+        text: 'Cancelar',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    await actionSheet.present();
   }
 
 }

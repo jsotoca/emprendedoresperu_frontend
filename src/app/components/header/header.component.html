@@ -1,28 +1,33 @@
 <ion-header class="ion-no-border">
   <ion-toolbar class="contenedor-cabecera">
     <ion-buttons slot="start">
-      <ion-menu-button color="light" menu="first"></ion-menu-button>
+      <ion-menu-button style="color: white;" menu="first"></ion-menu-button>
       <div class="routerLink" routerLink="/" routerDirection="root" class="ion-hide-md-down">
-        <ion-title class="text" color="light">Publilam</ion-title>
+        <ion-title class="text" style="color: white;">Publilam</ion-title>
       </div>
     </ion-buttons>
-    <ion-searchbar class="ion-hide-md-down" #q
-      placeholder="¿Qué buscas?" 
+    <ion-searchbar class="ion-hide-md-up"
+      placeholder="¿Qué buscas amig@?" 
+      (ionChange)="searchMovil($event)"
+      animated>
+    </ion-searchbar>
+    <ion-searchbar class="ion-hide-md-down" #mySearchbar #q
+      placeholder="¿Qué andas buscando?" 
       (keyup.enter)="searchWeb(q.value)"
       animated>
     </ion-searchbar>
     <ion-buttons class="ion-hide-md-down" slot="end">
       <ion-button class="routerLink" routerLink="/" routerDirection="root">
         <ion-label class="titulo">Inicio</ion-label>
-        <ion-icon color="light" slot="start" name="home-outline"></ion-icon>
-      </ion-button>
-      <ion-button class="routerLink" routerLink="/login" routerDirection="root">
-        <ion-label class="titulo">Mi Cuenta</ion-label>
-        <ion-icon color="light" slot="start" name="person-outline"></ion-icon>
+        <ion-icon style="color: white;" slot="start" name="home-outline"></ion-icon>
       </ion-button>
       <ion-button class="routerLink" routerLink="/entrepreneurships" routerDirection="root">
         <ion-label class="titulo">Emprendimientos</ion-label>
-        <ion-icon color="light" slot="start" src="../../../assets/icon/storefront-outline.svg"></ion-icon>
+        <ion-icon style="color: white;" slot="start" src="../../../assets/icon/storefront-outline.svg"></ion-icon>
+      </ion-button>
+      <ion-button class="routerLink" routerLink="/login" routerDirection="root">
+        <ion-label class="titulo">Mi Cuenta</ion-label>
+        <ion-icon style="color: white;" slot="start" name="person-outline"></ion-icon>
       </ion-button>
       <!-- <ion-button class="routerLink" routerLink="/deals" routerDirection="root">
         <ion-label class="titulo">Promociones</ion-label>
@@ -30,7 +35,7 @@
       </ion-button> -->
       <ion-button class="routerLink" routerLink="/favorites" routerDirection="root">
         <ion-label class="titulo">Favoritos</ion-label>
-        <ion-icon color="light" slot="start" name="heart-outline"></ion-icon>
+        <ion-icon style="color: white;" slot="start" name="heart-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>

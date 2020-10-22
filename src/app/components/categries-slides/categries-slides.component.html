@@ -1,7 +1,8 @@
-<ion-slides *ngIf="categories.length"  [options]="slidesOptions">
+
+<ion-slides *ngIf="categories.length"  [options]="slidesOptions" #categorySlides>
   <ion-slide *ngFor="let category of categories" >
       <ion-card class="card">
-       <ion-tab-button class="categoria-principal">
+       <ion-tab-button (click)="openCategory(category)" class="categoria-principal">
            <ion-icon style="font-size: 64px;" [src]="category.icon"></ion-icon>
            <ion-label class="ion-text-wrap">{{category.name}}</ion-label>
        </ion-tab-button> 

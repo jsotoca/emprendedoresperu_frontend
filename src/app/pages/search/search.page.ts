@@ -32,13 +32,7 @@ export class SearchPage implements OnInit {
     public searchService:SearchService
   ) { }
 
-  getSearch(){
-    return new Promise<string>((resolve)=>{
-      this.activatedRoute.queryParams.subscribe(params => {
-        resolve(params['id'] as string); 
-      });
-    });
-  }
+  
 
   ngOnInit() {
   }

@@ -4,12 +4,36 @@
     <ion-grid fixed>
         <ion-row>
             <ion-col size="12" size-lg="8">
-                <ion-row class="card-background-page">
-                    <ion-col *ngFor="let category of categories"  size="12" size-lg="6">
+                <ion-row>
+                    <ion-col size="12">
                         <ion-card>
-                            <img [src]="category.image"/>
-                            <div class="fuente card-title">{{category.name}}</div>
-                            <!-- <div class="fuente card-subtitle">Piononos, dulces, tortas...</div> -->
+                            <ion-card-content>
+                                <ion-list-header>
+                                    <ion-label class="categoria-principal">
+                                      <ion-icon style="font-size: 20px;" name="copy-outline"></ion-icon>
+                                      Categoría: {{name}} - Encontrados: {{entrepreneurships.length}}
+                                    </ion-label>
+                                </ion-list-header>
+                                <ion-item *ngFor="let entrepreneurship of entrepreneurships">
+                                    <ion-thumbnail style="--border-radius: 5px;" class="routerLink" slot="start" [routerLink]= "['/entrepreneurship']" [queryParams]="{ id: entrepreneurship.id }">
+                                      <img [src]="entrepreneurship.logo">
+                                    </ion-thumbnail>
+                                    <ion-label class="routerLink">
+                                      <p class="ion-text-wrap titulo">{{entrepreneurship.name}}</p>
+                                      <p class="ion-text-wrap ubicacion"><b>Descripción:</b> {{entrepreneurship.description}}</p>
+                                      <p class="ion-text-wrap ubicacion"><b>Subcategoria:</b> {{entrepreneurship.subcategory.name}} -<b>Teléfono:</b> {{entrepreneurship.phone}}</p>
+                                      <p class="ion-text-wrap ubicacion"><b>Ubicación:</b> {{(entrepreneurship.address)?entrepreneurship.address:'Sin local'}} - {{entrepreneurship.district.district}}</p>
+                                    </ion-label>  
+                                    <ion-buttons slot="end">
+                                      <ion-button (click)="presentActionSheet(entrepreneurship)">
+                                        <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+                                      </ion-button>
+                                    </ion-buttons>
+                                </ion-item>
+                                <ion-item lines="none" *ngIf="entrepreneurships.length == 0" >
+                                    <ion-label class="text ion-text-wrap">No se encontraron emprendimientos con {{name}} 😢</ion-label>
+                                </ion-item>
+                            </ion-card-content>
                         </ion-card>
                     </ion-col>
                 </ion-row>
@@ -20,4 +44,3 @@
         </ion-row>
     </ion-grid>
 </ion-content>
-

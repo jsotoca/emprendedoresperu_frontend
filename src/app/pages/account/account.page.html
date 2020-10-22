@@ -3,7 +3,7 @@
 <ion-content>
     <ion-grid fixed>
         <ion-row>
-            <ion-col size="12" size-lg="8" offset-lg="2">
+            <ion-col size="12" size-lg="8">
                 <ion-row>
                   <ion-col size="12">
                     <ion-card>
@@ -54,50 +54,11 @@
                       </ion-card-content>
                     </ion-card>
                   </ion-col>
-                  <!-- <ion-col size="12" size-lg="12">
-                    <ion-card>
-                      <ion-card-header>
-                        <ion-label class="categoria-principal">
-                          <ion-icon style="font-size: 20px;" src="../../../assets/icon/storefront-outline.svg"></ion-icon>
-                          Mis Emprendimientos ({{account.entrepreneurships.length}})
-                        </ion-label>
-                      </ion-card-header>
-                      <ion-card-content class="detalle">
-                        
-                      </ion-card-content>
-                    </ion-card>    
-                  </ion-col> -->
-                  <!-- <ion-col size="12" size-lg="6">
-                    <ion-card>
-                      <ion-card-header>
-                        <ion-label class="categoria-principal">
-                          <ion-icon style="font-size: 20px;" name="pricetags-outline"></ion-icon>
-                          Mis Promociones
-                        </ion-label>
-                      </ion-card-header>
-                      <ion-card-content class="detalle">
-                        <ion-item *ngFor="let deal of account.deals">
-                          <ion-avatar class="routerLink" slot="start" [routerLink]= "['/deal']" [queryParams]="{ id: deal.id }">
-                            <img [src]="deal.image">
-                          </ion-avatar>
-                          <ion-label class="routerLink" [routerLink]= "['/deal']" [queryParams]="{ id: deal.id }">
-                            <p class="ion-text-wrap titulo">{{deal.name}}</p>
-                            <p class="ion-text-wrap ubicacion">Vence: {{deal.end_date | momentjs}}</p>
-                          </ion-label>
-                          <ion-buttons slot="end">
-                            <ion-button>
-                              <ion-icon style="color: #9C27B0;" name="power-outline"></ion-icon>
-                            </ion-button>
-                          </ion-buttons>
-                        </ion-item>
-                      </ion-card-content>
-                    </ion-card>
-                  </ion-col> -->
                 </ion-row>
             </ion-col>
-          <!-- <ion-col size-lg="4">
+          <ion-col size-lg="4">
               <app-sidebar></app-sidebar>
-          </ion-col> -->
+          </ion-col>
         </ion-row>
     </ion-grid>
 </ion-content>
