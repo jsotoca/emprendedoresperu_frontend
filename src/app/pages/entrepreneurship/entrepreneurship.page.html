@@ -6,6 +6,9 @@
           <ion-col size="12" size-lg="8">
             <ion-row>
               <ion-col *ngIf="entrepreneurship" size="12">
+                <div class="contenedor-titulo">
+                  <p class="contenedor-texto">{{entrepreneurship.name}}</p>
+                </div>
                 <ion-card>
                   <div class="img" style="background-image:url('{{entrepreneurship.cover}}')"></div>                  
                   <ion-card-content>

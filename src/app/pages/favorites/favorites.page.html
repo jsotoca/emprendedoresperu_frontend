@@ -6,12 +6,15 @@
             <ion-col size="12" size-lg="8">
                 <ion-row>
                     <ion-col size="12">
+                      <div class="contenedor-titulo">
+                        <p class="contenedor-texto">Mis Favoritos</p>
+                      </div>
                         <ion-card>
                             <ion-card-content>
                                 <ion-list-header>
                                     <ion-label class="categoria-principal">
                                       <ion-icon style="font-size: 20px;" src="../../../assets/icon/storefront-outline.svg"></ion-icon>
-                                      Mis Emprendimientos Guardados ({{total}})
+                                      Mis Emprendimientos Guardados ({{favoritesService.entrepreneurships.length}})
                                     </ion-label>
                                   </ion-list-header>
                                   <ion-item *ngFor="let entrepreneurship of favoritesService.entrepreneurships">
@@ -30,6 +33,9 @@
                                       </ion-button>
                                     </ion-buttons>
                                 </ion-item>
+                                <ion-item lines="none" *ngIf="favoritesService.entrepreneurships.length == 0" >
+                                  <ion-label class="text ion-text-wrap">Aún no tienes emprendimientos guardados, empieza apoyando alguno 😄!</ion-label>
+                              </ion-item>
                             </ion-card-content>
                         </ion-card>
                     </ion-col>
