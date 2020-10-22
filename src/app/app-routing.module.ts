@@ -88,6 +88,10 @@ const routes: Routes = [
   {
     path: 'rules',
     loadChildren: () => import('./pages/rules/rules.module').then( m => m.RulesPageModule)
+  },
+  {
+    path: 'about',
+    loadChildren: () => import('./pages/about/about.module').then( m => m.AboutPageModule)
   }
 ];
 
