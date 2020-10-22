@@ -1,8 +1,9 @@
+import { TermsPage } from './../terms/terms.page';
 import { UiService } from './../../services/ui.service';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import { IonSlides } from '@ionic/angular';
+import { IonSlides, ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -47,6 +48,7 @@ export class LoginPage implements OnInit {
   constructor(
     private formBuilder:FormBuilder,
     private authService:AuthService,
+    public modalController: ModalController,
     private uiService:UiService
   ) { }
 
@@ -93,6 +95,16 @@ export class LoginPage implements OnInit {
     this.uiService.dismissLoading();
     if(response) this.uiService.routeTo('/account');
     this.registerForm.reset();
+  }
+
+  async showTerms(event){
+    if(event.detail.checked){
+      const modal = await this.modalController.create({
+        component: TermsPage,
+        cssClass: 'auto-height',
+      });
+      return await modal.present();
+    }
   }
 
   showPassword(input: any): any {

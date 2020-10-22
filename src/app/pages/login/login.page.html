@@ -118,7 +118,7 @@
                                   </div>
                                   <div class="separador"></div>
                                   <ion-item lines="none" class="ion-no-padding">
-                                    <ion-checkbox formControlName="terms" ></ion-checkbox>
+                                    <ion-checkbox (ionChange)="showTerms($event)" formControlName="terms" ></ion-checkbox>
                                     <ion-label style="margin-left: 5px;" class="mensaje">Aceptar terminos y condiciones</ion-label>
                                   </ion-item>
                                   <ion-button type="submit" class="btn-registrar" expand="block" [disabled]="registerForm.invalid">
