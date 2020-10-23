@@ -1,3 +1,4 @@
+import { UiService } from './../../services/ui.service';
 import { FavoritesService } from './../../services/favorites.service';
 import { EntrepreneurshipsService } from './../../services/entrepreneurships.service';
 import { CategoriesService } from './../../services/categories.service';
@@ -30,6 +31,7 @@ export class CategoriesPage implements OnInit {
     public actionSheetController: ActionSheetController,
     public router: Router,
     private activatedRoute: ActivatedRoute,
+    public uiService:UiService
   ) { }
 
   getCategory(){
@@ -45,10 +47,16 @@ export class CategoriesPage implements OnInit {
 
   async ionViewDidEnter(){
     this.entrepreneurships = [];
-    const { category, name} = await this.getCategory();
-    this.name = name;
-    this.filters.category = parseInt(category);
-    this.entrepreneurships = await this.entrepreneurshipsService.getEntrepreneurships(this.filters);
+    this.uiService.showLoading('Cargando los emprendimientos 🚀');
+    try {
+      const { category, name} = await this.getCategory();
+      this.name = name;
+      this.filters.category = parseInt(category);
+      this.entrepreneurships = await this.entrepreneurshipsService.getEntrepreneurships(this.filters);
+      this.uiService.dismissLoading();
+    } catch (error) {
+      this.uiService.dismissLoading();
+    }
   }
 
   async presentActionSheet(e) {

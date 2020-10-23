@@ -1,3 +1,4 @@
+import { UiService } from './../../services/ui.service';
 import { FavoritesService } from './../../services/favorites.service';
 import { CategoriesService } from './../../services/categories.service';
 import { EntrepreneurshipsService } from './../../services/entrepreneurships.service';
@@ -31,7 +32,8 @@ export class EntrepreneurshipsPage implements OnInit {
     private favoritesService:FavoritesService,
     public actionSheetController: ActionSheetController,
     public router: Router,
-    private categoriesService:CategoriesService
+    private categoriesService:CategoriesService,
+    public uiService:UiService
   ) { }
 
   ngOnInit() {
@@ -39,8 +41,14 @@ export class EntrepreneurshipsPage implements OnInit {
 
   async ionViewDidEnter(){
     this.entrepreneurships = [];
-    this.categories = await this.categoriesService.getCategories();
-    this.entrepreneurships = await this.entrepreneurshipsService.getEntrepreneurships(this.filters);
+    this.uiService.showLoading('Cargando los emprendimientos 🚀');
+    try {
+      this.categories = await this.categoriesService.getCategories();
+      this.entrepreneurships = await this.entrepreneurshipsService.getEntrepreneurships(this.filters);
+      this.uiService.dismissLoading();
+    } catch (error) {
+      this.uiService.dismissLoading();
+    }
   }
 
   async filterByCategory(id,name){

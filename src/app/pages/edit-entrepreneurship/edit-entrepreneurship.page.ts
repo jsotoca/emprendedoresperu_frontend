@@ -52,18 +52,18 @@ export class EditEntrepreneurshipPage implements OnInit {
   validation_messages = {
     'name': [
       { type: 'required', message: 'El nombre de tu negocio es requerido.' },
-      { type: 'minlength', message: 'El nombre de tu negocio debe tener al menos 5 caracteres.' },
-      { type: 'maxlength', message: 'El nombre de tu negocio debe tener como maximo 45 caracteres.' },
+      { type: 'minlength', message: 'El nombre de tu negocio debe tener al menos 3 caracteres.' },
+      { type: 'maxlength', message: 'El nombre de tu negocio debe tener como maximo 145 caracteres.' },
     ],
     'description': [
       { type: 'required', message: 'La description de tu negocio es requerida.' },
-      { type: 'minlength', message: 'La description de tu negocio debe tener al menos 5 caracteres.' },
-      { type: 'maxlength', message: 'La description de tu negocio debe tener como maximo 45 caracteres.' },
+      { type: 'minlength', message: 'La description de tu negocio debe tener al menos 10 caracteres.' },
+      { type: 'maxlength', message: 'La description de tu negocio debe tener como maximo 145 caracteres.' },
     ],
     'slogan': [
       { type: 'required', message: 'El eslogan de tu negocio es requerido.' },
-      { type: 'minlength', message: 'El eslogan de tu negocio debe tener al menos 5 caracteres.' },
-      { type: 'maxlength', message: 'El eslogan de tu negocio debe tener como maximo 45 caracteres.' },
+      { type: 'minlength', message: 'El eslogan de tu negocio debe tener al menos 10 caracteres.' },
+      { type: 'maxlength', message: 'El eslogan de tu negocio debe tener como maximo 145 caracteres.' },
     ],
     'subcategory': [
       { type: 'required', message: 'La subcategoria de tu negocio es requerida.' },
@@ -126,7 +126,7 @@ export class EditEntrepreneurshipPage implements OnInit {
 
   async ngOnInit() {
     this.saveForm = this.formBuilder.group({
-      name:['',[Validators.required, Validators.minLength(3),Validators.maxLength(45)]],
+      name:['',[Validators.required, Validators.minLength(3),Validators.maxLength(145)]],
       description:['',[Validators.required, Validators.minLength(10),Validators.maxLength(145)]],
       slogan:['',[Validators.required, Validators.minLength(10),Validators.maxLength(145)]],
       phone:['',[Validators.required, Validators.pattern("[0-9]{9}")]],

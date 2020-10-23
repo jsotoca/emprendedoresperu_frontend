@@ -11,9 +11,23 @@
                         </div>
                         <ion-card>
                             <ion-card-content>
-                              <ion-list-header class="categoria-principal">
-                                <ion-label>Miembros del equipo</ion-label>
+                              <ion-list-header class="text">
+                                <ion-label>
+                                    <p class="ion-text-wrap ion-text-justify">Somos un grupo de jovenes estudiantes del noveno ciclo de la UNPRG de la carrera de Ingenieria en computación e Informática. Desarrollamos esta aplicación como parte de nuestro proyecto de Soporte Técnico dictado por la Ing. Janet del Rosario Aquino Lalupú.</p><br>
+                                    <p class="ion-text-wrap ion-text-justify">La finalidad de nuestra aplicación es apoyar en la promoción de los emprendimientos lambayecanos.</p>
+                                </ion-label>
                               </ion-list-header>
+                              <ion-item>
+                                <ion-label class="categoria-principal">Miembros del equipo</ion-label>
+                              </ion-item>
+                              <ion-item lines="none" *ngFor="let member of team">
+                                <ion-avatar style="width: 64px; height: 64px;" class="routerLink" slot="start">
+                                  <img [src]="member.photo">
+                                </ion-avatar>
+                                <ion-label class="routerLink">
+                                  <p class="ion-text-wrap text">{{member.name}}</p>
+                                </ion-label>  
+                            </ion-item>
                             </ion-card-content>
                         </ion-card>
                     </ion-col>

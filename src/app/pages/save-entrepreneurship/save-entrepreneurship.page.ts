@@ -29,18 +29,18 @@ export class SaveEntrepreneurshipPage implements OnInit {
   validation_messages = {
     'name': [
       { type: 'required', message: 'El nombre de tu negocio es requerido.' },
-      { type: 'minlength', message: 'El nombre de tu negocio debe tener al menos 5 caracteres.' },
-      { type: 'maxlength', message: 'El nombre de tu negocio debe tener como maximo 45 caracteres.' },
+      { type: 'minlength', message: 'El nombre de tu negocio debe tener al menos 3 caracteres.' },
+      { type: 'maxlength', message: 'El nombre de tu negocio debe tener como maximo 145 caracteres.' },
     ],
     'description': [
-      { type: 'required', message: 'La description de tu negocio es requerida.' },
-      { type: 'minlength', message: 'La description de tu negocio debe tener al menos 5 caracteres.' },
-      { type: 'maxlength', message: 'La description de tu negocio debe tener como maximo 45 caracteres.' },
+      { type: 'required', message: 'La descripción de tu negocio es requerida.' },
+      { type: 'minlength', message: 'La descripción de tu negocio debe tener al menos 10 caracteres.' },
+      { type: 'maxlength', message: 'La descripción de tu negocio debe tener como maximo 145 caracteres.' },
     ],
     'slogan': [
       { type: 'required', message: 'El eslogan de tu negocio es requerido.' },
-      { type: 'minlength', message: 'El eslogan de tu negocio debe tener al menos 5 caracteres.' },
-      { type: 'maxlength', message: 'El eslogan de tu negocio debe tener como maximo 45 caracteres.' },
+      { type: 'minlength', message: 'El eslogan de tu negocio debe tener al menos 10 caracteres.' },
+      { type: 'maxlength', message: 'El eslogan de tu negocio debe tener como maximo 145 caracteres.' },
     ],
     'subcategory': [
       { type: 'required', message: 'La subcategoria de tu negocio es requerida.' },
@@ -54,7 +54,7 @@ export class SaveEntrepreneurshipPage implements OnInit {
       { type: 'required', message: 'El distrito de tu negocio es requerido.' },
     ],
     'phone': [
-      { type: 'required', message: 'tu teléfono es requerida.' },
+      { type: 'required', message: 'tu teléfono es requerido.' },
       { type: 'pattern', message: 'tu teléfono debe ser fijo o celular. Ejm: 074490954 ó 987654321.' }
     ],
     'logo': [
@@ -92,7 +92,7 @@ export class SaveEntrepreneurshipPage implements OnInit {
 
   async ngOnInit() {
     this.saveForm = this.formBuilder.group({
-      name:['',[Validators.required, Validators.minLength(3),Validators.maxLength(45)]],
+      name:['',[Validators.required, Validators.minLength(3),Validators.maxLength(145)]],
       description:['',[Validators.required, Validators.minLength(10),Validators.maxLength(145)]],
       slogan:['',[Validators.required, Validators.minLength(10),Validators.maxLength(145)]],
       phone:['',[Validators.required, Validators.pattern("[0-9]{9}")]],

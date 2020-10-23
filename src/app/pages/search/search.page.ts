@@ -1,3 +1,4 @@
+import { UiService } from './../../services/ui.service';
 import { SearchService } from './../../services/search.service';
 import { FavoritesService } from './../../services/favorites.service';
 import { EntrepreneurshipsService } from './../../services/entrepreneurships.service';
@@ -29,7 +30,8 @@ export class SearchPage implements OnInit {
     public actionSheetController: ActionSheetController,
     public router: Router,
     private activatedRoute: ActivatedRoute,
-    public searchService:SearchService
+    public searchService:SearchService,
+    public uiService:UiService
   ) { }
 
   
@@ -39,10 +41,16 @@ export class SearchPage implements OnInit {
 
   async ionViewDidEnter(){
     this.entrepreneurships = [];
-    this.searchService.search.subscribe(async(value) => {
-      this.filters.search = value;
-      this.entrepreneurships = await this.entrepreneurshipsService.getEntrepreneurships(this.filters);
-    });
+    this.uiService.showLoading('Cargando los emprendimientos 🚀');
+    try {
+      this.searchService.search.subscribe(async(value) => {
+        this.filters.search = value;
+        this.entrepreneurships = await this.entrepreneurshipsService.getEntrepreneurships(this.filters);
+      });
+      this.uiService.dismissLoading();
+    } catch (error) {
+      this.uiService.dismissLoading();
+    }
   }
 
   async presentActionSheet(e) {
