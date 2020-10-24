@@ -51,7 +51,7 @@ export class CategriesSlidesComponent implements OnInit {
   }
 
   openCategory(c){
-    this.router.navigate(['/categories'],{queryParams:{id:c.id,name:c.name}});
+    this.router.navigate(['/categories'],{queryParams:{id:c.id,name:c.name,image:c.image}});
   }
 
 }

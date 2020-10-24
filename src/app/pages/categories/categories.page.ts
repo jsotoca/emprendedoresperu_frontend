@@ -16,6 +16,7 @@ import { Entrepreneurship, FiltersEntrepreneurships } from 'src/app/interfaces/e
 export class CategoriesPage implements OnInit {
   
   name:string = '';
+  image:string = '';
   entrepreneurships:Entrepreneurship[] = [];
   filters:FiltersEntrepreneurships = {
     page:null,
@@ -35,9 +36,9 @@ export class CategoriesPage implements OnInit {
   ) { }
 
   getCategory(){
-    return new Promise<{category:string,name:string}>((resolve)=>{
+    return new Promise<{category:string,name:string,image:string}>((resolve)=>{
       this.activatedRoute.queryParams.subscribe(params => {
-        const data = {category:params['id'] as string,name:params['name']as string};
+        const data = {category:params['id'] as string,name:params['name']as string,image:params['image']as string};
         resolve(data); 
       });
     });
@@ -49,8 +50,10 @@ export class CategoriesPage implements OnInit {
     this.entrepreneurships = [];
     this.uiService.showLoading('Cargando los emprendimientos 🚀');
     try {
-      const { category, name} = await this.getCategory();
+      const { category, name, image} = await this.getCategory();
       this.name = name;
+      this.image = image;
+      console.log(image);
       this.filters.category = parseInt(category);
       this.entrepreneurships = await this.entrepreneurshipsService.getEntrepreneurships(this.filters);
       this.uiService.dismissLoading();

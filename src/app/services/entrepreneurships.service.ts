@@ -55,6 +55,17 @@ export class EntrepreneurshipsService {
     }
   }
 
+  async hideEntrepeurship(id){
+    try {
+      await this.http.patch<Entrepreneurship>(`${APIURL}/entrepreneurship/desverify/${id}`,{}).toPromise();
+      this.uiService.showToast(`Emprendimiento despublicado sastifactoriamente.`);
+      window.location.reload();
+    } catch (error) {
+      this.uiService.showMessage("Upps...","Ha ocurrido un error al momento de despublicar el emprendimiento, intentalo en un momento o contacta al administrador.")
+      throw error;
+    }
+  }
+
   async unsubscribeEntrepeurship(id){
     try {
       const entrepreneurship = await this.http.delete<Entrepreneurship>(`${APIURL}/entrepreneurship/unsubscribe/${id}`).toPromise();

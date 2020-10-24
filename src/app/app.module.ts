@@ -15,12 +15,14 @@ import { IonicStorageModule } from '@ionic/storage';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import JwtInterceptor from './interceptors/jwt.interceptor';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule, IonicModule.forRoot(), AppRoutingModule,ComponentsModule,
-    HttpClientModule,IonicStorageModule.forRoot({name:'bd_emprendedores'})
+    HttpClientModule,IonicStorageModule.forRoot({name:'bd_emprendedores'}), ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     StatusBar,

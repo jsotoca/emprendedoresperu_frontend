@@ -9,7 +9,7 @@
                     <div class="contenedor-titulo">
                       <p class="contenedor-texto">Mi cuenta</p>
                     </div>
-                    <ion-card>
+                    <ion-card *ngIf="account" >
                       <ion-item lines="none">
                         <ion-avatar class="ion-hide-md-down" slot="start">
                           <img src="../../../assets/icon/equipo.svg">

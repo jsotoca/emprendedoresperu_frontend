@@ -58,6 +58,13 @@ export class AccountPage implements OnInit {
           // this.router.navigate(['/edit-entrepreneurship',{queryParams:{id:e.id}}]);
         }
       }, {
+        text: 'Despublicar emprendimiento',
+        icon: 'eye-off',
+        handler: () => {
+          if(e.isVerified) this.presentAlertConfirmHide(e);
+          else this.uiService.showToast(`${e.name} aún no esta publicado.`);
+        }
+      }, {
         text: 'Eliminar emprendimiento',
         icon: 'trash',
         handler: () => {
@@ -75,7 +82,7 @@ export class AccountPage implements OnInit {
     await actionSheet.present();
   }
 
-  async presentActionSheetUser(e) {
+  async presentActionSheetUser() {
     const actionSheet = await this.actionSheetController.create({
       header: `Menú de usuario`,
       cssClass: 'text',
@@ -121,6 +128,32 @@ export class AccountPage implements OnInit {
           cssClass: 'confirmar-eliminar',
           handler: () => {
             this.entrepreneurshipsService.unsubscribeEntrepeurship(e.id);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  async presentAlertConfirmHide(e) {
+    const alert = await this.alertController.create({
+      cssClass: 'select',
+      header: 'Despublicar emprendimiento',
+      message: `¿Estas seguro de despublicar ${e.name}?`,
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Despublicar',
+          cssClass: 'confirmar-eliminar',
+          handler: () => {
+            this.entrepreneurshipsService.hideEntrepeurship(e.id);
           }
         }
       ]
