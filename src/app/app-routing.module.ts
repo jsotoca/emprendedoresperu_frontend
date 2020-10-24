@@ -1,3 +1,4 @@
+import { ItsmineGuard } from './guards/itsmine.guard';
 import { PublicGuard } from './guards/public.guard';
 import { AuthGuard } from './guards/auth.guard';
 import { NgModule } from '@angular/core';
@@ -74,7 +75,7 @@ const routes: Routes = [
   },
   {
     path: 'edit-entrepreneurship',
-    canActivate:[AuthGuard],
+    canActivate:[AuthGuard,ItsmineGuard],
     loadChildren: () => import('./pages/edit-entrepreneurship/edit-entrepreneurship.module').then( m => m.EditEntrepreneurshipPageModule)
   },
   {

@@ -1,5 +1,5 @@
 import { environment } from './../../environments/environment';
-import { IDatosActuales, IOk } from './../interfaces/auth.interface';
+import { IDatosActuales, IOk, IUser } from './../interfaces/auth.interface';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -16,6 +16,7 @@ export class AuthService {
 
   // public datosActuales = new BehaviorSubject<IDatosActuales>(null);
   public currentToken = new BehaviorSubject<string>(null);
+  public currentUser = new BehaviorSubject<IUser>(null);
 
   constructor(
     private http:HttpClient,
@@ -26,9 +27,11 @@ export class AuthService {
 
   async ingresar(email:string,password:string){
     try {
-      const { token } = await this.http.post<IAuthResponse>(`${APIURL}/auth/signin`,{email,password}).toPromise();
+      const { token, user } = await this.http.post<IAuthResponse>(`${APIURL}/auth/signin`,{email,password}).toPromise();
       this.currentToken.next(token);
+      this.currentUser.next(user);
       this.storage.set('currentToken',this.currentToken.value);
+      this.storage.set('currentUser',this.currentUser.value);
       this.router.navigate(['/account']);
     } catch (error) {
       if(error.status == 401) this.uiService.showMessage("Datos incorrectos","El email y/o contreseña no son correctos.")
@@ -39,9 +42,11 @@ export class AuthService {
 
   async register(fullname:string,phone:string,email:string,password:string){
     try {
-      const { ok,token } = await this.http.post<IAuthResponse>(`${APIURL}/auth/signup`,{fullname,phone,email,password}).toPromise();
+      const { ok,token,user } = await this.http.post<IAuthResponse>(`${APIURL}/auth/signup`,{fullname,phone,email,password}).toPromise();
       this.currentToken.next(token);
+      this.currentUser.next(user);
       this.storage.set('currentToken',this.currentToken.value);
+      this.storage.set('currentUser',this.currentUser.value);
       this.uiService.showMessage("Registro exitoso","Te acabas de registrar como nuevo emprendedor 💖")
       return ok;
     } catch (error) {
@@ -86,6 +91,20 @@ export class AuthService {
   async loadToken(){
     const token = await this.storage.get('currentToken');
     if(token) this.currentToken.next(token);
+  }
+
+  async validateUserGuard(){
+    const currentData = await this.storage.get('currentUser');
+    return (currentData)?true:false;
+  }
+
+  async loadUser(){
+    const user = await this.storage.get('currentUser');
+    if(user) this.currentUser.next(user);
+  }
+
+  getUser(){
+    return this.currentUser.value;
   }
 
   getToken(){
