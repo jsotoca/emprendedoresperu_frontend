@@ -1,6 +1,6 @@
-import { CategoriesService } from './../../services/categories.service';
+import { AdsService } from './../../services/ads.service';
 import { Component, OnInit } from '@angular/core';
-import { Category } from 'src/app/interfaces/category.interface';
+import { Ads } from 'src/app/interfaces/ads.interface';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,14 +9,18 @@ import { Category } from 'src/app/interfaces/category.interface';
 })
 export class SidebarComponent implements OnInit {
 
-  categories:Category[] = [];
+  ads:Ads[] = [];
+  public:Ads = null;
 
   constructor(
-    private categoriesService:CategoriesService
+    private adsService:AdsService
   ) { }
 
   async ngOnInit() {
-    this.categories = await this.categoriesService.getCategories();
+    this.ads = [];
+    this.ads = await this.adsService.getAds();
+    this.ads = this.ads.filter(a => a.position == 2);
+    this.public = this.ads[0];
   }
 
 }

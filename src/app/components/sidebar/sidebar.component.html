@@ -7,7 +7,7 @@
           Bienvenidos a Publilam, la app que busca apoyar a los nuevos emprendedores lambayecanos que nacieron ante la necesidad de salir adelante por el covid.
         </p>
         <!-- <hr size="5px" color="#95a5a6" /> -->
-        <ion-img src="../../../assets/img/big.jpg"></ion-img>
+        <ion-img *ngIf="public"  [src]="public.image"></ion-img>
         <h3 class="text ion-text-center">Anuncia aquí</h3>
         <p style="padding: 7px;" class="text ion-text-wrap">
           Con tu patrocinio nos ayudas a pagar el servidor que almacena los datos y las imagenes de las publicidades.

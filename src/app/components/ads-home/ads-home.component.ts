@@ -1,3 +1,5 @@
+import { Ads } from './../../interfaces/ads.interface';
+import { AdsService } from './../../services/ads.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdsHomeComponent implements OnInit {
 
+  ads:Ads[] = [];
+
   slideOpts = {
     initialSlide: 0,
     slidesPerView: 1,
@@ -14,8 +18,14 @@ export class AdsHomeComponent implements OnInit {
     speed: 700,
   };
 
-  constructor() { }
+  constructor(
+    private adsService:AdsService
+  ) { }
 
-  ngOnInit() {}
+  async ngOnInit() {
+    this.ads = [];
+    this.ads = await this.adsService.getAds();
+    this.ads = this.ads.filter(a => a.position == 1);
+  }
 
 }
