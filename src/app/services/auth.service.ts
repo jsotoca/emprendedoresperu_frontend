@@ -1,5 +1,5 @@
 import { environment } from './../../environments/environment';
-import { IDatosActuales } from './../interfaces/auth.interface';
+import { IDatosActuales, IOk } from './../interfaces/auth.interface';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -47,6 +47,18 @@ export class AuthService {
     } catch (error) {
       this.uiService.showMessage("Upps...","Ha ocurrido un error al momento de registrarse, intentalo en un momento o contacta al administrador.")
       console.log(error.status);
+      throw error;
+    }
+  }
+
+  async forgotPassword(email:string){
+    this.logout();
+    try {
+      const { ok } = await this.http.post<IOk>(`${APIURL}/auth/forgotpassword`,{email}).toPromise();
+      if(ok) this.uiService.showToast('Email de reseteo de contraseña enviado con exito');
+    } catch (error) {
+      if(error.status == 401) this.uiService.showMessage("Datos incorrectos","El email no se encuentra registrado.")
+      else this.uiService.showMessage("Upps...","El email no se encuentra registrado.")
       throw error;
     }
   }

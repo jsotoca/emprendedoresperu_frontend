@@ -49,11 +49,15 @@
                                 <ion-button type="submit" class="btn-ingresar" expand="block" type="submit" [disabled]="loginForm.invalid">
                                     Ingresar a mi cuenta
                                 </ion-button>
-                                <div style="margin-top: 5px; margin-bottom: 15px; margin-left: 1px;">
-                                    <ion-label style="margin-left: 1px !important;" class="olvide">
+                                <div style="margin-bottom: 5px; margin-left: 1px;">
+                                    <ion-button (click)="showResetPassword()" fill="clear">
+                                      <ion-label style="text-transform: none; color: #E91E63;" class="text"> Olvide mi contraseña </ion-label>
+                                      <ion-icon slot="end" name="sad-outline"></ion-icon>
+                                    </ion-button>
+                                    <!-- <ion-label style="margin-left: 1px !important;" class="olvide">
                                       Olvide mi contraseña
                                       <ion-icon name="sad-outline"></ion-icon>
-                                    </ion-label>
+                                    </ion-label> -->
                                 </div>
                             </ion-card-content>
                           </ion-card>

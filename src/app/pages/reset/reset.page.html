@@ -1,0 +1,25 @@
+<div class="inner-content">
+  <div class="contenedor-titulo">
+    <p class="contenedor-texto" style="color: #242429;">Reseteo de contraseña</p>
+  </div>
+  <p class="text" style="color: #242429;">Ingrese su email con el que se conecta a publilam para poder enviarle un enlace que le permita resetear su contraseña.</p>
+  <p class="text" style="color: #242429;">Si no tiene acceso a su email puede contactarse con el administrador jsotoca@unprg.edu.pe</p>
+  <form style="width: 100%;" [formGroup]="resetForm" (ngSubmit)="resetPassword()">
+    <div class="separador"></div>
+    <ion-item lines="none" class="elemento">   
+        <ion-icon name="mail-outline" slot="start"></ion-icon>
+        <ion-input class="entrada" placeholder="Ingresar email" required formControlName="email" type="email"></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.email">
+        <div class="error-message" *ngIf="resetForm.get('email').hasError(validation.type) && (resetForm.get('email').dirty || resetForm.get('email').touched)">
+            {{ validation.message }}
+        </div>
+        </ng-container>
+    </div>
+    <div class="separador"></div>
+    <ion-button type="submit" class="btn-resetear" expand="block" type="submit" [disabled]="resetForm.invalid">
+      Enviar email de reseteo de contraseña
+  </ion-button>              
+  </form>
+</div>

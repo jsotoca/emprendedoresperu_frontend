@@ -29,7 +29,7 @@ export class UiService {
       buttons: [
         {
           cssClass: 'alert-confirm-button',
-          text: 'Confirmar'
+          text: 'Aceptar'
         }
       ]
     });

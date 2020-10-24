@@ -92,6 +92,10 @@ const routes: Routes = [
   {
     path: 'about',
     loadChildren: () => import('./pages/about/about.module').then( m => m.AboutPageModule)
+  },
+  {
+    path: 'reset',
+    loadChildren: () => import('./pages/reset/reset.module').then( m => m.ResetPageModule)
   }
 ];
 

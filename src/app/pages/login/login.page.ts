@@ -1,3 +1,4 @@
+import { ResetPage } from './../reset/reset.page';
 import { TermsPage } from './../terms/terms.page';
 import { UiService } from './../../services/ui.service';
 import { AuthService } from './../../services/auth.service';
@@ -109,6 +110,14 @@ export class LoginPage implements OnInit {
 
   showPassword(input: any): any {
     input.type = input.type === 'password' ?  'text' : 'password';
+  }
+
+  async showResetPassword(){
+    const modal = await this.modalController.create({
+      component: ResetPage,
+      cssClass: 'auto-height',
+    });
+    return await modal.present();
   }
 
 }

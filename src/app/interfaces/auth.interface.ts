@@ -3,6 +3,11 @@ export interface IAuthResponse {
     user: IUser;
     token: string;
 }
+
+export interface IOk {
+    ok:boolean;
+    message?:string;
+}
   
 export interface IUser {
     id: string;
