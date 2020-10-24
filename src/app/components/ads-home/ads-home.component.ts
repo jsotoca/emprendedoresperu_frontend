@@ -14,7 +14,9 @@ export class AdsHomeComponent implements OnInit {
   slideOpts = {
     initialSlide: 0,
     slidesPerView: 1,
-    autoplay:true,
+    autoplay: {
+      disableOnInteraction: false
+    },
     speed: 700,
   };
 
@@ -26,6 +28,10 @@ export class AdsHomeComponent implements OnInit {
     this.ads = [];
     this.ads = await this.adsService.getAds();
     this.ads = this.ads.filter(a => a.position == 1);
+  }
+
+  slidesDidLoad(slides) {
+    slides.startAutoplay();
   }
 
 }

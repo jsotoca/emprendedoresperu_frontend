@@ -184,12 +184,25 @@ export class EditEntrepreneurshipPage implements OnInit {
 
   obtenerLogo($event){
     if ($event.target.files && $event.target.files[0]) {
-      this.logo = $event.target.files[0];
-      let reader = new FileReader();
-        reader.onload = ($event:any) => {
-          this.logo_preview = $event.target.result;
-        }
+      let invalido:boolean = false;
+      if($event.target.files[0].size>4194304){
+        this.uiService.showMessage('Archivo demasiado grande','el máximo permitido es de 4MB');
+        invalido = true;
+        $event.target.value = '';
+      }
+      if($event.target.files[0].type.indexOf("image")==-1){
+        this.uiService.showMessage('Formato de imagen incorrecto','El archivo que ingresaste no es una imagen');
+        invalido = true;
+        $event.target.value = '';
+      }  
+      if(!invalido) {
+        this.logo = $event.target.files[0];
+        let reader = new FileReader();
+          reader.onload = ($event:any) => {
+            this.logo_preview = $event.target.result;
+          }
         reader.readAsDataURL($event.target.files[0]);
+      }
     }else {
       this.logo = null;
       this.saveForm.controls.logo.setValue(this.entrepreneurship.logo);
@@ -199,12 +212,25 @@ export class EditEntrepreneurshipPage implements OnInit {
 
   obtenerCover($event){
     if ($event.target.files && $event.target.files[0]) {
-      this.cover = $event.target.files[0];
-      let reader = new FileReader();
-        reader.onload = ($event:any) => {
-          this.cover_preview = $event.target.result;
-        }
-        reader.readAsDataURL($event.target.files[0]);
+      let invalido:boolean = false;
+      if($event.target.files[0].size>4194304){
+        this.uiService.showMessage('Archivo demasiado grande','el máximo permitido es de 4MB');
+        invalido = true;
+        $event.target.value = '';
+      }
+      if($event.target.files[0].type.indexOf("image")==-1){
+        this.uiService.showMessage('Formato de imagen incorrecto','El archivo que ingresaste no es una imagen');
+        invalido = true;
+        $event.target.value = '';
+      }  
+      if(!invalido) {
+        this.cover = $event.target.files[0];
+        let reader = new FileReader();
+          reader.onload = ($event:any) => {
+            this.cover_preview = $event.target.result;
+          }
+          reader.readAsDataURL($event.target.files[0]);
+      }
     }else {
       this.cover = null;
       this.saveForm.controls.cover.setValue(this.entrepreneurship.cover);

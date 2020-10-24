@@ -1,4 +1,4 @@
-<ion-slides *ngIf="ads"  mode="ios" pager="ios" [options]="slideOpts">
+<ion-slides *ngIf="ads"  mode="ios" pager="ios" [options]="slideOpts" #mySlider (ionSlidesDidLoad)="slidesDidLoad(mySlider)">
   <ion-slide *ngFor="let a of ads" >
       <ion-img class="banner" [src]="a.image"></ion-img>
   </ion-slide>

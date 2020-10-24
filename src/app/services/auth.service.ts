@@ -63,6 +63,21 @@ export class AuthService {
     }
   }
 
+  async resetPassword(email:string,token:string,password:string){
+    try {
+      const {ok} = await this.http.post<IOk>(`${APIURL}/auth/resetpassword/${email}/${token}`,{password}).toPromise();
+      if(ok){
+        this.uiService.showToast('Contraseña actualizada con exito. Redirigiéndote al ingreso.');
+        this.logout();
+      }else{
+        this.uiService.showMessage("Upps...","Los datos de verificación son incorrectos.")
+      } 
+    } catch (error) {
+      this.uiService.showMessage("Upps...","Los datos de verificación son incorrectos.")
+      throw error;
+    }
+  }
+
   async validateUser(){
     const currentData = await this.storage.get('currentToken');
     return (currentData)?true:false;

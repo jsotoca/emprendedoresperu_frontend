@@ -113,11 +113,33 @@ export class SaveEntrepreneurshipPage implements OnInit {
   }
 
   obtenerLogo($event){
-    this.logo = $event.target.files[0];
+    let invalido:boolean = false;
+    if($event.target.files[0].size>4194304){
+      this.uiService.showMessage('Archivo demasiado grande','el máximo permitido es de 4MB');
+      invalido = true;
+      $event.target.value = '';
+    }
+    if($event.target.files[0].type.indexOf("image")==-1){
+      this.uiService.showMessage('Formato de imagen incorrecto','El archivo que ingresaste no es una imagen');
+      invalido = true;
+      $event.target.value = '';
+    }  
+    if(!invalido) this.logo = $event.target.files[0];
   }
 
   obtenerCover($event){
-    this.cover = $event.target.files[0];
+    let invalido:boolean = false;
+    if($event.target.files[0].size>4194304){
+      this.uiService.showMessage('Archivo demasiado grande','el máximo permitido es de 4MB');
+      invalido = true;
+      $event.target.value = '';
+    }
+    if($event.target.files[0].type.indexOf("image")==-1){
+      this.uiService.showMessage('Formato de imagen incorrecto','El archivo que ingresaste no es una imagen');
+      invalido = true;
+      $event.target.value = '';
+    }  
+    if(!invalido) this.cover = $event.target.files[0];
   }
 
   async categoryChange(event){

@@ -13,7 +13,7 @@ export class EntrepreneurshipsRecentComponent implements OnInit {
   slidesOptions = null;
   filters:FiltersEntrepreneurships = {
     page:null,
-    limit:null,
+    limit:10,
     category:null,
     search:null,
     subcategory:null

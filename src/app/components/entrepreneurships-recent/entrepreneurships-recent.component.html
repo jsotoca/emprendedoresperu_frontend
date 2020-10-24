@@ -1,7 +1,7 @@
 <ion-list class="slider-box">
   <ion-list-header>
       <ion-label class="titulo-seccion">Emprendimientos Nuevos</ion-label>
-      <ion-button class="detalle-titulo-seccion">Ver todos >></ion-button>
+      <ion-button [routerLink]= "['/entrepreneurships']" class="detalle-titulo-seccion">Ver todos</ion-button>
   </ion-list-header>
   <ion-slides *ngIf="entrepreneurships.length"  [options]="slidesOptions">
       <ion-slide *ngFor="let entrepreneurship of entrepreneurships" >
