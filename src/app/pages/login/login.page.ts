@@ -92,10 +92,15 @@ export class LoginPage implements OnInit {
   async register(){
     const {fullname,phone,email,password} = this.registerForm.value;
     await this.uiService.showLoading(`Espera un toque mientras te registramos ${fullname} 😄`);
-    const response = await this.authService.register(fullname,phone,email,password);
+    try {
+      const response = await this.authService.register(fullname,phone,email,password);
+      this.uiService.dismissLoading();
+      if(response) this.uiService.routeTo('/account');
+      this.registerForm.reset();
+    } catch (error) {
+      this.uiService.dismissLoading();
+    }
     this.uiService.dismissLoading();
-    if(response) this.uiService.routeTo('/account');
-    this.registerForm.reset();
   }
 
   async showTerms(event){

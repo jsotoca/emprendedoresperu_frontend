@@ -50,8 +50,8 @@ export class AuthService {
       this.uiService.showMessage("Registro exitoso","Te acabas de registrar como nuevo emprendedor 💖")
       return ok;
     } catch (error) {
-      this.uiService.showMessage("Upps...","Ha ocurrido un error al momento de registrarse, intentalo en un momento o contacta al administrador.")
-      console.log(error.status);
+      if(error.status == 409) this.uiService.showMessage("Upps...","Email ya registrado en nuestra base de datos.");
+      else this.uiService.showMessage("Upps...","Ha ocurrido un error al momento de registrarse, intentalo en un momento o contacta al administrador.")
       throw error;
     }
   }
