@@ -35,12 +35,12 @@ export class SaveEntrepreneurshipPage implements OnInit {
     'description': [
       { type: 'required', message: 'La descripción de tu negocio es requerida.' },
       { type: 'minlength', message: 'La descripción de tu negocio debe tener al menos 10 caracteres.' },
-      { type: 'maxlength', message: 'La descripción de tu negocio debe tener como maximo 145 caracteres.' },
+      { type: 'maxlength', message: 'La descripción de tu negocio debe tener como maximo 500 caracteres.' },
     ],
     'slogan': [
       { type: 'required', message: 'El eslogan de tu negocio es requerido.' },
       { type: 'minlength', message: 'El eslogan de tu negocio debe tener al menos 10 caracteres.' },
-      { type: 'maxlength', message: 'El eslogan de tu negocio debe tener como maximo 145 caracteres.' },
+      { type: 'maxlength', message: 'El eslogan de tu negocio debe tener como maximo 500 caracteres.' },
     ],
     'subcategory': [
       { type: 'required', message: 'La subcategoria de tu negocio es requerida.' },
@@ -93,8 +93,8 @@ export class SaveEntrepreneurshipPage implements OnInit {
   async ngOnInit() {
     this.saveForm = this.formBuilder.group({
       name:['',[Validators.required, Validators.minLength(3),Validators.maxLength(145)]],
-      description:['',[Validators.required, Validators.minLength(10),Validators.maxLength(145)]],
-      slogan:['',[Validators.required, Validators.minLength(10),Validators.maxLength(145)]],
+      description:['',[Validators.required, Validators.minLength(10),Validators.maxLength(500)]],
+      slogan:['',[Validators.required, Validators.minLength(10),Validators.maxLength(500)]],
       phone:['',[Validators.required, Validators.pattern("[0-9]{9}")]],
       subcategory:['',[Validators.required]],
       address:[''],

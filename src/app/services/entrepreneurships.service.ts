@@ -55,6 +55,7 @@ export class EntrepreneurshipsService {
       const { ok }  = await this.http.patch<IEntrepreneurshipSearchResponse>(`${APIURL}/entrepreneurship`,object).toPromise();
       if(ok) this.uiService.showMessage("Registro exitoso","Tu emprendimiento fue registrado con exito.");
     } catch (error) {
+      console.log(error);
       this.uiService.showMessage("Upps...","Ha ocurrido un error al momento de registrar el emprendimiento, intentalo en un momento o contacta al administrador.")
       throw error;
     }

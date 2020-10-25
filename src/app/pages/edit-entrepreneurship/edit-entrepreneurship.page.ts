@@ -20,7 +20,7 @@ import { ActivatedRoute } from '@angular/router';
 export class EditEntrepreneurshipPage implements OnInit {
 
   id:string;
-  entrepreneurship:Entrepreneurship;
+  entrepreneurship:Entrepreneurship = {};
   saveForm:FormGroup;
   logo:File;
   cover:File;
@@ -58,12 +58,12 @@ export class EditEntrepreneurshipPage implements OnInit {
     'description': [
       { type: 'required', message: 'La description de tu negocio es requerida.' },
       { type: 'minlength', message: 'La description de tu negocio debe tener al menos 10 caracteres.' },
-      { type: 'maxlength', message: 'La description de tu negocio debe tener como maximo 145 caracteres.' },
+      { type: 'maxlength', message: 'La description de tu negocio debe tener como maximo 500 caracteres.' },
     ],
     'slogan': [
       { type: 'required', message: 'El eslogan de tu negocio es requerido.' },
       { type: 'minlength', message: 'El eslogan de tu negocio debe tener al menos 10 caracteres.' },
-      { type: 'maxlength', message: 'El eslogan de tu negocio debe tener como maximo 145 caracteres.' },
+      { type: 'maxlength', message: 'El eslogan de tu negocio debe tener como maximo 500 caracteres.' },
     ],
     'subcategory': [
       { type: 'required', message: 'La subcategoria de tu negocio es requerida.' },
@@ -127,8 +127,8 @@ export class EditEntrepreneurshipPage implements OnInit {
   async ngOnInit() {
     this.saveForm = this.formBuilder.group({
       name:['',[Validators.required, Validators.minLength(3),Validators.maxLength(145)]],
-      description:['',[Validators.required, Validators.minLength(10),Validators.maxLength(145)]],
-      slogan:['',[Validators.required, Validators.minLength(10),Validators.maxLength(145)]],
+      description:['',[Validators.required, Validators.minLength(10),Validators.maxLength(500)]],
+      slogan:['',[Validators.required, Validators.minLength(10),Validators.maxLength(500)]],
       phone:['',[Validators.required, Validators.pattern("[0-9]{9}")]],
       subcategory:['',[Validators.required]],
       address:[''],
@@ -156,10 +156,11 @@ export class EditEntrepreneurshipPage implements OnInit {
     console.log(this.entrepreneurship);
     this.logo_preview = this.entrepreneurship.logo;
     this.cover_preview = this.entrepreneurship.cover;
-    this.selectedDistrict = this.entrepreneurship.district.id;
+    this.selectedDistrict = this.entrepreneurship.district.id || 1;
     const { category } = await this.subcategoriesService.searchSubcategory(this.entrepreneurship.subcategory.id);
     this.category = category;
     await this.categoryChange(null,this.category.id);
+    this.selectedSubcategory = this.entrepreneurship.subcategory.id || 1;
     this.subcategory = this.entrepreneurship.subcategory;
     this.district = this.entrepreneurship.district;
     this.marcarTags();
@@ -168,11 +169,11 @@ export class EditEntrepreneurshipPage implements OnInit {
       description:this.entrepreneurship.description,
       slogan:this.entrepreneurship.slogan,
       phone:this.entrepreneurship.phone,
-      subcategory:this.entrepreneurship.subcategory,
+      subcategory:this.entrepreneurship.subcategory.id,
       address:this.entrepreneurship.address,
       logo:this.entrepreneurship.logo,
       cover:this.entrepreneurship.logo,
-      district:this.entrepreneurship.district,
+      district:this.entrepreneurship.district.id,
       facebook:this.entrepreneurship.facebook,
       twitter:this.entrepreneurship.twitter,
       youtube:this.entrepreneurship.youtube,
@@ -261,10 +262,10 @@ export class EditEntrepreneurshipPage implements OnInit {
     let data = {};
     let tagIds = [];
     let flag:boolean = false;
-
     for(let field in this.saveForm.value){
       if(this.saveForm.value[field]) data[field] = this.saveForm.value[field];
     }
+    // data['facebook'] = (this.saveForm.value['facebook'] == '')? '':this.saveForm.value['facebook']
     this.tags.forEach(t => {
       if(t.checked){
         tagIds.push(t.id)
@@ -288,6 +289,7 @@ export class EditEntrepreneurshipPage implements OnInit {
       }
       data["tags"] = tagIds;
       data["id"] = this.entrepreneurship.id;
+      console.log(data);
       const entrepreneurship = createFormData(data);
       await this.uiService.showLoading(`guardando los datos de tu negocio 🚀`);
       try {

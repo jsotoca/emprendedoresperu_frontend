@@ -68,7 +68,7 @@
                               <div class="separador"></div>
                               <ion-item lines="none" class="elemento">   
                                 <ion-icon name="browsers-outline"></ion-icon>
-                                <ion-select [value]="subcategory.id" class="select-global" style="--placeholder-opacity: 0.5" placeholder="Subcategoría**" formControlName="subcategory" disabled ="{{!haveCategories}}">
+                                <ion-select [value]="selectedSubcategory" class="select-global" style="--placeholder-opacity: 0.5" placeholder="Subcategoría**" formControlName="subcategory" disabled ="{{!haveCategories}}">
                                   <ion-select-option *ngFor="let subcategory of subcategories"  [value]="subcategory.id">{{subcategory.name}}</ion-select-option>
                                 </ion-select>
                               </ion-item>
@@ -256,8 +256,8 @@
 
                           
 
-                          <ion-button type="submit" class="btn-registrar" expand="block" [disabled]="saveForm.invalid">
-                            Guardar
+                          <ion-button class="text" type="submit" class="btn-registrar" expand="block" [disabled]="saveForm.invalid">
+                            Editar emprendimiento
                             <ion-icon slot="end" name="save-outline"></ion-icon>
                           </ion-button>
                         </ion-card-content>
