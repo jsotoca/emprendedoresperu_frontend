@@ -93,26 +93,15 @@ export class EntrepreneurshipPage implements OnInit {
   }
 
   share(){
-    if(this.platform.is("mobile")){
-      this.socialSharing.share(
-        `hola! te recomiendo visitar ${this.entrepreneurship.name}`,
-        `Apoya a un nuevo emprendimiento lambayecano!`,
-        this.entrepreneurship.logo,
-        `https://publilam.com/entrepreneurship?id=${this.id}`
-      )
-      .then(res => console.log('mensaje enviado!', res))
-      .catch(err => {this.uiService.showMessage('No Disponible','El servicio no se encuentra disponible en estos momentos.')});
-    }else{
-      if (navigator.share) {
-        navigator.share({
-          title: this.entrepreneurship.name,
-          text: 'Visita este nuevo emprendimiento lambayecano!.',
-          url: `https://publilam.com/entrepreneurship?id=${this.id}`,
-        })
-          .then(() => console.log('Mensaje enviado'))
-          .catch((error) => this.uiService.showMessage('No Disponible','El servicio no se encuentra disponible en estos momentos.'));
-      }
-    }
+    navigator.share({
+      'title': 'Optional title',
+      'text': 'Optional message',
+      'url': 'http://www.myurl.com'
+    }).then(function() {
+      console.log('Successful share');
+    }).catch(function(error) {
+      console.log('Error sharing:', error)
+    });
   }
 
   saveEntrepreneurship(){

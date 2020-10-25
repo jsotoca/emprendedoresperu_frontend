@@ -12,15 +12,15 @@
                         <ion-card>
                             <ion-card-content>
                                 <ion-row *ngIf="categories.length">
-                                    <ion-col  *ngFor="let category of categories" size="4" size-lg="2">
+                                    <ion-col  *ngFor="let category of categories" size="4" size-lg="3">
                                         <ion-card class="card">
                                             <ion-tab-button class="categoria-principal" (click)="filterByCategory(category.id,category.name)">
                                                 <ion-icon style="font-size: 64px;" [src]="category.icon"></ion-icon>
-                                                <ion-label class="ion-text-wrap">{{category.name}}</ion-label>
+                                                <ion-label class="ion-text-center ion-text-wrap">{{category.name}}</ion-label>
                                             </ion-tab-button> 
                                            </ion-card>
                                     </ion-col>
-                                    <ion-col size="4" size-lg="2">
+                                    <ion-col size="4" size-lg="3">
                                         <ion-card class="card">
                                             <ion-tab-button class="categoria-principal" (click)="filterByCategory(null,'Todos')">
                                                 <ion-icon style="font-size: 64px;" src="../../../assets/icon/happy.svg"></ion-icon>
@@ -45,7 +45,7 @@
                                       <img [src]="entrepreneurship.logo">
                                     </ion-thumbnail>
                                     <ion-label class="routerLink">
-                                      <p class="ion-text-wrap titulo">{{entrepreneurship.name}}</p>
+                                      <p [routerLink]= "['/entrepreneurship']" [queryParams]="{ id: entrepreneurship.id}" class="ion-text-wrap titulo routerLink">{{entrepreneurship.name}}</p>
                                       <p class="ion-text-wrap ubicacion"><b>Descripción:</b> {{entrepreneurship.description}}</p>
                                       <p class="ion-text-wrap ubicacion"><b>Subcategoria:</b> {{entrepreneurship.subcategory.name}} -<b>Teléfono:</b> {{entrepreneurship.phone}}</p>
                                       <p class="ion-text-wrap ubicacion"><b>Ubicación:</b> {{(entrepreneurship.address)?entrepreneurship.address:'Sin local'}} - {{entrepreneurship.district.district}}</p>

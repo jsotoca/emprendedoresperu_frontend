@@ -29,6 +29,12 @@ export class EntrepreneurshipsService {
     return data;
   }
 
+  getEntrepreneurshipsRecents(){
+    let url = `${APIURL}/entrepreneurship/top/recent`;
+    return this.http.get<IEntrepreneurshipResponse>(url);
+    // return data;
+  }
+
   async searchEntrepreneurship(id:string){
     const { entrepreneurship } = await this.http.get<IEntrepreneurshipSearchResponse>(`${APIURL}/entrepreneurship/search/${id}`).toPromise();
     return entrepreneurship;

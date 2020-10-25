@@ -37,18 +37,12 @@ export class CategriesSlidesComponent implements OnInit {
 
   checkScreen(){
     if(window.innerWidth>=960){
-        return 6;
+        return 5;
     }else{
         return 3.3;
     }
   }
 
-  slidePrev() {
-    this.slides.slidePrev();
-  }
-  slideNext() {
-    this.slides.slideNext();
-  }
 
   openCategory(c){
     this.router.navigate(['/categories'],{queryParams:{id:c.id,name:c.name,image:c.image}});

@@ -24,7 +24,7 @@ export class EntrepreneurshipsRecentComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
-    this.entrepreneurships = await this.entrepreneurshipsService.getEntrepreneurships(this.filters);
+    this.loadData();
     this.slidesOptions = {
       initialSlide: 0,
       direction: 'horizontal',
@@ -33,6 +33,12 @@ export class EntrepreneurshipsRecentComponent implements OnInit {
       freeMode: true,
       loop: false
     };
+  }
+
+  loadData(){
+  this.entrepreneurshipsService.getEntrepreneurshipsRecents().subscribe(e =>{
+    this.entrepreneurships = e.data;
+  })
   }
 
   checkScreen(){

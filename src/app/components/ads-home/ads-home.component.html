@@ -1,8 +1,11 @@
-<ion-slides *ngIf="ads"  mode="ios" pager="ios" [options]="slideOpts" #mySlider (ionSlidesDidLoad)="slidesDidLoad(mySlider)">
-  <ion-slide *ngFor="let a of ads" >
-      <ion-img class="banner" [src]="a.image"></ion-img>
-  </ion-slide>
-  <!-- <ion-slide>
-      <ion-img class="banner" src="../../../assets/img/big.jpg"></ion-img>
-  </ion-slide> -->
-</ion-slides>
+<ion-grid fixed>
+  <ion-row>
+    <ion-col size="12">
+      <ion-slides *ngIf="ads"  mode="ios" pager="ios" [options]="slideOpts" #mySlider (ionSlidesDidLoad)="slidesDidLoad(mySlider)">
+        <ion-slide *ngFor="let a of ads" >
+            <ion-img class="banner" [src]="a.image"></ion-img>
+        </ion-slide>
+      </ion-slides>
+    </ion-col>
+  </ion-row>
+</ion-grid>

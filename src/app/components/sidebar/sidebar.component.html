@@ -1,7 +1,7 @@
 <ion-row>
   <ion-col size="12">
       <ion-card>
-        <ion-img src="../../../assets/img/whopper.jpg"></ion-img>
+        <ion-img src="../../../assets/img/banner.png"></ion-img>
         <h3 class="text ion-text-center">Publilam</h3>
         <p style="padding: 7px;" class="text ion-text-wrap">
           Bienvenidos a Publilam, la app que busca apoyar a los nuevos emprendedores lambayecanos que nacieron ante la necesidad de salir adelante por el covid.
@@ -14,25 +14,25 @@
         </p>
         <ion-img src="../../../assets/img/redes_sociales.jpg"></ion-img>
         <h3 class="text ion-text-center">Nuestras redes sociales</h3>
-        <ion-item   lines="none" button detail>
-          <ion-icon class="facebook" slot="start" name="logo-facebook"></ion-icon>
+        <ion-item   lines="none"  (click)="openSocial('https://web.facebook.com/PubliLam-104978638076407/')" button detail>
+          <ion-icon class="facebook"  slot="start" name="logo-facebook"></ion-icon>
           <ion-label class="facebook detalle">fb.com/publilam</ion-label>
         </ion-item>
-        <ion-item  lines="none" button detail>
+        <ion-item  lines="none" (click)="openSocial('https://twitter.com/LamPubli')" button detail>
           <ion-icon class="twitter" slot="start" name="logo-twitter"></ion-icon>
           <ion-label class="twitter detalle">twitter.com/publilam</ion-label> 
         </ion-item>
-        <ion-item  lines="none" button detail>
+        <ion-item  lines="none" (click)="openSocial('https://www.youtube.com/channel/UCZBDVOi27m43oZffZWe6X9w')" button detail>
           <ion-icon class="youtube" slot="start" name="logo-youtube"></ion-icon>
           <ion-label class="youtube detalle">youtube.com/publilam</ion-label>
         </ion-item>
-        <ion-item  lines="none" button detail>
+        <ion-item  lines="none" (click)="openSocial('https://www.instagram.com/apppublilam/')" button detail>
           <ion-icon class="instagram" slot="start" name="logo-instagram"></ion-icon>
           <ion-label class="instagram detalle">instagram.com/publilam</ion-label>
         </ion-item>
-        <ion-item  lines="none" button detail>
+        <ion-item  lines="none" (click)="openSocial('https://www.tiktok.com/@publilam?lang=es')"  button detail>
           <ion-icon class="tiktok" slot="start" name="logo-tiktok"></ion-icon>
-          <ion-label class="tiktok detalle">tiktok.com/publilam</ion-label>
+          <ion-label class="tiktok detalle">tiktok.com/@publilam</ion-label>
         </ion-item>
       </ion-card>
   </ion-col>

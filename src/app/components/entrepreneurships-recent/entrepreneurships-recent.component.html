@@ -5,19 +5,19 @@
   </ion-list-header>
   <ion-slides *ngIf="entrepreneurships.length"  [options]="slidesOptions">
       <ion-slide *ngFor="let entrepreneurship of entrepreneurships" >
-          <ion-card [routerLink]= "['/entrepreneurship']" [queryParams]="{ id: entrepreneurship.id}" class="caja-promocion routerLink">
+          <ion-card [routerLink]= "['/entrepreneurship']" [queryParams]="{ id: entrepreneurship.id}">
               <img style="height: 150px;width: 100%;" [src]="entrepreneurship.cover" alt="">
               <ion-item lines="none">
-                  <ion-avatar slot="start" style="width: 50px;height: 50px;">
-                      <img [src]="entrepreneurship.logo" />
-                  </ion-avatar>
+                <ion-avatar slot="start" style="height: 50px; width: 50px;">
+                    <img class="circle-pic" [src]="entrepreneurship.logo" />
+                </ion-avatar>
                   <ion-label>
                       <p class="titulo">{{entrepreneurship.name}}</p>
-                      <p class="ubicacion"> {{entrepreneurship.phone}} - {{entrepreneurship.subcategory.name}}</p>
+                      <p class="ubicacion"> {{entrepreneurship.phone}} - {{entrepreneurship.district.district}}</p>
                       <!-- <p class="slogan ion-text-wrap">{{entrepreneurship.slogan}}</p> -->
                   </ion-label>
               </ion-item>
-              <ion-card-content style="height: 100px;max-height: 120px;">
+              <ion-card-content style="height: 80px;max-height: 80px;">
                   <p class="text ion-text-justify">{{entrepreneurship.description}}</p>
               </ion-card-content>
           </ion-card>

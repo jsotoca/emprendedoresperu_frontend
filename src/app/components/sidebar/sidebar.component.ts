@@ -23,4 +23,8 @@ export class SidebarComponent implements OnInit {
     this.public = this.ads[0];
   }
 
+  openSocial(social:string){
+    window.open(`${social}`, '_system');
+  }
+
 }
