@@ -25,6 +25,7 @@ export class SaveEntrepreneurshipPage implements OnInit {
   subcategories:Subcategory[] = [];
   districts:District[] = [];
   tags:Tag[] = [];
+  tagIds = [];
   haveCategories = false;
   validation_messages = {
     'name': [
@@ -91,6 +92,8 @@ export class SaveEntrepreneurshipPage implements OnInit {
   ) { }
 
   async ngOnInit() {
+    this.categories = [];
+    this.tagIds = [];
     this.saveForm = this.formBuilder.group({
       name:['',[Validators.required, Validators.minLength(3),Validators.maxLength(145)]],
       description:['',[Validators.required, Validators.minLength(10),Validators.maxLength(500)]],
@@ -151,21 +154,20 @@ export class SaveEntrepreneurshipPage implements OnInit {
 
   async save(){
     let data = {};
-    let tagIds = [];
     let flag = false;
     for(let field in this.saveForm.value){
       if(this.saveForm.value[field]) data[field] = this.saveForm.value[field];
     }
     this.tags.forEach(t => {
       if(t.checked){
-        tagIds.push(t.id);
+        this.tagIds.push(t.id);
         flag = true;
       } 
     });
     if(flag){
       data["logo"] = this.logo;
       data["cover"] = this.cover;
-      data["tags"] = tagIds;
+      data["tags"] = this.tagIds;
       const entrepreneurship = createFormData(data);
       await this.uiService.showLoading(`guardando los datos de tu negocio 🚀`);
       try {

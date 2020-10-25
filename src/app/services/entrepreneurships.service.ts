@@ -21,10 +21,11 @@ export class EntrepreneurshipsService {
   async getEntrepreneurships(filtersEntrepreneurships:FiltersEntrepreneurships){
     var {page,limit,category,subcategory,search} = filtersEntrepreneurships;
     page = page || 1; limit = limit || 50;
-    let url = `${APIURL}/entrepreneurship/?page=${page}&limit=${limit}`;
+    let url = `${APIURL}/entrepreneurship`;
     if(category) url+=`&category=${category}`;
     if(subcategory) url+=`&subcategory=${subcategory}`;
-    if(search) url+=`&search=${search}`;
+    if(search) url+=`?search=${search}`;
+    console.log(url);
     const { data } = await this.http.get<IEntrepreneurshipResponse>(url).toPromise();
     return data;
   }
