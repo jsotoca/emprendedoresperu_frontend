@@ -91,15 +91,27 @@ export class SaveEntrepreneurshipPage implements OnInit {
     private uiService:UiService
   ) { }
 
-  async ngOnInit() {
+  async ionViewDidEnter(){
     this.categories = [];
+    this.subcategories = [];
+    this.tags = [];
     this.tagIds = [];
+    this.districts = [];
+    this.haveCategories = false;
+    this.saveForm.reset();
+    this.categories = await this.categoriesService.getCategories();
+    this.districts = await this.districtsService.getDistricts();
+    this.tags = await this.tagsService.getTags();
+  }
+
+  async ngOnInit() {
     this.saveForm = this.formBuilder.group({
       name:['',[Validators.required, Validators.minLength(3),Validators.maxLength(145)]],
       description:['',[Validators.required, Validators.minLength(10),Validators.maxLength(500)]],
       slogan:['',[Validators.required, Validators.minLength(10),Validators.maxLength(500)]],
       phone:['',[Validators.required, Validators.pattern("[0-9]{9}")]],
       subcategory:['',[Validators.required]],
+      category:[''],
       address:[''],
       district:['',[Validators.required]],
       logo:['',Validators.required],
@@ -110,9 +122,6 @@ export class SaveEntrepreneurshipPage implements OnInit {
       instagram:[''],
       tiktok:[''],
     });
-    this.categories = await this.categoriesService.getCategories();
-    this.districts = await this.districtsService.getDistricts();
-    this.tags = await this.tagsService.getTags();
   }
 
   obtenerLogo($event){
@@ -147,7 +156,7 @@ export class SaveEntrepreneurshipPage implements OnInit {
 
   async categoryChange(event){
     this.haveCategories = false;
-    this.subcategories = await this.subcategoriesService.searchSubcategoriesByCategory(event.detail.value);
+    if(event.detail.value)this.subcategories = await this.subcategoriesService.searchSubcategoriesByCategory(event.detail.value);
     this.saveForm.value.subcategory = null;
     this.haveCategories = true;
   }

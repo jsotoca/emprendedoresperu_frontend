@@ -27,6 +27,7 @@ export class EntrepreneurshipsService {
     if(search) url+=`?search=${search}`;
     console.log(url);
     const { data } = await this.http.get<IEntrepreneurshipResponse>(url).toPromise();
+    console.log(data);
     return data;
   }
 

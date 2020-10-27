@@ -34,10 +34,13 @@
                             <ion-icon style="font-size: 20px;" src="../../../assets/icon/storefront-outline.svg"></ion-icon>
                             Mis Emprendimientos ({{account.entrepreneurships.length}})
                           </ion-label>
-                          <ion-button class="routerLink" [routerLink]= "['/save-entrepreneurship']" class="btn-nuevo">
+                          <ion-button class="btn-nuevo routerLink ion-hide-md-down" [routerLink]= "['/save-entrepreneurship']">
                             <ion-label class="ion-text-wrap">Registrar nuevo negocio 🚀</ion-label>
                           </ion-button>
                         </ion-list-header>
+                        <ion-button class="btn-nuevo routerLink ion-hide-md-up" [routerLink]= "['/save-entrepreneurship']">
+                          <ion-label class="ion-text-wrap">Registrar emprendimiento 🚀</ion-label>
+                        </ion-button>
                         <ion-item *ngFor="let entrepreneurship of account.entrepreneurships">
                           <ion-thumbnail style="--border-radius: 5px;" class="routerLink" slot="start" [routerLink]= "['/entrepreneurship']" [queryParams]="{ id: entrepreneurship.id }">
                             <img [src]="entrepreneurship.logo">

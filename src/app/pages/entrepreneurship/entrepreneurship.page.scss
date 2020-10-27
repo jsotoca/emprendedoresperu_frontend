@@ -10,15 +10,31 @@
     font-family: "Poppins Regular" !important;
 }
 
-.img{
-    width: 100%;
-     height: 340px;
-     background-position: 50% 50%;
-     background-repeat: no-repeat;
-     background-size: cover;
-     border-top-left-radius: 5px;
-     border-top-right-radius: 5px;
+// @media only screen and (max-width: 700px) {
+//     .img{
+//         width: 100%;
+//          height: 340px;
+//          background-position: 50% 50%;
+//          background-repeat: no-repeat;
+//          background-size: cover;
+//          border-top-left-radius: 5px;
+//          border-top-right-radius: 5px;
+//     }
+// }
+
+@media only screen and (man-width: 768px) {
+    .img{
+        width: 100%;
+         height: 340px;
+         background-position: 50% 50%;
+         background-repeat: no-repeat;
+         background-size: cover;
+         border-top-left-radius: 5px;
+         border-top-right-radius: 5px;
+    }
 }
+
+
 
 .titulo {
     font-family: "Poppins Regular" !important;

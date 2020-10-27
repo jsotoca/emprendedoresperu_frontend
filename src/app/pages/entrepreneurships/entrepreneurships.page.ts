@@ -41,6 +41,7 @@ export class EntrepreneurshipsPage implements OnInit {
 
   async ionViewDidEnter(){
     this.entrepreneurships = [];
+    this.filterByCategory(null,'Todos');
     this.uiService.showLoading('Cargando los emprendimientos 🚀');
     try {
       this.categories = await this.categoriesService.getCategories();

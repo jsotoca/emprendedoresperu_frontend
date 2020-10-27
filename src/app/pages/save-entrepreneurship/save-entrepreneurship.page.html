@@ -59,7 +59,7 @@
                               <div class="separador"></div>
                               <ion-item lines="none" class="elemento">   
                                 <ion-icon name="copy-outline"></ion-icon>
-                                <ion-select class="select-global" style="--placeholder-opacity: 0.5" placeholder="Categoría**" (ionChange)="categoryChange($event)">
+                                <ion-select class="select-global" style="--placeholder-opacity: 0.5" formControlName="category" placeholder="Categoría**" (ionChange)="categoryChange($event)">
                                   <ion-select-option *ngFor="let category of categories"  [value]="category.id">{{category.name}}</ion-select-option>
                                 </ion-select>
                               </ion-item>

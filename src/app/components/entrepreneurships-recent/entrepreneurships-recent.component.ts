@@ -42,11 +42,15 @@ export class EntrepreneurshipsRecentComponent implements OnInit {
   }
 
   checkScreen(){
-    if(window.innerWidth>=960){
-        return 2.3;
-    }else{
-        return 1.1;
-    }
+    if (window.innerWidth>=992) return 3;
+    if (window.innerWidth>=768 && window.innerWidth<992) return 2;
+    else return 1;
+      
+    // if(window.innerWidth>=960){
+    //     return 2.3;
+    // }else{
+    //     return 1.1;
+    // }
   }
 
 }

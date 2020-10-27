@@ -10,7 +10,8 @@
                   <p class="contenedor-texto">{{entrepreneurship.name}}</p>
                 </div>
                 <ion-card>
-                  <div class="img" style="background-image:url('{{entrepreneurship.cover}}')"></div>                  
+                  <!-- <div class="img" style="background-image:url('{{entrepreneurship.cover}}')"></div>                   -->
+                  <ion-img [src]="entrepreneurship.cover"></ion-img>
                   <ion-card-content>
                     <ion-item lines="none">
                       <ion-thumbnail style="--border-radius: 50%; width: 75px; height: 75px;" slot="start">
