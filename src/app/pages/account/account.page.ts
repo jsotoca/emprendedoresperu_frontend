@@ -194,7 +194,12 @@ export class AccountPage implements OnInit {
   async ionViewDidEnter(){
     this.account = null;
     this.uiService.showLoading('Cargando tu super cuenta 🚀!')
-    this.account = await this.accountService.getDetailsAccount();
+    try {
+      this.account = await this.accountService.getDetailsAccount();
+    } catch (error) {
+      console.log(error);
+      this.uiService.dismissLoading();  
+    }
     this.uiService.dismissLoading();
   }
 

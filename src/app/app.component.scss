@@ -9,3 +9,9 @@ ion-tab-bar, .menu-header {
 ion-tab-button {
     --color-selected: yellow;
 }
+
+.menu-animated {
+    -webkit-transition-duration: 1500ms;
+    -moz-transition-duration: 1500ms;
+    transition-duration: 1500ms;
+}

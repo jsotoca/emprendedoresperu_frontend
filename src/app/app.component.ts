@@ -1,7 +1,7 @@
 import { AuthService } from './services/auth.service';
 import { Component } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { MenuController, Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
@@ -15,7 +15,8 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private authService:AuthService
+    private authService:AuthService,
+    private menuController:MenuController
   ) {
     this.initializeApp();
   }
@@ -26,5 +27,9 @@ export class AppComponent {
       this.splashScreen.hide();
     });
     await this.authService.loadToken();
+  }
+
+  closeMenu(){
+    this.menuController.close();
   }
 }

@@ -17,6 +17,7 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import JwtInterceptor from './interceptors/jwt.interceptor';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { ErrorInterceptor } from './interceptors/error.interceptor';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -30,7 +31,8 @@ import { environment } from '../environments/environment';
     CallNumber,
     SocialSharing,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi:true}
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi:true},
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

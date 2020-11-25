@@ -1,5 +1,5 @@
 <ion-app>
-  <ion-menu side="start" menuId="first" contentId="main">
+  <ion-menu  class="menu-animated" side="start" menuId="first" contentId="main">
     <ion-header>
       <ion-toolbar class="menu-header">
         <img src="../../../assets/img/letras.png" style="display:inline-block"/>
@@ -7,17 +7,17 @@
     </ion-header>
     <ion-content>
       <ion-list>
-        <ion-item class="routerLink" routerLink="/" routerDirection="root" detail button class="text">Inicio</ion-item>
-        <ion-item class="routerLink" routerLink="/entrepreneurships" routerDirection="root" detail button class="text">Emprendimientos</ion-item>
-        <ion-item class="routerLink" routerLink="/account" routerDirection="root" detail button class="text">Mi cuenta</ion-item>
-        <ion-item class="routerLink" routerLink="/favorites" routerDirection="root" detail button class="text">Favoritos</ion-item>
-        <ion-item class="routerLink" routerLink="/rules" routerDirection="root" detail button class="text">Normas</ion-item>
-        <ion-item class="routerLink" routerLink="/about" routerDirection="root" detail button class="text">Nosotros</ion-item>
+        <ion-item (click)="closeMenu()" class="routerLink" routerLink="/" routerDirection="root" detail button class="text">Inicio</ion-item>
+        <ion-item (click)="closeMenu()" class="routerLink" routerLink="/entrepreneurships" routerDirection="root" detail button class="text">Emprendimientos</ion-item>
+        <ion-item (click)="closeMenu()" class="routerLink" routerLink="/account" routerDirection="root" detail button class="text">Mi cuenta</ion-item>
+        <ion-item (click)="closeMenu()" class="routerLink" routerLink="/favorites" routerDirection="root" detail button class="text">Favoritos</ion-item>
+        <ion-item (click)="closeMenu()" class="routerLink" routerLink="/rules" routerDirection="root" detail button class="text">Normas</ion-item>
+        <ion-item (click)="closeMenu()" class="routerLink" routerLink="/about" routerDirection="root" detail button class="text">Nosotros</ion-item>
       </ion-list>
     </ion-content>
     <ion-footer>
       <ion-toolbar>
-        <p class="text ion-text-center">Grupo #06 Soporte - 2020.</p>
+        <p class="text ion-text-center">Grupo #05 Soporte - 2020.</p>
       </ion-toolbar>
     </ion-footer>
   </ion-menu>

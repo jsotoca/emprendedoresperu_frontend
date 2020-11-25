@@ -12,7 +12,7 @@
                         <ion-card>
                             <ion-card-content>
                                 <ion-row *ngIf="categories.length">
-                                    <ion-col  *ngFor="let category of categories" size="4" size-lg="3">
+                                    <ion-col  *ngFor="let category of categories" size="6" size-lg="3">
                                         <ion-card class="card">
                                             <ion-tab-button class="categoria-principal" (click)="filterByCategory(category.id,category.name)">
                                                 <ion-icon style="font-size: 64px;" [src]="category.icon"></ion-icon>
@@ -20,7 +20,7 @@
                                             </ion-tab-button> 
                                            </ion-card>
                                     </ion-col>
-                                    <ion-col size="4" size-lg="3">
+                                    <ion-col size="6" size-lg="3">
                                         <ion-card class="card">
                                             <ion-tab-button class="categoria-principal" (click)="filterByCategory(null,'Todos')">
                                                 <ion-icon style="font-size: 64px;" src="../../../assets/icon/happy.svg"></ion-icon>
@@ -35,22 +35,32 @@
                                       <ion-icon style="font-size: 20px;" name="copy-outline"></ion-icon>
                                       Categoría: {{categoria}} - Total: {{entrepreneurships.length}}
                                     </ion-label>
-                                    <ion-button (click)="filterByCategory(null,'Todos')" color="danger" class="text" style="text-transform: none;">
-                                        <ion-icon slot="start" name="reload-outline"></ion-icon>
+                                    <ion-button  (click)="filterByCategory(null,'Todos')" color="danger" class="text ion-hide-md-down" style="text-transform: none;">
+                                        <ion-icon slot="start" name="list-outline"></ion-icon>
                                         Reiniciar Lista
                                     </ion-button>
                                 </ion-list-header>
+                                <ion-button  (click)="filterByCategory(null,'Todos')" color="danger" fill="clear" class="text ion-hide-md-up" style="text-transform: none;">
+                                    <ion-icon slot="start" name="list-outline"></ion-icon>
+                                    Reiniciar
+                                </ion-button>
                                 <ion-item *ngFor="let entrepreneurship of entrepreneurships">
                                     <ion-thumbnail style="--border-radius: 5px;" class="routerLink" slot="start" [routerLink]= "['/entrepreneurship']" [queryParams]="{ id: entrepreneurship.id }">
                                       <img [src]="entrepreneurship.logo">
                                     </ion-thumbnail>
                                     <ion-label class="routerLink">
-                                      <p [routerLink]= "['/entrepreneurship']" [queryParams]="{ id: entrepreneurship.id}" class="ion-text-wrap titulo routerLink">{{entrepreneurship.name}}</p>
-                                      <p class="ion-text-wrap ubicacion"><b>Descripción:</b> {{entrepreneurship.description}}</p>
-                                      <p class="ion-text-wrap ubicacion"><b>Subcategoria:</b> {{entrepreneurship.subcategory.name}} -<b>Teléfono:</b> {{entrepreneurship.phone}}</p>
-                                      <p class="ion-text-wrap ubicacion"><b>Ubicación:</b> {{(entrepreneurship.address)?entrepreneurship.address:'Sin local'}} - {{entrepreneurship.district.district}}</p>
+                                      <p [routerLink]= "['/entrepreneurship']" [queryParams]="{ id: entrepreneurship.id}" class="ion-text-wrap titulo routerLink"><ion-icon slot="icon-only" style="font-size: 20px;" [src]="entrepreneurship.subcategory.icon"></ion-icon> {{entrepreneurship.name}}</p>
+                                      <p class="ion-text-wrap ubicacion ion-hide-md-down"><b>Descripción:</b> {{entrepreneurship.description}}</p>
+                                      <p class="ion-text-wrap ubicacion ion-hide-md-up">{{entrepreneurship.description}}</p>
+                                      <p class="ion-text-wrap ubicacion ubicacion ion-hide-md-down"><b>Subcategoria</b> {{entrepreneurship.subcategory.name}} -<b>Teléfono:</b> {{entrepreneurship.phone}}</p>
+                                      <p class="ion-text-wrap ubicacion ubicacion ion-hide-md-up"><b>{{entrepreneurship.phone}}</b></p>
+                                      <p class="ion-text-wrap ubicacion ion-hide-md-down"><b>Ubicación:</b> {{(entrepreneurship.address)?entrepreneurship.address:'Sin local'}} - {{entrepreneurship.district.district}}</p>
+                                      <p class="ion-text-wrap ubicacion ion-hide-md-up">{{entrepreneurship.district.district}}</p>
+                                      <ion-button style="text-transform: none;" class=" ion-hide-md-up ion-text-right" fill="clear text" (click)="presentActionSheet(entrepreneurship)">
+                                          <ion-icon slot="start" name="ellipsis-vertical-outline"></ion-icon>
+                                      </ion-button>
                                     </ion-label>  
-                                    <ion-buttons slot="end">
+                                    <ion-buttons class="ion-hide-md-down" slot="end">
                                       <ion-button (click)="presentActionSheet(entrepreneurship)">
                                         <ion-icon name="ellipsis-vertical-outline"></ion-icon>
                                       </ion-button>
